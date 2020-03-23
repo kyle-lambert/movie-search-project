@@ -1,0 +1,83 @@
+.Card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+
+.Card:hover {
+  transform: translateY(-5px);
+  transition: transform 300ms ease;
+}
+
+.Card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(transparent, rgba(33, 47, 61, 0.8));
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.Card:hover::after {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.Card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(transparent, rgba(100, 180, 246, 0.6));
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.Card:hover::before {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.Card-img {
+  display: block;
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  min-height: 100%;
+  z-index: 0;
+  border-radius: 2px;
+}
+
+.Card-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 1.5rem 1.5rem 1.5rem;
+  z-index: 101;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+/* @keyframes fadeIn {
+  0% {
+    transform: translateY(3rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+} */
