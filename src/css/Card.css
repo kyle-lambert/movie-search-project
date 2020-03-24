@@ -2,7 +2,6 @@
   position: relative;
   display: block;
   cursor: pointer;
-  transition: transform 300ms ease;
 }
 
 .Card:hover {
@@ -71,8 +70,8 @@
   font-size: 1.4rem;
   letter-spacing: 2px;
 }
-
-/* @keyframes fadeIn {
+/* 
+@keyframes fadeIn {
   0% {
     transform: translateY(3rem);
   }

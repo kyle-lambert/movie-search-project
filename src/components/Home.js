@@ -1,42 +1,29 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import MovieSection from "./MovieSection";
-import Carousel from "./Carousel";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class Home extends Component {
+  static defaultProps = {
+    filterTypes: ["upcoming", "top_rated", "popular", "now_playing"]
+  };
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
-      tv: [],
-      movie: [],
-      type: "upcoming"
-    };
-    this.changeType = this.changeType.bind(this);
-    this.getMovies = this.getMovies.bind(this);
-    this.getTrending = this.getTrending.bind(this);
-  }
-
-  async componentDidMount() {
-    this.getMovies(this.state.type);
-    this.getTrending("tv");
-    this.getTrending("movie");
-  }
-
-  async getTrending(type) {
-    const url = `https://api.themoviedb.org/3/trending/${type}/week?api_key=${API_KEY}`;
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      if (data) {
-        this.setState({ [type]: data.results });
-      } else {
-        console.log("Problem with movie request");
+      movies: {
+        upcoming: [],
+        top_rated: [],
+        popular: [],
+        now_playing: [],
+        currentFilter: "upcoming"
       }
-    } catch (error) {
-      console.log(error);
-    }
+    };
+    this.filterMovies = this.filterMovies.bind(this);
+    this.getMovies = this.getMovies.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.filterTypes.map(type => this.getMovies(type));
   }
 
   async getMovies(type) {
@@ -46,7 +33,12 @@ class Home extends Component {
       );
       const data = await res.json();
       if (data) {
-        this.setState({ movies: data.results });
+        this.setState(state => ({
+          movies: {
+            ...state.movies,
+            [type]: data.results
+          }
+        }));
       } else {
         console.log("Problem with movie request");
       }
@@ -55,23 +47,24 @@ class Home extends Component {
     }
   }
 
-  changeType(e) {
+  filterMovies(e) {
     const type = e.target.name;
-    this.getMovies(type);
-    this.setState({ type: type });
+    this.setState(state => ({
+      movies: {
+        ...state.movies,
+        currentFilter: type
+      }
+    }));
   }
 
   render() {
     return (
       <div className="Home">
         <Navbar />
-        {this.state.movie.length > 0 ? (
-          <Carousel content={this.state.movie} />
-        ) : null}
         <MovieSection
           movies={this.state.movies}
-          changeType={this.changeType}
-          type={this.state.type}
+          filterMovies={this.filterMovies}
+          filterTypes={this.props.filterTypes}
         />
       </div>
     );
@@ -79,3 +72,18 @@ class Home extends Component {
 }
 
 export default Home;
+
+// async getTrending(type) {
+//   const url = `https://api.themoviedb.org/3/trending/${type}/week?api_key=${API_KEY}`;
+//   try {
+//     const res = await fetch(url);
+//     const data = await res.json();
+//     if (data) {
+//       this.setState({ [type]: data.results });
+//     } else {
+//       console.log("Problem with movie request");
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
