@@ -1,63 +1,84 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import "../css/MovieSection.css";
+import { v4 as uuidv4 } from "uuid";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 class MoviesSection extends Component {
-  render() {
-    const {
-      upcoming,
-      now_playing,
-      popular,
-      top_rated,
-      currentFilter
-    } = this.props.movies;
+  static defaultProps = {
+    filterNames: ["upcoming", "popular", "now_playing", "top_rated"]
+  };
 
-    const filterMovies = () => {
-      const currentFilter = this.props.movies.currentFilter;
-      if (currentFilter === "upcoming") {
-        return upcoming.map(m => <Card key={m.id} movie={m} />);
-      } else if (currentFilter === "now_playing") {
-        return now_playing.map(m => <Card key={m.id} movie={m} />);
-      } else if (currentFilter === "popular") {
-        return popular.map(m => <Card key={m.id} movie={m} />);
-      } else if (currentFilter === "top_rated") {
-        return top_rated.map(m => <Card key={m.id} movie={m} />);
-      } else {
-        console.error("Problem with filtering movie type");
-        return [];
-      }
-
-      // let cards;
-      // switch (currentFilter) {
-      //   case "upcoming":
-      //     cards = upcoming.map(m => <Card key={m.id} movie={m} />);
-      //     break;
-      //   case "now_playing":
-      //     cards = now_playing.map(m => <Card key={m.id} movie={m} />);
-      //     break;
-      //   case "popular":
-      //     cards = popular.map(m => <Card key={m.id} movie={m} />);
-      //     break;
-      //   case "top_rated":
-      //     cards = top_rated.map(m => <Card key={m.id} movie={m} />);
-      //     break;
-      //   default:
-      //     cards = upcoming.map(m => <Card key={m.id} movie={m} />);
-      //     break;
-      // }
-      // return cards;
+  constructor(props) {
+    super(props);
+    this.state = {
+      upcoming: [],
+      now_playing: [],
+      popular: [],
+      top_rated: [],
+      currentFilter: this.props.filterNames[0]
     };
+    this.timeoutFilter = this.timeoutFilter.bind(this);
+    this.changeFilter = this.changeFilter.bind(this);
+  }
 
-    const buttons = this.props.filterTypes.map(type => (
+  timeoutFilter() {
+    let index = this.props.filterNames.indexOf(this.state.currentFilter);
+    this.setState({
+      currentFilter: this.props.filterNames[
+        index === this.props.filterNames.length - 1 ? 0 : index + 1
+      ]
+    });
+  }
+
+  changeFilter(e) {
+    const type = e.target.name;
+    this.setState({ currentFilter: type });
+  }
+
+  componentDidMount() {
+    this.props.filterNames.map(name => this.getMovies(name));
+    // setInterval(() => {
+    //   this.timeoutFilter();
+    // }, 10000);
+  }
+
+  async getMovies(type) {
+    try {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}&language=en-US&page=1`
+      );
+      const data = await res.json();
+      if (data) {
+        this.setState(state => ({
+          ...state,
+          [type]: data.results
+        }));
+      } else {
+        console.log("Problem with movie request");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  render() {
+    const { currentFilter } = this.state;
+
+    const movies = this.state[currentFilter].map((movie, i) => (
+      <Card key={uuidv4()} movie={movie} index={i} />
+    ));
+
+    const buttons = this.props.filterNames.map(name => (
       <button
-        key={type}
-        name={type}
+        key={name}
+        name={name}
         className={`MovieSection-button ${
-          currentFilter === type ? "active" : ""
+          currentFilter === name ? "active" : ""
         }`}
-        disabled={currentFilter === type}
-        onClick={this.props.filterMovies}>
-        {type.replace("_", " ")}
+        disabled={currentFilter === name}
+        onClick={this.changeFilter}>
+        {name.replace("_", " ")}
       </button>
     ));
 
@@ -67,7 +88,7 @@ class MoviesSection extends Component {
           <h2 className="MovieSection-header">Movies</h2>
           <div className="MovieSection-btn-container">{buttons}</div>
         </div>
-        <div className="MovieSection-grid">{filterMovies()}</div>
+        <div className="MovieSection-grid">{movies}</div>
       </section>
     );
   }

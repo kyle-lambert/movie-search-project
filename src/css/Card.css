@@ -1,7 +1,6 @@
 .Card {
-  position: relative;
   display: block;
-  cursor: pointer;
+  transition: transform 300ms ease;
 }
 
 .Card:hover {
@@ -9,7 +8,20 @@
   transition: transform 300ms ease;
 }
 
-.Card::after {
+.Card-inner {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  height: 100%;
+  opacity: 0;
+  animation-name: moveUp;
+  animation-duration: 500ms;
+  animation-delay: 50ms;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+.Card-inner::after {
   content: "";
   position: absolute;
   top: 0;
@@ -24,12 +36,12 @@
   transition: opacity 300ms ease;
 }
 
-.Card:hover::after {
+.Card-inner:hover::after {
   opacity: 0;
   transition: opacity 300ms ease;
 }
 
-.Card::before {
+.Card-inner::before {
   content: "";
   position: absolute;
   top: 0;
@@ -44,7 +56,7 @@
   transition: opacity 300ms ease;
 }
 
-.Card:hover::before {
+.Card-inner:hover::before {
   opacity: 1;
   transition: opacity 300ms ease;
 }
@@ -64,19 +76,20 @@
   bottom: 0;
   left: 0;
   margin: 0 1.5rem 1.5rem 1.5rem;
-  z-index: 101;
+  z-index: 150;
   font-weight: 400;
   text-transform: uppercase;
   font-size: 1.4rem;
   letter-spacing: 2px;
 }
-/* 
-@keyframes fadeIn {
+
+@keyframes moveUp {
   0% {
-    transform: translateY(3rem);
+    transform: translateY(5rem);
   }
 
   100% {
     transform: translateY(0);
+    opacity: 1;
   }
-} */
+}
