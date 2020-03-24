@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "./Card";
 import "../css/MovieSection.css";
 import { v4 as uuidv4 } from "uuid";
+import { formatString, buildMovieState } from "../utilities";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 class MoviesSection extends Component {
@@ -18,23 +19,21 @@ class MoviesSection extends Component {
       top_rated: [],
       currentFilter: this.props.filterNames[0]
     };
-    this.timeoutFilter = this.timeoutFilter.bind(this);
-    this.changeFilter = this.changeFilter.bind(this);
   }
 
-  timeoutFilter() {
+  timeoutFilter = () => {
     let index = this.props.filterNames.indexOf(this.state.currentFilter);
     this.setState({
       currentFilter: this.props.filterNames[
         index === this.props.filterNames.length - 1 ? 0 : index + 1
       ]
     });
-  }
+  };
 
-  changeFilter(e) {
+  changeFilter = e => {
     const type = e.target.name;
     this.setState({ currentFilter: type });
-  }
+  };
 
   componentDidMount() {
     this.props.filterNames.map(name => this.getMovies(name));
@@ -52,10 +51,8 @@ class MoviesSection extends Component {
       if (data) {
         this.setState(state => ({
           ...state,
-          [type]: data.results
+          [type]: buildMovieState(data)
         }));
-      } else {
-        console.log("Problem with movie request");
       }
     } catch (error) {
       console.log(error);
@@ -64,11 +61,9 @@ class MoviesSection extends Component {
 
   render() {
     const { currentFilter } = this.state;
-
     const movies = this.state[currentFilter].map((movie, i) => (
       <Card key={uuidv4()} movie={movie} index={i} />
     ));
-
     const buttons = this.props.filterNames.map(name => (
       <button
         key={name}
@@ -78,7 +73,7 @@ class MoviesSection extends Component {
         }`}
         disabled={currentFilter === name}
         onClick={this.changeFilter}>
-        {name.replace("_", " ")}
+        {formatString(name)}
       </button>
     ));
 
