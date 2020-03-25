@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
-import MovieSection from "./MovieSection";
-import Slider from "./Slider";
+import ShowcaseMovie from "./ShowcaseMovie";
+import Carousel from "./Carousel";
 
 class Home extends Component {
+  static defaultProps = {
+    data: [1, 2, 3, 4, 5]
+  };
   render() {
     return (
       <div className="Home">
         <Navbar />
-        <Slider />
-        <MovieSection />
+        {/* <Carousel /> */}
+        <ShowcaseMovie />
       </div>
     );
   }

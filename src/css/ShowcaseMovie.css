@@ -1,8 +1,8 @@
-.MovieSection {
+.ShowcaseMovie {
   padding: 4rem 10%;
 }
 
-.MovieSection-container {
+.ShowcaseMovie-container {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -10,13 +10,13 @@
   margin-bottom: 2rem;
 }
 
-.MovieSection-btn-container {
+.ShowcaseMovie-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.MovieSection-container::after {
+.ShowcaseMovie-container::after {
   content: "";
   background-color: #64b5f6;
   height: 80%;
@@ -26,13 +26,13 @@
   border-radius: 1px;
 }
 
-.MovieSection-header {
+.ShowcaseMovie-header {
   font-size: 3rem;
   font-weight: 200;
   margin: 0 5rem;
 }
 
-.MovieSection-button {
+.ShowcaseMovie-btn {
   outline: none;
   border: none;
   background-color: transparent;
@@ -49,20 +49,20 @@
   transition-timing-function: ease;
 }
 
-.MovieSection-button:hover {
+.ShowcaseMovie-btn:hover {
   opacity: 1;
   transition-property: opacity;
   transition-duration: 300ms;
   transition-timing-function: ease;
 }
 
-.MovieSection-button.active {
+.ShowcaseMovie-btn.active {
   opacity: 1;
   cursor: auto;
   color: #64b5f6;
 }
 
-.MovieSection-grid {
+.ShowcaseMovie-grid {
   display: grid;
   gap: 3rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

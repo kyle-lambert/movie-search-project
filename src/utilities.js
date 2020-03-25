@@ -11,7 +11,7 @@ export const buildMovieState = data => {
     const movies = data.results.filter(
       d => d.backdrop_path && d.id && d.title && d.poster_path
     );
-    return movies.length > 0 ? movies.slice(0, 10) : movies;
+    return movies.length > 10 ? movies.slice(0, 10) : movies;
   } else {
     return [];
   }
