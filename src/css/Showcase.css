@@ -1,0 +1,24 @@
+.Showcase {
+  display: block;
+  width: 100%;
+  padding: 4rem 10%;
+  background-color: #212f3d;
+}
+
+.Showcase-grid {
+  margin: 3rem 0;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(5rem);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

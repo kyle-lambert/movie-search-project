@@ -3,17 +3,17 @@ import "../css/Card.css";
 
 class Card extends Component {
   render() {
-    const { title, poster_path } = this.props.movie;
+    const { title, poster_path } = this.props.content;
     const style = { animationDelay: `${80 * this.props.index}ms` };
     return (
-      <div className="Card">
-        <div className="Card-inner" style={style}>
+      <div className="Card" style={style}>
+        <div className="Card-inner">
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt=""
+            alt={title}
             className="Card-img"
           />
-          <p className="Card-name">{title}</p>
+          <p className="Card-title">{title}</p>
         </div>
       </div>
     );
