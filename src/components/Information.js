@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import TitleBar from "./TitleBar";
 import "../css/Information.css";
 
 class Information extends Component {
   render() {
-    const { title, overview } = this.props.content;
+    const { content } = this.props;
     return (
       <div className="Information">
-        <h1 className="Information-head">{title}</h1>
-        <p className="Information-overview">{overview}</p>
+        <TitleBar content={content} />
       </div>
     );
   }

@@ -1,0 +1,44 @@
+.TitleBar {
+  width: 100%;
+}
+
+.TitleBar-year {
+  margin-left: 1.6rem;
+  font-weight: 300;
+  font-size: 2.4rem;
+}
+
+.TitleBar-sub {
+  margin: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #1c2833;
+  background-color: rgba(100, 180, 246, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.4rem;
+  border-radius: 2px;
+  text-align: center;
+  box-shadow: 1px 1px 6px rgba(28, 40, 51, 0.3);
+}
+
+.TitleBar-span {
+  position: relative;
+  padding: 0 3rem;
+}
+
+.TitleBar-span:first-child::before {
+  display: none;
+}
+
+.TitleBar-span::before {
+  position: absolute;
+  content: "";
+  background-color: rgba(28, 40, 51, 1);
+  height: 100%;
+  width: 1px;
+  left: 0;
+  border-radius: 2px;
+}

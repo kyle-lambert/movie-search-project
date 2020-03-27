@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Home from "./pages/Home";
-import Details from "./pages/Details";
+// import Home from "./pages/Home";
+import Movie from "./pages/Movie";
+// import TV from "./pages/TV";
 import "../css/App.css";
 
 class App extends Component {
@@ -8,7 +9,8 @@ class App extends Component {
     return (
       <div className="App">
         {/* <Home /> */}
-        <Details />
+        <Movie />
+        {/* <TV /> */}
       </div>
     );
   }
