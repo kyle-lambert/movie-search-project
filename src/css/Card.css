@@ -68,12 +68,14 @@
 .Card-title {
   display: block;
   position: absolute;
+  margin-bottom: 0;
   bottom: 2rem;
   left: 2rem;
   right: 2rem;
   z-index: 100;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  font-weight: 400;
   font-size: 1.4rem;
 }
 

@@ -7,6 +7,10 @@
   background-color: #1c2833;
 }
 
+.Navbar-brand {
+  margin-bottom: 0;
+}
+
 .Navbar-list {
   margin-left: 4rem;
   display: flex;

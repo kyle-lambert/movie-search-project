@@ -1,0 +1,11 @@
+.Poster {
+  width: 100%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.Poster-img {
+  display: block;
+  max-width: 100%;
+  border-radius: 2px;
+}
