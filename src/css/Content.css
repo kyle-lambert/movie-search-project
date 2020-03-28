@@ -1,17 +1,22 @@
 .Content {
   position: relative;
-  z-index: 50;
 }
 
 .Content-grid {
   position: absolute;
-  top: 300px;
-  left: 0;
-  right: 0;
-  padding: 0 10%;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-columns: 25% auto;
-  gap: 3rem;
+  top: 200px;
+  width: 100%;
+  padding: 0 3rem;
   z-index: 100;
+  display: grid;
+  gap: 2rem;
 }
+
+/* Tablet 768px
+@media screen and (min-width: 768px)  */
+
+/* Desktop 1028px
+@media screen and (min-width: 1024px) */
+
+/* Desktop large 1266px
+@media screen and (min-width: 1266px) */

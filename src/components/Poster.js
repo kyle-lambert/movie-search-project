@@ -11,6 +11,15 @@ class Poster extends Component {
           alt={title}
           className="Poster-img"
         />
+        {/* <div className="Poster-production">
+          {production_companies.map(company => (
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${company.logo_path}`}
+              alt={company.name}
+              className="Poster-production-logo"
+            />
+          ))}
+        </div> */}
       </div>
     );
   }
