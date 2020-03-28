@@ -3,80 +3,89 @@ import Navbar from "../Navbar";
 import Content from "../Content";
 import "../../css/Movie.css";
 const API_KEY = process.env.REACT_APP_API_KEY;
-const movie_id = 181812;
+// const movie_id = 181812;
 // const movie_id = 495764;
+// const movie_id = 530915;
+const movie_id = 330457;
 
 class Movie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: {},
+      details: {},
+      credits: {},
+      reviews: {},
       isLoading: true
     };
-    this.getDetails = this.getDetails.bind(this);
-    this.getCredits = this.getCredits.bind(this);
-    this.getReviews = this.getReviews.bind(this);
+    this.fetchData = this.fetchData.bind(this);
   }
 
+  buildCredits = credits => {
+    if (credits) {
+      const crew = credits.crew.filter(c => c.name && c.job);
+      const cast = credits.cast.filter(
+        c => c.character && c.name && c.profile_path
+      );
+      return {
+        crew: crew,
+        cast: cast
+      };
+    } else {
+      return [];
+    }
+  };
+
   async componentDidMount() {
-    const details = await this.getDetails();
-    const credits = await this.getCredits();
-    const reviews = await this.getReviews();
+    const details = await this.fetchData("details");
+    const credits = await this.fetchData("credits");
+    const reviews = await this.fetchData("reviews");
     this.setState({
-      content: { ...details, ...credits, ...reviews },
+      details: details,
+      credits: this.buildCredits(credits),
+      reviews: reviews,
       isLoading: false
     });
   }
 
-  async getDetails() {
-    try {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
-      );
-      const data = await res.json();
-      if (data) {
-        return data;
+  async fetchData(type) {
+    if (type === "details") {
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+        );
+        const data = await res.json();
+        if (data) {
+          return data;
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getCredits() {
-    try {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}`
-      );
-      const data = await res.json();
-      if (data) {
-        return data;
+    } else {
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${movie_id}/${type}?api_key=${API_KEY}`
+        );
+        const data = await res.json();
+        if (data) {
+          return data;
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async getReviews() {
-    try {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=${API_KEY}`
-      );
-      const data = await res.json();
-      if (data) {
-        return data;
-      }
-    } catch (error) {
-      console.log(error);
     }
   }
 
   render() {
-    const { isLoading, content } = this.state;
+    const { isLoading, details, credits, reviews } = this.state;
 
     return (
       <div className="Movie">
         {/* <Navbar /> */}
-        {isLoading ? <div>LOADING</div> : <Content content={content} />}
+        {isLoading ? (
+          <div>LOADING</div>
+        ) : (
+          <Content details={details} credits={credits} reviews={reviews} />
+        )}
       </div>
     );
   }

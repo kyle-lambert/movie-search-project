@@ -1,0 +1,14 @@
+.Crew-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.Crew-name {
+  font-weight: 400;
+}
+
+.Crew-job {
+  font-size: 1.4rem;
+  opacity: 0.6;
+}

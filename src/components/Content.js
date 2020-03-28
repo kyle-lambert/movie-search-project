@@ -2,25 +2,37 @@ import React, { Component } from "react";
 import Backdrop from "./Backdrop";
 import Poster from "./Poster";
 import Info from "./Info";
+import Crew from "./Crew";
 import Cast from "./Cast";
 import "../css/Content.css";
 
 class Content extends Component {
   render() {
     const {
-      content,
-      content: { title, poster_path, backdrop_path, production_companies, cast }
+      details: {
+        title,
+        poster_path,
+        backdrop_path,
+        runtime,
+        release_date,
+        genres,
+        overview
+      }
     } = this.props;
+    const { crew, cast } = this.props.credits;
     return (
       <div className="Content">
         <Backdrop title={title} backdrop_path={backdrop_path} />
         <div className="Content-grid">
-          <Poster
+          <Poster title={title} poster_path={poster_path} />
+          <Info
             title={title}
-            poster_path={poster_path}
-            production_companies={production_companies}
+            runtime={runtime}
+            release_date={release_date}
+            genres={genres}
+            overview={overview}
           />
-          <Info content={content} />
+          <Crew crew={crew} />
           <Cast cast={cast} />
         </div>
       </div>

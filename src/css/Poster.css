@@ -1,5 +1,6 @@
 .Poster {
   width: 100%;
+  display: none;
 }
 
 .Poster-img {
