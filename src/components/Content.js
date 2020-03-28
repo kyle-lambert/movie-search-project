@@ -4,11 +4,13 @@ import Poster from "./Poster";
 import Info from "./Info";
 import Crew from "./Crew";
 import Cast from "./Cast";
+import Details from "./Details";
 import "../css/Content.css";
 
 class Content extends Component {
   render() {
     const {
+      details,
       details: {
         title,
         poster_path,
@@ -34,6 +36,7 @@ class Content extends Component {
           />
           <Crew crew={crew} />
           <Cast cast={cast} />
+          <Details details={details} />
         </div>
       </div>
     );

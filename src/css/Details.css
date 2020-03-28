@@ -1,0 +1,20 @@
+.Details-grid {
+  display: grid;
+}
+
+.Details-item {
+  display: flex;
+}
+
+.Details-key,
+.Details-value {
+  flex: 1;
+}
+
+.Details-key {
+  font-weight: 400;
+}
+
+.Details-value {
+  opacity: 0.6;
+}

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar";
+// import Navbar from "../Navbar";
 import Content from "../Content";
 import "../../css/Movie.css";
 const API_KEY = process.env.REACT_APP_API_KEY;
 // const movie_id = 181812;
-// const movie_id = 495764;
+const movie_id = 495764;
 // const movie_id = 530915;
-const movie_id = 330457;
+// const movie_id = 330457;
 
 class Movie extends Component {
   constructor(props) {
