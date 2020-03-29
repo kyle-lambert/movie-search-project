@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Backdrop from "./Backdrop";
 import Poster from "./Poster";
 import Info from "./Info";
-import Crew from "./Crew";
+// import Crew from "./Crew";
 import Cast from "./Cast";
 import Details from "./Details";
 import "../css/Content.css";
@@ -33,8 +33,9 @@ class Content extends Component {
             release_date={release_date}
             genres={genres}
             overview={overview}
+            crew={crew}
           />
-          <Crew crew={crew} />
+          {/* <Crew crew={crew} /> */}
           <Cast cast={cast} />
           <Details details={details} />
         </div>

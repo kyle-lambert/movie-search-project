@@ -17,6 +17,7 @@
   width: 100%;
   display: block;
   transition: transform 300ms ease;
+  box-shadow: 1px 1px 10px rgba(28, 40, 51, 0.8);
 }
 
 .Card-inner::after {
@@ -52,7 +53,7 @@
 }
 
 .Card-inner:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
 }
 
 .Card-img {
@@ -73,10 +74,6 @@
   left: 2rem;
   right: 2rem;
   z-index: 100;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 400;
-  font-size: 1.4rem;
 }
 
 @keyframes moveUp {

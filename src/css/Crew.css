@@ -1,3 +1,7 @@
+.Crew {
+  margin: 1.6rem 0;
+}
+
 .Crew-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -11,4 +15,10 @@
 .Crew-job {
   font-size: 1.4rem;
   opacity: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+  .Crew-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }

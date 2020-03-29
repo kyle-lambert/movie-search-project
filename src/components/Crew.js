@@ -7,6 +7,11 @@ class Crew extends Component {
     const { crew } = this.props;
     const persons = crew.slice(0, 4).map(person => (
       <div key={uuidv4()} className="Crew-member">
+        {/* <img
+          src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+          alt={person.name}
+          className="Crew-img"
+        /> */}
         <p className="Crew-name">{person.name}</p>
         <p className="Crew-job">{person.job}</p>
       </div>

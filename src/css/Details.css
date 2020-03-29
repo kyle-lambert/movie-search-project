@@ -18,3 +18,27 @@
 .Details-value {
   opacity: 0.6;
 }
+
+@media screen and (min-width: 1024px) {
+  .Details {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .Details-grid {
+    row-gap: 1rem;
+  }
+
+  .Details-item {
+    flex-direction: column;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .Details-item:last-child {
+    border: none;
+  }
+
+  .Details-value {
+    margin-bottom: 0.6rem;
+  }
+}

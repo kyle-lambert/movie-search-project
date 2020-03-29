@@ -25,3 +25,9 @@
   object-fit: cover;
   height: 100%;
 }
+
+@media screen and (min-width: 1266px) {
+  .Backdrop {
+    height: 350px;
+  }
+}

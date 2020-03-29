@@ -66,11 +66,13 @@ class Showcase extends Component {
   }
 
   render() {
-    const { name } = this.props;
+    const { name, bg } = this.props;
     const { isLoading, content } = this.state;
     return (
       <div className="Showcase">
-        <div className="Showcase-head">Trending: {formatString(name)}</div>
+        <h2 className="Showcase-title">
+          Trending:<span className="Showcase-span">{formatString(name)}</span>
+        </h2>
         <div className="Showcase-grid">
           {isLoading ? (
             <div>LOADING</div>

@@ -1,5 +1,6 @@
 .Cast-member {
   justify-self: center;
+  box-shadow: 1px 1px 10px rgba(28, 40, 51, 0.8);
 }
 
 .Cast-grid {
@@ -44,4 +45,16 @@
   margin-bottom: 0;
   font-size: 1.4rem;
   opacity: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+  .Cast-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  }
+}
+@media screen and (min-width: 1024px) {
+  .Cast {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
 }

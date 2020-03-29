@@ -8,13 +8,13 @@ class Details extends Component {
       revenue,
       budget,
       spoken_languages,
-      production_companies
+      production_companies,
+      release_date
     } = this.props.details;
     const languages = spoken_languages.map(l => l.name).join(", ");
     const production = production_companies.map(l => l.name).join(", ");
     return (
       <div className="Details">
-        <h2 className="Details-title">Details</h2>
         <div className="Details-grid">
           <div className="Details-item">
             <p className="Details-key">Revenue:</p>
@@ -31,6 +31,10 @@ class Details extends Component {
           <div className="Details-item">
             <p className="Details-key">Languages:</p>
             <p className="Details-value">{languages}</p>
+          </div>
+          <div className="Details-item">
+            <p className="Details-key">Release Date:</p>
+            <p className="Details-value">{release_date}</p>
           </div>
           <div className="Details-item">
             <p className="Details-key">Production:</p>
