@@ -1,6 +1,5 @@
 .Poster {
   width: 100%;
-  display: none;
 }
 
 .Poster-img {
@@ -8,13 +7,4 @@
   display: block;
   max-width: 100%;
   border-radius: 2px;
-  box-shadow: 1px 1px 20px rgba(28, 40, 51, 0.8);
-}
-
-@media screen and (min-width: 1024px) {
-  .Poster {
-    display: block;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
 }

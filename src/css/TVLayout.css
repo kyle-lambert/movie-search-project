@@ -1,0 +1,52 @@
+.TVLayout {
+  position: relative;
+}
+
+.TVLayout-grid {
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  padding: 0 3rem 3rem;
+  z-index: 100;
+  display: grid;
+  gap: 2rem;
+}
+
+.TVLayout-sidebar {
+  display: none;
+}
+
+/* Tablet 768px */
+@media screen and (min-width: 768px) {
+  .TVLayout-grid {
+    padding: 0 6rem 3rem;
+    gap: 3rem;
+  }
+}
+
+/* Desktop 1028px */
+@media screen and (min-width: 1024px) {
+  .TVLayout-grid {
+    padding: 0 10% 3rem;
+    grid-template-columns: 250px auto;
+  }
+
+  .TVLayout-infobar {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .TVLayout-sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: block;
+  }
+}
+
+/* Desktop large 1266px */
+@media screen and (min-width: 1266px) {
+  .TVLayout-grid {
+    top: 250px;
+    gap: 4rem;
+  }
+}

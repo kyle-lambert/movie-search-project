@@ -1,6 +1,9 @@
+.Cast {
+  margin: 1.6rem 0;
+}
+
 .Cast-member {
   justify-self: center;
-  box-shadow: 1px 1px 10px rgba(28, 40, 51, 0.8);
 }
 
 .Cast-grid {

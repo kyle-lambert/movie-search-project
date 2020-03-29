@@ -19,6 +19,6 @@
 
 @media screen and (min-width: 768px) {
   .Crew-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); */
   }
 }
