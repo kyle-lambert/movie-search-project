@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TVLayout from "../TVLayout";
+import Layout from "../Layout";
 import "../../css/TV.css";
 import { fetchData, buildCredits } from "../../utilities";
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -15,14 +15,16 @@ class TV extends Component {
       details: {},
       credits: {},
       reviews: {},
+      tv_id: this.props.routeProps.match.params.id,
       isLoading: true
     };
   }
 
   async componentDidMount() {
-    const details = await fetchData("tv", "details", tv_id, API_KEY);
-    const credits = await fetchData("tv", "credits", tv_id, API_KEY);
-    const reviews = await fetchData("tv", "reviews", tv_id, API_KEY);
+    const details = await fetchData("tv", "details", this.state.tv_id, API_KEY);
+    const credits = await fetchData("tv", "credits", this.state.tv_id, API_KEY);
+    const reviews = await fetchData("tv", "reviews", this.state.tv_id, API_KEY);
+
     this.setState({
       details: details,
       credits: buildCredits(credits),
@@ -32,11 +34,20 @@ class TV extends Component {
   }
 
   render() {
-    const { isLoading, details } = this.state;
+    const { isLoading, details, credits, reviews } = this.state;
 
     return (
       <div className="TV">
-        {isLoading ? <div>LOADING</div> : <TVLayout details={details} />}
+        {isLoading ? (
+          <div>LOADING</div>
+        ) : (
+          <Layout
+            media="tv"
+            details={details}
+            credits={credits}
+            reviews={reviews}
+          />
+        )}
       </div>
     );
   }

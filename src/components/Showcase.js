@@ -23,9 +23,7 @@ class Showcase extends Component {
       );
       const data = await res.json();
       if (data) {
-        setTimeout(() => {
-          this.setState({ content: this.buildState(data), isLoading: false });
-        }, 2500);
+        this.setState({ content: this.buildState(data), isLoading: false });
       }
     } catch (error) {
       console.log(error);
@@ -66,7 +64,7 @@ class Showcase extends Component {
   }
 
   render() {
-    const { name, bg } = this.props;
+    const { name } = this.props;
     const { isLoading, content } = this.state;
     return (
       <div className="Showcase">

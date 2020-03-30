@@ -2,62 +2,24 @@
   margin: 1.6rem 0;
 }
 
-.Cast-member {
-  justify-self: center;
-}
-
 .Cast-grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-}
-
-.Cast-img-wrap {
-  position: relative;
-  width: 100%;
-}
-
-.Cast-img-wrap::after {
-  display: block;
-  content: "";
-  position: absolute;
-  background-image: linear-gradient(transparent, rgba(28, 40, 51, 0.8));
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  border-radius: 2px;
-  z-index: 50;
-}
-
-.Cast-img {
-  display: block;
-  max-width: 100%;
-  border-radius: 2px;
-}
-
-.Cast-actor-wrap {
-  position: absolute;
-  left: 2rem;
-  right: 2rem;
-  bottom: 2rem;
-  z-index: 200;
-}
-
-.Cast-character {
-  margin-bottom: 0;
-  font-size: 1.4rem;
-  opacity: 0.6;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 @media screen and (min-width: 768px) {
   .Cast-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, auto));
   }
 }
+
 @media screen and (min-width: 1024px) {
   .Cast {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+  }
+
+  .Cast-grid {
+    grid-template-columns: repeat(auto-fill, 150px);
   }
 }

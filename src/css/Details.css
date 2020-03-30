@@ -1,11 +1,8 @@
-.Details {
-  margin: 0.4rem 0;
-}
-
 .Details-grid {
   display: grid;
   background-color: rgba(100, 180, 246, 0.8);
-  border-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
   padding: 0 0.5rem;
 }
 

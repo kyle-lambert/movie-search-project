@@ -6,11 +6,15 @@ class Backdrop extends Component {
     const { title, backdrop_path } = this.props;
     return (
       <div className="Backdrop">
-        <img
-          src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
-          alt={title}
-          className="Backdrop-img"
-        />
+        {backdrop_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+            alt={title}
+            className="Backdrop-img"
+          />
+        ) : (
+          <div>no image</div>
+        )}
       </div>
     );
   }

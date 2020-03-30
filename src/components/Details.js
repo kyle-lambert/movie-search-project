@@ -45,6 +45,12 @@ class Details extends Component {
       content = (
         <div className="Details-grid">
           <div className="Details-item">
+            <p className="Details-key">Created By:</p>
+            <p className="Details-value">
+              {this.buildString(details.created_by)}
+            </p>
+          </div>
+          <div className="Details-item">
             <p className="Details-key">First Air Date:</p>
             <p className="Details-value">{details.first_air_date}</p>
           </div>

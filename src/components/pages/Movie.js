@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 // import Navbar from "../Navbar";
-import MovieLayout from "../MovieLayout";
+import Layout from "../Layout";
 import "../../css/Movie.css";
 import { fetchData, buildCredits } from "../../utilities";
 const API_KEY = process.env.REACT_APP_API_KEY;
-// const movie_id = 181812;
-// const movie_id = 495764;
-// const movie_id = 530915;
-const movie_id = 330457;
 
 class Movie extends Component {
   constructor(props) {
@@ -16,14 +12,30 @@ class Movie extends Component {
       details: {},
       credits: {},
       reviews: {},
+      movie_id: this.props.routeProps.match.params.id,
       isLoading: true
     };
   }
 
   async componentDidMount() {
-    const details = await fetchData("movie", "details", movie_id, API_KEY);
-    const credits = await fetchData("movie", "credits", movie_id, API_KEY);
-    const reviews = await fetchData("movie", "reviews", movie_id, API_KEY);
+    const details = await fetchData(
+      "movie",
+      "details",
+      this.state.movie_id,
+      API_KEY
+    );
+    const credits = await fetchData(
+      "movie",
+      "credits",
+      this.state.movie_id,
+      API_KEY
+    );
+    const reviews = await fetchData(
+      "movie",
+      "reviews",
+      this.state.movie_id,
+      API_KEY
+    );
     this.setState({
       details: details,
       credits: buildCredits(credits),
@@ -37,11 +49,15 @@ class Movie extends Component {
 
     return (
       <div className="Movie">
-        {/* <Navbar /> */}
         {isLoading ? (
           <div>LOADING</div>
         ) : (
-          <MovieLayout details={details} credits={credits} reviews={reviews} />
+          <Layout
+            media="movie"
+            details={details}
+            credits={credits}
+            reviews={reviews}
+          />
         )}
       </div>
     );

@@ -45,6 +45,12 @@ class SubDetails extends Component {
       content = (
         <div className="SubDetails-grid">
           <div className="SubDetails-item">
+            <p className="SubDetails-key">Created By:</p>
+            <p className="SubDetails-value">
+              {this.buildString(details.created_by)}
+            </p>
+          </div>
+          <div className="SubDetails-item">
             <p className="SubDetails-key">First Air Dare:</p>
             <p className="SubDetails-value">{details.first_air_date}</p>
           </div>

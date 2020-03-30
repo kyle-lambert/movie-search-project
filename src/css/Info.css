@@ -36,3 +36,16 @@
   font-style: italic;
   margin: 1.6rem;
 }
+
+@media screen and (min-width: 1024px) {
+  .Info-sub,
+  .Info-overview {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1266px) {
+  .Info-sub {
+    width: 80%;
+  }
+}

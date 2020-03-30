@@ -1,8 +1,8 @@
-.MovieLayout {
+.Layout {
   position: relative;
 }
 
-.MovieLayout-grid {
+.Layout-grid {
   position: absolute;
   top: 200px;
   width: 100%;
@@ -12,13 +12,13 @@
   gap: 2rem;
 }
 
-.MovieLayout-sidebar {
+.Layout-sidebar {
   display: none;
 }
 
 /* Tablet 768px */
 @media screen and (min-width: 768px) {
-  .MovieLayout-grid {
+  .Layout-grid {
     padding: 0 6rem 3rem;
     gap: 3rem;
   }
@@ -26,17 +26,17 @@
 
 /* Desktop 1028px */
 @media screen and (min-width: 1024px) {
-  .MovieLayout-grid {
+  .Layout-grid {
     padding: 0 10% 3rem;
     grid-template-columns: 250px auto;
   }
 
-  .MovieLayout-infobar {
+  .Layout-infobar {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
   }
 
-  .MovieLayout-sidebar {
+  .Layout-sidebar {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     display: block;
@@ -45,7 +45,7 @@
 
 /* Desktop large 1266px */
 @media screen and (min-width: 1266px) {
-  .MovieLayout-grid {
+  .Layout-grid {
     top: 250px;
     gap: 4rem;
   }

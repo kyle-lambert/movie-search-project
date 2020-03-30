@@ -4,8 +4,8 @@
 
 .Crew-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
 }
 
 .Crew-name {
@@ -18,7 +18,10 @@
 }
 
 @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
   .Crew-grid {
-    /* grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); */
+    grid-template-columns: repeat(auto-fill, 150px);
   }
 }
