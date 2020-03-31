@@ -1,85 +1,61 @@
 import React, { Component } from "react";
-import "../css/Details.css";
+import axios from "axios";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+const id = 1399;
+// const id = 69740;
+// const id = 82856;
 
 class Details extends Component {
-  buildString = array => {
-    return array.map(item => item.name).join(", ");
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: {},
+      isLoading: true,
+      isError: false
+    };
+  }
+
+  async componentDidMount() {
+    setTimeout(() => {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&append_to_response=credits,reviews`
+        )
+        .then(results => {
+          this.setState({ results: results.data, isLoading: false });
+        })
+        .catch(error => {
+          this.setState({ isError: true, isLoading: false });
+        });
+    }, 2000);
+  }
+
   render() {
-    const { details, media } = this.props;
-    let content;
-    if (media === "movie") {
-      content = (
-        <div className="Details-grid">
-          <div className="Details-item">
-            <p className="Details-key">Revenue:</p>
-            <p className="Details-value">{details.revenue}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Budget:</p>
-            <p className="Details-value">{details.budget}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Status:</p>
-            <p className="Details-value">{details.status}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Languages:</p>
-            <p className="Details-value">
-              {this.buildString(details.spoken_languages)}
-            </p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Release Date:</p>
-            <p className="Details-value">{details.release_date}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Production:</p>
-            <p className="Details-value">
-              {this.buildString(details.production_companies)}
-            </p>
-          </div>
-        </div>
-      );
-    } else if (media === "tv") {
-      content = (
-        <div className="Details-grid">
-          <div className="Details-item">
-            <p className="Details-key">Created By:</p>
-            <p className="Details-value">
-              {this.buildString(details.created_by)}
-            </p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">First Air Date:</p>
-            <p className="Details-value">{details.first_air_date}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Last Air Date:</p>
-            <p className="Details-value">{details.last_air_date}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Status:</p>
-            <p className="Details-value">{details.status}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Seasons:</p>
-            <p className="Details-value">{details.number_of_seasons}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Episodes:</p>
-            <p className="Details-value">{details.number_of_episodes}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Production:</p>
-            <p className="Details-value">
-              {this.buildString(details.production_companies)}
-            </p>
-          </div>
+    const { results, isLoading, isError } = this.state;
+
+    if (isError) {
+      return <div>ERROR</div>;
+    } else if (isLoading) {
+      return <div>LOADING</div>;
+    } else {
+      return (
+        <div>
+          <h1>RESULTS</h1>
+          <ul>
+            <li>home</li>
+            <li>home</li>
+            <li>home</li>
+            <li>home</li>
+            <li>home</li>
+            <li>home</li>
+            <li>home</li>
+            <li>home</li>
+          </ul>
         </div>
       );
     }
-    return <div className="Details">{content}</div>;
   }
 }
 
