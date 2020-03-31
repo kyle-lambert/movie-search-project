@@ -5,10 +5,10 @@
 .Info-sub {
   padding: 0.5rem 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  background-color: rgba(100, 180, 246, 0.8);
+  background-color: rgba(100, 180, 246, 1);
   color: #212f3d;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -23,12 +23,12 @@
   padding: 0.5rem;
   justify-self: center;
   align-self: center;
-  flex: 1;
+  /* flex: 1; */
 }
 
 .Info-sub-item:nth-child(2) {
-  border-left: 1px solid rgba(33, 47, 61, 0.2);
-  border-right: 1px solid rgba(33, 47, 61, 0.2);
+  /* border-left: 1px solid rgba(33, 47, 61, 0.3); */
+  /* border-right: 1px solid rgba(33, 47, 61, 0.3); */
 }
 
 .Info-tagline {
@@ -37,7 +37,7 @@
   margin: 1.6rem;
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
   .Info-sub,
   .Info-overview {
     width: 90%;
@@ -48,4 +48,4 @@
   .Info-sub {
     width: 80%;
   }
-}
+} */

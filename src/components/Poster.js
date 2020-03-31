@@ -6,11 +6,15 @@ class Poster extends Component {
     const { title, poster_path } = this.props;
     return (
       <div className="Poster">
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-          alt={title}
-          className="Poster-img"
-        />
+        {poster_path && title ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            alt={title}
+            className="Poster-img"
+          />
+        ) : (
+          <div className="Poster-error">NO IMAGE AVAILABLE</div>
+        )}
       </div>
     );
   }

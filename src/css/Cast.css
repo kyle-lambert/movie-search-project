@@ -1,25 +1,11 @@
-.Cast {
-  margin: 1.6rem 0;
-}
-
 .Cast-grid {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
-@media screen and (min-width: 768px) {
-  .Cast-grid {
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .Cast {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-  }
-
+/* @media screen and (min-width: 1024px) {
   .Cast-grid {
     grid-template-columns: repeat(auto-fill, 150px);
   }
-}
+} */

@@ -21,6 +21,12 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .Crew {
+    margin: 1.6rem 0;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
   .Crew-grid {
     grid-template-columns: repeat(auto-fill, 150px);
   }

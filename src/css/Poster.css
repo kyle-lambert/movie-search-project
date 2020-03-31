@@ -6,6 +6,11 @@
   margin: 0 auto;
   display: block;
   max-width: 100%;
-  border-top-right-radius: 2px;
-  border-top-left-radius: 2px;
+  border-radius: 2px;
+}
+
+.Poster-error {
+  background-color: red;
+  width: 20%;
+  height: 30%;
 }
