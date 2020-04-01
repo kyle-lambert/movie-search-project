@@ -3,7 +3,7 @@
 }
 
 .Info-sub {
-  padding: 0.5rem 0;
+  /* padding: 0.5rem 0; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -21,9 +21,8 @@
 .Info-sub-item {
   margin: 0;
   padding: 0.5rem;
-  justify-self: center;
-  align-self: center;
-  /* flex: 1; */
+  /* justify-self: center; */
+  /* align-self: center; */
 }
 
 .Info-sub-item:nth-child(2) {

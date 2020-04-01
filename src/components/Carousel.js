@@ -1,62 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
+import Swiper from "react-id-swiper";
 import "../css/Carousel.css";
 
-class Carousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      index: 0,
-      items: ["red", "blue", "green", "orange"]
-    };
-  }
-
-  nextItem = () => {
-    let index = this.state.index;
-    let { items } = this.state;
-    let slidesLength = items.length - 1;
-
-    if (index === slidesLength) {
-      index = -1;
+const Carousel = () => {
+  const params = {
+    pagination: {
+      el: ".swiper-pagination",
+      type: "progressbar",
+      clickable: true
     }
-    ++index;
-    this.setState({ index: index });
   };
-
-  prevItem = () => {
-    let index = this.state.index;
-    let { items } = this.state;
-    let slidesLength = items.length;
-
-    if (index === 0) {
-      index = slidesLength;
-    }
-    --index;
-    this.setState({ index: index });
-  };
-
-  render() {
-    const { items, index } = this.state;
-
-    return (
-      <div className="container">
-        <div className="carousel">
-          <div
-            className="track"
-            style={{
-              transform: `translateX(-${index * (100 / items.length)}%)`
-            }}>
-            {this.state.items.map(item => (
-              <div className="item">
-                <p>{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <button onClick={this.prevItem}>prev</button>
-        <button onClick={this.nextItem}>next</button>
-      </div>
-    );
-  }
-}
-
+  return (
+    <Swiper {...params}>
+      <div className="slide">Slide #1</div>
+      <div className="slide">Slide #2</div>
+      <div className="slide">Slide #3</div>
+      <div className="slide">Slide #4</div>
+      <div className="slide">Slide #5</div>
+    </Swiper>
+  );
+};
 export default Carousel;

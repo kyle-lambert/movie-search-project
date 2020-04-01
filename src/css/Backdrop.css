@@ -1,6 +1,7 @@
 .Backdrop {
-  height: 500px;
-  overflow: hidden;
+  height: 300px;
+  position: relative;
+  z-index: 50;
 }
 
 .Backdrop::after {
@@ -13,8 +14,19 @@
   left: 0;
   bottom: 0;
   border-radius: 2px;
-  z-index: 50;
 }
+
+/* .Backdrop::after {
+  display: block;
+  content: "";
+  position: absolute;
+  background-color: #1b263194;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 2px;
+} */
 
 .Backdrop-img {
   display: block;
@@ -24,5 +36,26 @@
   height: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .Backdrop {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Backdrop {
+    height: 500px;
+  }
+}
+
 @media screen and (min-width: 1266px) {
+  .Backdrop {
+    height: 600px;
+  }
+}
+
+@media screen and (min-width: 1502px) {
+  .Backdrop {
+    height: 700px;
+  }
 }

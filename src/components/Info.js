@@ -19,7 +19,7 @@ class Info extends Component {
                 <p className="Info-sub-item">
                   {`${this.getYear(results.first_air_date)} - ${this.getYear(
                     results.last_air_date
-                  )} `}
+                  )}`}
                 </p>
               ) : null}
               {results.genres ? (

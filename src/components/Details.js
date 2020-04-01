@@ -5,6 +5,7 @@ import Poster from "./Poster";
 import Info from "./Info";
 import Crew from "./Crew";
 import Cast from "./Cast";
+import Reviews from "./Reviews";
 import "../css/Details.css";
 
 import axios from "axios";
@@ -54,7 +55,7 @@ class Details extends Component {
                 title={results.name}
                 backdrop_path={results.backdrop_path}
               />
-              <div className="Details-grid">
+              <main className="Details-main">
                 <header className="Details-header">
                   <div className="Details-header-poster">
                     <Poster
@@ -67,25 +68,19 @@ class Details extends Component {
                     <Crew crew={results.credits.crew} />
                   </div>
                 </header>
-                <main className="Details-main">
-                  <div className="Details-cast">
-                    <Cast cast={results.credits.cast} />
-                  </div>
-                </main>
-              </div>
+                <section className="Details-cast">
+                  <Cast cast={results.credits.cast} />
+                </section>
+                <hr className="Details-hr"></hr>
+                <section className="Details-reviews">
+                  <Reviews reviews={results.reviews.results} />
+                </section>
+              </main>
             </div>
           );
 
         case "movie":
-          return (
-            <div>
-              MOVIE
-              <Backdrop
-                title={results.name}
-                backdrop_path={results.backdrop_path}
-              />
-            </div>
-          );
+          return <div>MOVIE</div>;
 
         case "person":
           return <div>PERSON</div>;

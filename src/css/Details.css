@@ -1,75 +1,92 @@
-/* .Details-grid {
-  display: grid;
-  background-color: rgba(100, 180, 246, 0.8);
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-  padding: 0 0.5rem;
-}
-
-.Details-item {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  color: #212f36;
-  border-bottom: 1px solid rgba(33, 47, 61, 0.2);
-}
-
-.Details-item:last-child {
-  border: none;
-}
-
-.Details-key,
-.Details-value {
-  flex: 1;
-}
-
-.Details-key {
-  color: #212f3d;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 1px;
-} */
-
-.Details {
+.Details-main {
   position: relative;
-}
-
-.Details-grid {
-  position: absolute;
-  top: 400px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* padding: 0 10% 3rem; */
-  display: grid;
-  grid-template-columns: 9rem auto 9rem;
-  row-gap: 6rem;
+  transform: translateY(-60px);
   z-index: 100;
 }
 
 .Details-header {
-  display: grid;
-  grid-template-columns: 250px auto;
-  gap: 3rem;
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-}
-
-.Details-header-main {
-  grid-column: 2 / 3;
+  width: 100%;
+  padding: 0 3rem 3rem;
 }
 
 .Details-header-poster {
-  grid-column: 1 / 2;
-}
-
-.Details-main {
-  grid-row: 2 / 3;
-  grid-column: 1 / 4;
+  display: none;
 }
 
 .Details-cast {
-  padding: 3rem 9rem;
+  width: 100%;
+  padding: 3rem;
   background-color: #1b2631;
+}
+
+.Details-reviews {
+  width: 100%;
+  padding: 3rem;
+}
+
+.Details-hr {
+  outline: none;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 10%,
+    rgba(100, 180, 246, 1) 50%,
+    rgba(250, 255, 255, 0) 90%
+  );
+  height: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .Details-main {
+    transform: translateY(-90px);
+  }
+  .Details-header {
+    display: grid;
+    grid-template-columns: 250px auto;
+    column-gap: 3rem;
+  }
+  .Details-header-poster {
+    display: block;
+    grid-column: 1 / 2;
+  }
+  .Details-header-main {
+    grid-column: 2 / 3;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Details-header {
+    padding: 0 6rem 4rem;
+  }
+  .Details-cast {
+    padding: 4rem 6rem;
+  }
+  .Details-reviews {
+    padding: 4rem 6rem;
+  }
+}
+
+@media screen and (min-width: 1266px) {
+  .Details-header {
+    padding: 0 9rem 6rem;
+    column-gap: 4rem;
+  }
+  .Details-cast {
+    padding: 6rem 9rem;
+  }
+  .Details-reviews {
+    padding: 6rem 9rem;
+  }
+}
+
+@media screen and (min-width: 1502px) {
+  .Details-header {
+    padding: 0 10% 4rem;
+  }
+  .Details-cast {
+    padding: 4rem 10%;
+  }
+  .Details-reviews {
+    padding: 4rem 10%;
+  }
 }

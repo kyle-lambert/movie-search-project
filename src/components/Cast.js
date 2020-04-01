@@ -9,13 +9,17 @@ class Cast extends Component {
     return (
       <div className="Cast">
         <h2 className="Cast-title">Cast</h2>
-        <div className="Cast-grid">
-          {Array.isArray(cast)
-            ? cast
-                .slice(0, 10)
-                .map(c => <PersonCard key={uuidv4()} person={c} />)
-            : null}
-        </div>
+        {Array.isArray(cast) && cast.length > 0 ? (
+          <div className="Cast-grid">
+            {cast.slice(0, 10).map(c => (
+              <PersonCard key={uuidv4()} person={c} />
+            ))}
+          </div>
+        ) : (
+          <div className="Cast-error">
+            Sorry we don't have any information on Cast members.
+          </div>
+        )}
       </div>
     );
   }

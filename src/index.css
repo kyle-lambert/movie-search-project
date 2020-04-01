@@ -36,6 +36,7 @@ h1 {
 
 h2 {
   font-size: 2.4rem;
+  font-weight: 600;
 }
 
 h3 {
@@ -71,5 +72,33 @@ p {
 
   h3 {
     font-size: 2.6rem;
+  }
+}
+
+@media screen and (min-width: 1266px) {
+  h1 {
+    font-size: 4.2rem;
+  }
+
+  h2 {
+    font-size: 3.2rem;
+  }
+
+  h3 {
+    font-size: 2.8rem;
+  }
+}
+
+@media screen and (min-width: 1502px) {
+  h1 {
+    font-size: 4.4rem;
+  }
+
+  h2 {
+    font-size: 3.4rem;
+  }
+
+  h3 {
+    font-size: 3rem;
   }
 }
