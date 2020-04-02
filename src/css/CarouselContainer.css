@@ -1,0 +1,7 @@
+.CarouselContainer-error {
+  display: inline-block;
+  background-color: rgba(231, 77, 60, 0.1);
+  border-radius: 3px;
+  border-left: 4px solid rgb(231, 76, 60);
+  padding: 2rem;
+}

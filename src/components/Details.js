@@ -12,9 +12,9 @@ import axios from "axios";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-// const id = 1399;
+const id = 1399;
 // const id = 69740;
-const id = 82856;
+// const id = 82856;
 
 class Details extends Component {
   constructor(props) {

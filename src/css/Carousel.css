@@ -1,9 +1,6 @@
-.slide {
-  height: 400px;
-  margin: auto;
+.Carousel-slide {
   text-align: center;
-  font-size: 4rem;
-  font-weight: 500;
+  margin: auto;
 }
 
 .swiper-pagination-bullet {
