@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         {/* <Home /> */}
-        <Details type="tv" />
+        <Details type="movie" />
       </div>
     );
   }
