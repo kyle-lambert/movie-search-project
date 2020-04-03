@@ -9,14 +9,12 @@ class Card extends Component {
     return (
       <Link to={`/${media_type}/${id}`}>
         <div className="Card" style={style}>
-          <div className="Card-inner">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-              alt={title}
-              className="Card-img"
-            />
-            <p className="Card-title">{title}</p>
-          </div>
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            alt={title}
+            className="Card-img"
+          />
+          <p className="Card-title">{title}</p>
         </div>
       </Link>
     );

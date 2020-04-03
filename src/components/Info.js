@@ -6,52 +6,71 @@ class Info extends Component {
     return str.substr(0, 4);
   };
 
-  getTimePeriod = (first, last) => {
-    return `${this.getYear(first)} - ${this.getYear(last)}`;
-  };
-
   render() {
-    const { details, media } = this.props;
-    let content;
-    if (media === "movie") {
-      content = (
-        <div className="Info">
-          <h1 className="Info-title">{details.title}</h1>
-          <div className="Info-sub">
-            <p className="Info-sub-item">{`${details.runtime} mins`}</p>
-            <p className="Info-sub-item">
-              {details.genres.map(item => item.name).join(", ")}
-            </p>
-            <p className="Info-sub-item">{details.release_date.substr(0, 4)}</p>
-          </div>
-          {details.tagline ? (
-            <p className="Info-tagline">{`"${details.tagline}"`}</p>
-          ) : null}
-          <p className="Info-overview">{details.overview}</p>
-        </div>
-      );
-    } else if (media === "tv") {
-      content = (
-        <div className="Info">
-          <h1 className="Info-title">{details.name}</h1>
-          <div className="Info-sub">
-            <p className="Info-sub-item">
-              {this.getTimePeriod(
-                details.first_air_date,
-                details.last_air_date
-              )}
-            </p>
-            <p className="Info-sub-item">
-              {details.genres.map(item => item.name).join(", ")}
-            </p>
-            <p className="Info-sub-item">{`${details.number_of_seasons} seasons`}</p>
-          </div>
-          <p className="Info-overview">{details.overview}</p>
-        </div>
-      );
-    }
+    const { results, type } = this.props;
 
-    return <React.Fragment>{content}</React.Fragment>;
+    switch (type) {
+      case "tv":
+        return (
+          <div className="Info">
+            <h1 className="Info-title">{results.name ? results.name : ""}</h1>
+            <div className="Info-sub">
+              {results.first_air_date && results.last_air_date ? (
+                <p className="Info-sub-item">
+                  {`${this.getYear(results.first_air_date)} - ${this.getYear(
+                    results.last_air_date
+                  )}`}
+                </p>
+              ) : null}
+              {results.genres ? (
+                <p className="Info-sub-item">
+                  {results.genres.map(g => g.name).join(", ")}
+                </p>
+              ) : null}
+              {results.number_of_seasons && results.number_of_episodes ? (
+                <p className="Info-sub-item">
+                  {`${results.number_of_seasons} seasons, ${results.number_of_episodes} episodes`}
+                </p>
+              ) : null}
+            </div>
+            <p className="Info-overview">
+              {results.overview ? results.overview : ""}
+            </p>
+          </div>
+        );
+
+      case "movie":
+        return (
+          <div className="Info">
+            <h1 className="Info-title">{results.title ? results.title : ""}</h1>
+            <div className="Info-sub">
+              {results.runtime ? (
+                <p className="Info-sub-item">{`${results.runtime} mins`}</p>
+              ) : null}
+              {results.genres ? (
+                <p className="Info-sub-item">
+                  {results.genres.map(g => g.name).join(", ")}
+                </p>
+              ) : null}
+              {results.release_date ? (
+                <p className="Info-sub-item">
+                  {this.getYear(results.release_date)}
+                </p>
+              ) : null}
+            </div>
+            {results.tagline ? (
+              <p className="Info-tagline">{`"${results.tagline}"`}</p>
+            ) : null}
+            <p className="Info-overview">{results.overview}</p>
+          </div>
+        );
+
+      case "person":
+        return <div>person</div>;
+
+      default:
+        return <div>type didnt match</div>;
+    }
   }
 }
 

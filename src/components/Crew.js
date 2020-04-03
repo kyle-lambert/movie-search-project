@@ -5,15 +5,18 @@ import "../css/Crew.css";
 class Crew extends Component {
   render() {
     const { crew } = this.props;
-    const persons = crew.slice(0, 5).map(person => (
-      <div key={uuidv4()} className="Crew-member">
-        <p className="Crew-name">{person.name}</p>
-        <p className="Crew-job">{person.job}</p>
-      </div>
-    ));
     return (
       <div className="Crew">
-        <div className="Crew-grid">{persons}</div>
+        <div className="Crew-grid">
+          {Array.isArray(crew)
+            ? crew.slice(0, 5).map(c => (
+                <div key={uuidv4()} className="Crew-member">
+                  <p className="Crew-name">{c.name}</p>
+                  <p className="Crew-job">{c.job}</p>
+                </div>
+              ))
+            : null}
+        </div>
       </div>
     );
   }

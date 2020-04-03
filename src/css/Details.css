@@ -1,32 +1,89 @@
-.Details-grid {
-  display: grid;
-  background-color: rgba(100, 180, 246, 0.8);
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-  padding: 0 0.5rem;
+.Details-main {
+  position: relative;
+  transform: translateY(-60px);
+  z-index: 100;
 }
 
-.Details-item {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  color: #212f36;
-  border-bottom: 1px solid rgba(33, 47, 61, 0.2);
+.Details-header {
+  width: 100%;
+  padding: 0 3rem 3rem;
 }
 
-.Details-item:last-child {
-  border: none;
+.Details-header-poster {
+  display: none;
 }
 
-.Details-key,
-.Details-value {
-  flex: 1;
+.Details-cast,
+.Details-similar,
+.Details-recommended {
+  width: 100%;
+  padding: 3rem;
+  background-color: #1b2631;
 }
 
-.Details-key {
-  color: #212f3d;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 1px;
+.Details-reviews {
+  width: 100%;
+  padding: 3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .Details-main {
+    transform: translateY(-90px);
+  }
+  .Details-header {
+    display: grid;
+    grid-template-columns: 250px auto;
+    column-gap: 3rem;
+  }
+  .Details-header-poster {
+    display: block;
+    grid-column: 1 / 2;
+  }
+  .Details-header-main {
+    grid-column: 2 / 3;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Details-header {
+    padding: 0 6rem 4rem;
+  }
+
+  .Details-cast,
+  .Details-similar,
+  .Details-recommended {
+    padding: 4rem 6rem;
+  }
+  .Details-reviews {
+    padding: 4rem 6rem;
+  }
+}
+
+@media screen and (min-width: 1266px) {
+  .Details-header {
+    padding: 0 9rem 6rem;
+    column-gap: 4rem;
+  }
+  .Details-cast,
+  .Details-similar,
+  .Details-recommended {
+    padding: 6rem 9rem;
+  }
+  .Details-reviews {
+    padding: 6rem 9rem;
+  }
+}
+
+@media screen and (min-width: 1502px) {
+  .Details-header {
+    padding: 0 10% 4rem;
+  }
+  .Details-cast,
+  .Details-similar,
+  .Details-recommended {
+    padding: 4rem 10%;
+  }
+  .Details-reviews {
+    padding: 4rem 10%;
+  }
 }

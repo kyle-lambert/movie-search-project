@@ -1,85 +1,159 @@
 import React, { Component } from "react";
+
+import Backdrop from "./Backdrop";
+import Poster from "./Poster";
+import Info from "./Info";
+import Crew from "./Crew";
+import Cast from "./Cast";
+import Spacer from "./Spacer";
+import Reviews from "./Reviews";
+import Error from "./Error";
 import "../css/Details.css";
 
+import axios from "axios";
+import CarouselContainer from "./CarouselContainer";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+// const id = 530915;
+// const id = 443791;
+
+// const id = 1399;
+// const id = 69740;
+const id = 82856;
+
 class Details extends Component {
-  buildString = array => {
-    return array.map(item => item.name).join(", ");
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: {},
+      isLoading: true,
+      isError: false
+    };
+  }
+
+  async componentDidMount() {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${this.props.type}/${id}?api_key=${API_KEY}&append_to_response=credits,reviews`
+      )
+      .then(results => {
+        this.setState({ results: results.data, isLoading: false });
+      })
+      .catch(error => {
+        this.setState({ isError: true, isLoading: false });
+      });
+  }
+
   render() {
-    const { details, media } = this.props;
-    let content;
-    if (media === "movie") {
-      content = (
-        <div className="Details-grid">
-          <div className="Details-item">
-            <p className="Details-key">Revenue:</p>
-            <p className="Details-value">{details.revenue}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Budget:</p>
-            <p className="Details-value">{details.budget}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Status:</p>
-            <p className="Details-value">{details.status}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Languages:</p>
-            <p className="Details-value">
-              {this.buildString(details.spoken_languages)}
-            </p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Release Date:</p>
-            <p className="Details-value">{details.release_date}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Production:</p>
-            <p className="Details-value">
-              {this.buildString(details.production_companies)}
-            </p>
-          </div>
-        </div>
-      );
-    } else if (media === "tv") {
-      content = (
-        <div className="Details-grid">
-          <div className="Details-item">
-            <p className="Details-key">Created By:</p>
-            <p className="Details-value">
-              {this.buildString(details.created_by)}
-            </p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">First Air Date:</p>
-            <p className="Details-value">{details.first_air_date}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Last Air Date:</p>
-            <p className="Details-value">{details.last_air_date}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Status:</p>
-            <p className="Details-value">{details.status}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Seasons:</p>
-            <p className="Details-value">{details.number_of_seasons}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Episodes:</p>
-            <p className="Details-value">{details.number_of_episodes}</p>
-          </div>
-          <div className="Details-item">
-            <p className="Details-key">Production:</p>
-            <p className="Details-value">
-              {this.buildString(details.production_companies)}
-            </p>
-          </div>
-        </div>
-      );
+    const { results, isLoading, isError } = this.state;
+
+    if (isError) {
+      return <Error message="Sorry, there was a problem fetching this data." />;
+    } else if (isLoading) {
+      return <div>LOADING</div>;
+    } else {
+      switch (this.props.type) {
+        case "tv":
+          return (
+            <div className="Details">
+              <Backdrop
+                title={results.name}
+                backdrop_path={results.backdrop_path}
+              />
+              <main className="Details-main">
+                <header className="Details-header">
+                  <div className="Details-header-poster">
+                    <Poster
+                      title={results.name}
+                      poster_path={results.poster_path}
+                    />
+                  </div>
+                  <div className="Details-header-main">
+                    <Info type="tv" results={results} />
+                    <Crew crew={results.credits.crew} />
+                  </div>
+                </header>
+                {/* <section className="Details-cast">
+                  <Cast cast={results.credits.cast} />
+                </section> */}
+                <section className="Details-similar">
+                  <h2 className="Details-title">Similar...</h2>
+                  <CarouselContainer
+                    type="tv"
+                    content_id={results.id}
+                    endpoint="similar"
+                  />
+                </section>
+                <Spacer />
+                <section className="Details-recommended">
+                  <h2 className="Details-title">Recommendations...</h2>
+                  <CarouselContainer
+                    type="tv"
+                    content_id={results.id}
+                    endpoint="recommendations"
+                  />
+                </section>
+                <section className="Details-reviews">
+                  <Reviews reviews={results.reviews.results} />
+                </section>
+              </main>
+            </div>
+          );
+
+        case "movie":
+          return (
+            <div className="Details">
+              <Backdrop
+                title={results.title}
+                backdrop_path={results.backdrop_path}
+              />
+              <main className="Details-main">
+                <header className="Details-header">
+                  <div className="Details-header-poster">
+                    <Poster
+                      title={results.title}
+                      poster_path={results.poster_path}
+                    />
+                  </div>
+                  <div className="Details-header-main">
+                    <Info type="movie" results={results} />
+                    <Crew crew={results.credits.crew} />
+                  </div>
+                </header>
+                {/* <section className="Details-cast">
+                  <Cast cast={results.credits.cast} />
+                </section> */}
+                <section className="Details-similar">
+                  <h2 className="Details-title">Similar...</h2>
+                  <CarouselContainer
+                    type="movie"
+                    content_id={results.id}
+                    endpoint="similar"
+                  />
+                </section>
+                <Spacer />
+                <section className="Details-recommended">
+                  <h2 className="Details-title">Recommendations...</h2>
+                  <CarouselContainer
+                    type="movie"
+                    content_id={results.id}
+                    endpoint="recommendations"
+                  />
+                </section>
+                <section className="Details-reviews">
+                  <Reviews reviews={results.reviews.results} />
+                </section>
+              </main>
+            </div>
+          );
+
+        case "person":
+          return <div>PERSON</div>;
+
+        default:
+          return <div>TYPE NOT FOUND</div>;
+      }
     }
-    return <div className="Details">{content}</div>;
   }
 }
 

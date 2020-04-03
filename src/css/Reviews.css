@@ -1,0 +1,6 @@
+.Reviews-no-reviews {
+  background-color: rgba(100, 180, 246, 0.1);
+  border-radius: 3px;
+  border-left: 4px solid rgba(100, 180, 246, 1);
+  padding: 2rem;
+}
