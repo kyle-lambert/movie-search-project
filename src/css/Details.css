@@ -13,7 +13,9 @@
   display: none;
 }
 
-.Details-cast {
+.Details-cast,
+.Details-similar,
+.Details-recommended {
   width: 100%;
   padding: 3rem;
   background-color: #1b2631;
@@ -22,18 +24,6 @@
 .Details-reviews {
   width: 100%;
   padding: 3rem;
-}
-
-.Details-hr {
-  outline: none;
-  border: none;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 10%,
-    rgba(100, 180, 246, 1) 50%,
-    rgba(250, 255, 255, 0) 90%
-  );
-  height: 2px;
 }
 
 @media screen and (min-width: 768px) {
@@ -58,7 +48,10 @@
   .Details-header {
     padding: 0 6rem 4rem;
   }
-  .Details-cast {
+
+  .Details-cast,
+  .Details-similar,
+  .Details-recommended {
     padding: 4rem 6rem;
   }
   .Details-reviews {
@@ -71,7 +64,9 @@
     padding: 0 9rem 6rem;
     column-gap: 4rem;
   }
-  .Details-cast {
+  .Details-cast,
+  .Details-similar,
+  .Details-recommended {
     padding: 6rem 9rem;
   }
   .Details-reviews {
@@ -83,7 +78,9 @@
   .Details-header {
     padding: 0 10% 4rem;
   }
-  .Details-cast {
+  .Details-cast,
+  .Details-similar,
+  .Details-recommended {
     padding: 4rem 10%;
   }
   .Details-reviews {

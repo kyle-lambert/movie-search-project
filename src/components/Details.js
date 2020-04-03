@@ -5,16 +5,21 @@ import Poster from "./Poster";
 import Info from "./Info";
 import Crew from "./Crew";
 import Cast from "./Cast";
+import Spacer from "./Spacer";
 import Reviews from "./Reviews";
+import Error from "./Error";
 import "../css/Details.css";
 
 import axios from "axios";
+import CarouselContainer from "./CarouselContainer";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+// const id = 530915;
+// const id = 443791;
 
-const id = 1399;
+// const id = 1399;
 // const id = 69740;
-// const id = 82856;
+const id = 82856;
 
 class Details extends Component {
   constructor(props) {
@@ -29,7 +34,7 @@ class Details extends Component {
   async componentDidMount() {
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&append_to_response=credits,reviews`
+        `https://api.themoviedb.org/3/${this.props.type}/${id}?api_key=${API_KEY}&append_to_response=credits,reviews`
       )
       .then(results => {
         this.setState({ results: results.data, isLoading: false });
@@ -43,7 +48,7 @@ class Details extends Component {
     const { results, isLoading, isError } = this.state;
 
     if (isError) {
-      return <div>ERROR</div>;
+      return <Error message="Sorry, there was a problem fetching this data." />;
     } else if (isLoading) {
       return <div>LOADING</div>;
     } else {
@@ -68,10 +73,26 @@ class Details extends Component {
                     <Crew crew={results.credits.crew} />
                   </div>
                 </header>
-                <section className="Details-cast">
+                {/* <section className="Details-cast">
                   <Cast cast={results.credits.cast} />
+                </section> */}
+                <section className="Details-similar">
+                  <h2 className="Details-title">Similar...</h2>
+                  <CarouselContainer
+                    type="tv"
+                    content_id={results.id}
+                    endpoint="similar"
+                  />
                 </section>
-                <hr className="Details-hr"></hr>
+                <Spacer />
+                <section className="Details-recommended">
+                  <h2 className="Details-title">Recommendations...</h2>
+                  <CarouselContainer
+                    type="tv"
+                    content_id={results.id}
+                    endpoint="recommendations"
+                  />
+                </section>
                 <section className="Details-reviews">
                   <Reviews reviews={results.reviews.results} />
                 </section>
@@ -80,7 +101,51 @@ class Details extends Component {
           );
 
         case "movie":
-          return <div>MOVIE</div>;
+          return (
+            <div className="Details">
+              <Backdrop
+                title={results.title}
+                backdrop_path={results.backdrop_path}
+              />
+              <main className="Details-main">
+                <header className="Details-header">
+                  <div className="Details-header-poster">
+                    <Poster
+                      title={results.title}
+                      poster_path={results.poster_path}
+                    />
+                  </div>
+                  <div className="Details-header-main">
+                    <Info type="movie" results={results} />
+                    <Crew crew={results.credits.crew} />
+                  </div>
+                </header>
+                {/* <section className="Details-cast">
+                  <Cast cast={results.credits.cast} />
+                </section> */}
+                <section className="Details-similar">
+                  <h2 className="Details-title">Similar...</h2>
+                  <CarouselContainer
+                    type="movie"
+                    content_id={results.id}
+                    endpoint="similar"
+                  />
+                </section>
+                <Spacer />
+                <section className="Details-recommended">
+                  <h2 className="Details-title">Recommendations...</h2>
+                  <CarouselContainer
+                    type="movie"
+                    content_id={results.id}
+                    endpoint="recommendations"
+                  />
+                </section>
+                <section className="Details-reviews">
+                  <Reviews reviews={results.reviews.results} />
+                </section>
+              </main>
+            </div>
+          );
 
         case "person":
           return <div>PERSON</div>;

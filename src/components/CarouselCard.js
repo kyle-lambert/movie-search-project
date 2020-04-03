@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/CarouselCard.css";
+import Error from "./Error";
 
 class CarouselCard extends Component {
   render() {
@@ -22,18 +23,20 @@ class CarouselCard extends Component {
     }
 
     return (
-      <div className="CarouselCard">
+      <React.Fragment>
         {result.poster_path ? (
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
-            alt={result.title}
-            className="CarouselCard-img"
-          />
+          <div className="CarouselCard">
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
+              alt={result.title}
+              className="CarouselCard-img"
+            />
+            {title}
+          </div>
         ) : (
-          <div>NO IMAGE</div>
+          <Error message="No Image" />
         )}
-        {title}
-      </div>
+      </React.Fragment>
     );
   }
 }

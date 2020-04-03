@@ -4,6 +4,7 @@ import Details from "./Details";
 
 class App extends Component {
   render() {
+    // console.log("home render");
     return (
       <div className="App">
         {/* <Home /> */}

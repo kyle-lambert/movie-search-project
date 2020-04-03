@@ -16,7 +16,7 @@ class Reviews extends Component {
             ))}
           </div>
         ) : (
-          <div className="Reviews-error">
+          <div className="Reviews-no-reviews">
             Sorry, there are currently no reviews.
           </div>
         )}

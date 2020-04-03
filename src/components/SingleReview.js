@@ -17,7 +17,7 @@ class SingleReview extends Component {
             ? `${truncateString(review.content, 100)}`
             : "Sorry, we can't seem to find this review."}
         </p>
-        <a href={review.url} className="SingleReview-link">
+        <a href={review.url} target="_blank" className="SingleReview-link">
           Full review
         </a>
       </div>
