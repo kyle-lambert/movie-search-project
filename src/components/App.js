@@ -7,8 +7,8 @@ class App extends Component {
     // console.log("home render");
     return (
       <div className="App">
-        {/* <Home /> */}
-        <Details type="movie" />
+        <Home />
+        {/* <Details type="movie" /> */}
       </div>
     );
   }

@@ -47,9 +47,9 @@ const Carousel = props => {
 
   return (
     <Swiper {...params}>
-      {results.map(r => (
+      {results.map((r, i) => (
         <div key={uuidv4()} className="Carousel-slide">
-          <CarouselCard result={r} type={type} />
+          <CarouselCard result={r} type={type} index={i} />
         </div>
       ))}
     </Swiper>

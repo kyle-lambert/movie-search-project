@@ -4,6 +4,15 @@
   z-index: 100;
 }
 
+.Details-main {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-timing-function: ease-in;
+  animation-duration: 300ms;
+  animation-delay: 300ms;
+  animation-fill-mode: forwards;
+}
+
 .Details-header {
   width: 100%;
   padding: 0 3rem 3rem;
@@ -85,5 +94,11 @@
   }
   .Details-reviews {
     padding: 4rem 10%;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
   }
 }

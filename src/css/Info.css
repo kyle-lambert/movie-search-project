@@ -3,7 +3,6 @@
 }
 
 .Info-sub {
-  /* padding: 0.5rem 0; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -21,13 +20,6 @@
 .Info-sub-item {
   margin: 0;
   padding: 0.5rem;
-  /* justify-self: center; */
-  /* align-self: center; */
-}
-
-.Info-sub-item:nth-child(2) {
-  /* border-left: 1px solid rgba(33, 47, 61, 0.3); */
-  /* border-right: 1px solid rgba(33, 47, 61, 0.3); */
 }
 
 .Info-tagline {
@@ -35,16 +27,3 @@
   font-style: italic;
   margin: 1.6rem;
 }
-
-/* @media screen and (min-width: 1024px) {
-  .Info-sub,
-  .Info-overview {
-    width: 90%;
-  }
-}
-
-@media screen and (min-width: 1266px) {
-  .Info-sub {
-    width: 80%;
-  }
-} */

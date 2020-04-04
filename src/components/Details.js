@@ -79,6 +79,7 @@ class Details extends Component {
                 <section className="Details-similar">
                   <h2 className="Details-title">Similar...</h2>
                   <CarouselContainer
+                    page="details"
                     type="tv"
                     content_id={results.id}
                     endpoint="similar"
@@ -88,6 +89,7 @@ class Details extends Component {
                 <section className="Details-recommended">
                   <h2 className="Details-title">Recommendations...</h2>
                   <CarouselContainer
+                    page="details"
                     type="tv"
                     content_id={results.id}
                     endpoint="recommendations"
@@ -126,6 +128,7 @@ class Details extends Component {
                 <section className="Details-similar">
                   <h2 className="Details-title">Similar...</h2>
                   <CarouselContainer
+                    page="details"
                     type="movie"
                     content_id={results.id}
                     endpoint="similar"
@@ -135,6 +138,7 @@ class Details extends Component {
                 <section className="Details-recommended">
                   <h2 className="Details-title">Recommendations...</h2>
                   <CarouselContainer
+                    page="details"
                     type="movie"
                     content_id={results.id}
                     endpoint="recommendations"

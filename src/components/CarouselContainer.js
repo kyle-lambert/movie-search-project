@@ -15,36 +15,42 @@ class CarouselContainer extends Component {
     };
   }
   componentDidMount() {
-    if (this.props.content_id) {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/${this.props.type}/${this.props.content_id}/${this.props.endpoint}?api_key=${API_KEY}`
-        )
-        .then(results => {
-          if (results.status === 200 && results.data.results) {
-            this.setState({ results: results.data.results, isLoading: false });
-          } else {
-            this.setState({ error: results.status, isLoading: false });
-          }
-        })
-        .catch(error => {
-          this.setState({ error: error, isLoading: false });
-        });
-    } else {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/trending/${this.props.type}/${this.props.time}?api_key=${API_KEY}`
-        )
-        .then(results => {
-          if (results.status === 200 && results.data.results) {
-            this.setState({ results: results.data.results, isLoading: false });
-          } else {
-            this.setState({ error: results.status, isLoading: false });
-          }
-        })
-        .catch(error => {
-          this.setState({ error: error, isLoading: false });
-        });
+    switch (this.props.page) {
+      case "home":
+        axios
+          .get(
+            `https://api.themoviedb.org/3/trending/${this.props.type}/week?api_key=${API_KEY}`
+          )
+          .then(results => {
+            this.setState({
+              results: results.data.results,
+              isLoading: false
+            });
+          })
+          .catch(error => {
+            this.setState({ error: error, isLoading: false });
+          });
+        break;
+
+      case "details":
+        axios
+          .get(
+            `https://api.themoviedb.org/3/${this.props.type}/${this.props.content_id}/${this.props.endpoint}?api_key=${API_KEY}`
+          )
+          .then(results => {
+            this.setState({
+              results: results.data.results,
+              isLoading: false
+            });
+          })
+          .catch(error => {
+            this.setState({ error: error, isLoading: false });
+          });
+        break;
+
+      default:
+        this.setState({ error: true });
+        break;
     }
   }
 

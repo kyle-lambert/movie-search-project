@@ -25,7 +25,9 @@ class CarouselCard extends Component {
     return (
       <React.Fragment>
         {result.poster_path ? (
-          <div className="CarouselCard">
+          <div
+            className="CarouselCard"
+            style={{ animationDelay: `${100 * this.props.index}ms` }}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
               alt={result.title}
