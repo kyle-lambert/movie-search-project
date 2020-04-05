@@ -8,14 +8,15 @@ import Cast from "./Cast";
 import Spacer from "./Spacer";
 import Reviews from "./Reviews";
 import Error from "./Error";
+import SubDetails from "./SubDetails";
 import "../css/Details.css";
 
 import axios from "axios";
 import CarouselContainer from "./CarouselContainer";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const id = 530915;
-// const id = 443791;
+// const id = 530915;
+const id = 443791;
 
 // const id = 1399;
 // const id = 69740;
@@ -27,7 +28,7 @@ class Details extends Component {
     this.state = {
       results: {},
       isLoading: true,
-      isError: false
+      isError: false,
     };
   }
 
@@ -36,10 +37,10 @@ class Details extends Component {
       .get(
         `https://api.themoviedb.org/3/${this.props.type}/${id}?api_key=${API_KEY}&append_to_response=credits,reviews`
       )
-      .then(results => {
+      .then((results) => {
         this.setState({ results: results.data, isLoading: false });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ isError: true, isLoading: false });
       });
   }
@@ -71,6 +72,9 @@ class Details extends Component {
                   <div className="Details-header-main">
                     <Info type="tv" results={results} />
                     <Crew crew={results.credits.crew} />
+                  </div>
+                  <div className="Details-header-subdetails">
+                    <SubDetails type="tv" results={results} />
                   </div>
                 </header>
                 {/* <section className="Details-cast">
@@ -120,6 +124,9 @@ class Details extends Component {
                   <div className="Details-header-main">
                     <Info type="movie" results={results} />
                     <Crew crew={results.credits.crew} />
+                  </div>
+                  <div className="Details-header-subdetails">
+                    <SubDetails type="movie" results={results} />
                   </div>
                 </header>
                 {/* <section className="Details-cast">

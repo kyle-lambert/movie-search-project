@@ -9,7 +9,7 @@ class Crew extends Component {
       <div className="Crew">
         <div className="Crew-grid">
           {Array.isArray(crew)
-            ? crew.slice(0, 5).map(c => (
+            ? crew.slice(0, 3).map((c) => (
                 <div key={uuidv4()} className="Crew-member">
                   <p className="Crew-name">{c.name}</p>
                   <p className="Crew-job">{c.job}</p>

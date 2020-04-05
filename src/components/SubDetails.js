@@ -2,89 +2,114 @@ import React, { Component } from "react";
 import "../css/SubDetails.css";
 
 class SubDetails extends Component {
-  buildString = array => {
-    return array.map(item => item.name).join(", ");
+  buildString = (array) => {
+    return array.map((item) => item.name).join(", ");
   };
   render() {
-    const { details, media } = this.props;
+    const { results, type } = this.props;
     let content;
-    if (media === "movie") {
+    if (type === "movie") {
       content = (
         <div className="SubDetails-grid">
           <div className="SubDetails-item">
             <p className="SubDetails-key">Revenue:</p>
-            <p className="SubDetails-value">{details.revenue}</p>
+            <p className="SubDetails-value">
+              {results.revenue ? results.revenue : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Budget:</p>
-            <p className="SubDetails-value">{details.budget}</p>
+            <p className="SubDetails-value">
+              {results.budget ? results.budget : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Status:</p>
-            <p className="SubDetails-value">{details.status}</p>
+            <p className="SubDetails-value">
+              {results.status ? results.status : "-"}
+            </p>
+          </div>
+          <div className="SubDetails-item">
+            <p className="SubDetails-key">Runtime:</p>
+            <p className="SubDetails-value">
+              {results.runtime ? `${results.runtime} mins` : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Languages:</p>
             <p className="SubDetails-value">
-              {this.buildString(details.spoken_languages)}
+              {results.spoken_languages
+                ? this.buildString(results.spoken_languages)
+                : "-"}
             </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Release Date:</p>
-            <p className="SubDetails-value">{details.release_date}</p>
+            <p className="SubDetails-value">
+              {results.release_date ? results.release_date : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Production:</p>
             <p className="SubDetails-value">
-              {this.buildString(details.production_companies)}
+              {results.production_companies
+                ? this.buildString(results.production_companies)
+                : "-"}
             </p>
           </div>
         </div>
       );
-    } else if (media === "tv") {
+    } else if (type === "tv") {
       content = (
         <div className="SubDetails-grid">
           <div className="SubDetails-item">
             <p className="SubDetails-key">Created By:</p>
             <p className="SubDetails-value">
-              {this.buildString(details.created_by)}
+              {results.created_by ? this.buildString(results.created_by) : "-"}
             </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">First Air Dare:</p>
-            <p className="SubDetails-value">{details.first_air_date}</p>
+            <p className="SubDetails-value">
+              {results.first_air_date ? results.first_air_date : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Last Air Date:</p>
-            <p className="SubDetails-value">{details.last_air_date}</p>
+            <p className="SubDetails-value">
+              {results.last_air_date ? results.last_air_date : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Status:</p>
-            <p className="SubDetails-value">{details.status}</p>
+            <p className="SubDetails-value">
+              {results.status ? results.status : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Seasons:</p>
-            <p className="SubDetails-value">{details.number_of_seasons}</p>
+            <p className="SubDetails-value">
+              {results.number_of_seasons ? results.number_of_seasons : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Episodes:</p>
-            <p className="SubDetails-value">{details.number_of_episodes}</p>
+            <p className="SubDetails-value">
+              {results.number_of_episodes ? results.number_of_episodes : "-"}
+            </p>
           </div>
           <div className="SubDetails-item">
             <p className="SubDetails-key">Production:</p>
             <p className="SubDetails-value">
-              {this.buildString(details.production_companies)}
+              {results.production_companies
+                ? this.buildString(results.production_companies)
+                : "-"}
             </p>
           </div>
         </div>
       );
     }
-    return (
-      <div className="SubDetails">
-        <h2 className="SubDetails-title">Details</h2>
-        {content}
-      </div>
-    );
+    return <div className="SubDetails">{content}</div>;
   }
 }
 
