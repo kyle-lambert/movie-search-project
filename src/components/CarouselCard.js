@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../css/CarouselCard.css";
-import Error from "./Error";
 
 class CarouselCard extends Component {
   render() {
@@ -19,26 +18,26 @@ class CarouselCard extends Component {
         </p>
       );
     } else if (type === "person") {
-      title = <div>PERSON</div>;
+      title = (
+        <p className="CarouselCard-title">
+          {`${result.name ? result.name : "No title"}`}
+        </p>
+      );
     }
 
     return (
-      <React.Fragment>
-        {result.poster_path ? (
-          <div
-            className="CarouselCard"
-            style={{ animationDelay: `${100 * this.props.index}ms` }}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`}
-              alt={result.title}
-              className="CarouselCard-img"
-            />
-            {title}
-          </div>
-        ) : (
-          <Error message="No Image" />
-        )}
-      </React.Fragment>
+      <div
+        className="CarouselCard"
+        style={{ animationDelay: `${100 * this.props.index}ms` }}>
+        <img
+          src={`https://image.tmdb.org/t/p/w500/${
+            type === "person" ? result.profile_path : result.poster_path
+          }`}
+          alt={result.title}
+          className="CarouselCard-img"
+        />
+        {title}
+      </div>
     );
   }
 }

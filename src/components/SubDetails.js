@@ -52,7 +52,8 @@ class SubDetails extends Component {
           <div className="SubDetails-item">
             <p className="SubDetails-key">Production:</p>
             <p className="SubDetails-value">
-              {results.production_companies
+              {results.production_companies &&
+              results.production_companies.length > 0
                 ? this.buildString(results.production_companies)
                 : "-"}
             </p>
@@ -65,7 +66,9 @@ class SubDetails extends Component {
           <div className="SubDetails-item">
             <p className="SubDetails-key">Created By:</p>
             <p className="SubDetails-value">
-              {results.created_by ? this.buildString(results.created_by) : "-"}
+              {results.created_by && results.created_by.length > 0
+                ? this.buildString(results.created_by)
+                : "-"}
             </p>
           </div>
           <div className="SubDetails-item">
@@ -101,9 +104,39 @@ class SubDetails extends Component {
           <div className="SubDetails-item">
             <p className="SubDetails-key">Production:</p>
             <p className="SubDetails-value">
-              {results.production_companies
+              {results.production_companies &&
+              results.production_companies.length > 0
                 ? this.buildString(results.production_companies)
                 : "-"}
+            </p>
+          </div>
+        </div>
+      );
+    } else if (type === "person") {
+      content = (
+        <div className="SubDetails-grid">
+          <div className="SubDetails-item">
+            <p className="SubDetails-key">Date of Birth:</p>
+            <p className="SubDetails-value">
+              {results.birthday ? results.birthday : "-"}
+            </p>
+          </div>
+          {results.deathday ? (
+            <div className="SubDetails-item">
+              <p className="SubDetails-key">Deathday:</p>
+              <p className="SubDetails-value">{results.deathday}</p>
+            </div>
+          ) : null}
+          <div className="SubDetails-item">
+            <p className="SubDetails-key">Gender:</p>
+            <p className="SubDetails-value">
+              {results.gender === 1 ? "Female" : "Male"}
+            </p>
+          </div>
+          <div className="SubDetails-item">
+            <p className="SubDetails-key">Place Of Birth:</p>
+            <p className="SubDetails-value">
+              {results.place_of_birth ? `${results.place_of_birth} mins` : "-"}
             </p>
           </div>
         </div>

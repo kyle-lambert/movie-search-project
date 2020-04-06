@@ -42,7 +42,21 @@ class Info extends Component {
         );
 
       case "person":
-        return <div>person</div>;
+        return (
+          <div className="Info">
+            <h1 className="Info-title">
+              {results.name ? results.name : "No name"}
+            </h1>
+            <p className="Info-tagline">
+              {results.known_for_department
+                ? results.known_for_department
+                : null}
+            </p>
+            <p className="Info-overview">
+              {results.biography ? results.biography : "No biography"}
+            </p>
+          </div>
+        );
 
       default:
         return <div>type didnt match</div>;

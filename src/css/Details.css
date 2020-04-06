@@ -13,6 +13,10 @@
   animation-fill-mode: forwards;
 }
 
+.Details-main.Details-main-person {
+  transform: translateY(60px);
+}
+
 .Details-header {
   width: 100%;
   padding: 0 3rem 3rem;

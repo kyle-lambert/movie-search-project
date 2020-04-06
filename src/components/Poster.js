@@ -13,7 +13,9 @@ class Poster extends Component {
             className="Poster-img"
           />
         ) : (
-          <div className="Poster-error">NO IMAGE AVAILABLE</div>
+          <div className="Poster-error">
+            <p className="Poster-error-text">No image available</p>
+          </div>
         )}
       </div>
     );

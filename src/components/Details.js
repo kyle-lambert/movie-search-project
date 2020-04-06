@@ -9,6 +9,7 @@ import Spacer from "./Spacer";
 import Reviews from "./Reviews";
 import Error from "./Error";
 import SubDetails from "./SubDetails";
+import Carousel from "./Carousel";
 import "../css/Details.css";
 
 import axios from "axios";
@@ -16,11 +17,15 @@ import CarouselContainer from "./CarouselContainer";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 // const id = 530915;
-const id = 443791;
+// const id = 443791;
 
-// const id = 1399;
+const id = 1399;
 // const id = 69740;
 // const id = 82856;
+
+// const id = 298;
+// const id = 1461;
+// const id = 53328;
 
 class Details extends Component {
   constructor(props) {
@@ -28,7 +33,7 @@ class Details extends Component {
     this.state = {
       results: {},
       isLoading: true,
-      isError: false,
+      error: "",
     };
   }
 
@@ -41,14 +46,14 @@ class Details extends Component {
         this.setState({ results: results.data, isLoading: false });
       })
       .catch((error) => {
-        this.setState({ isError: true, isLoading: false });
+        this.setState({ error: error, isLoading: false });
       });
   }
 
   render() {
-    const { results, isLoading, isError } = this.state;
+    const { results, isLoading, error } = this.state;
 
-    if (isError) {
+    if (error) {
       return <Error message="Sorry, there was a problem fetching this data." />;
     } else if (isLoading) {
       return <div>LOADING</div>;
@@ -77,9 +82,9 @@ class Details extends Component {
                     <SubDetails type="tv" results={results} />
                   </div>
                 </header>
-                {/* <section className="Details-cast">
+                <section className="Details-cast">
                   <Cast cast={results.credits.cast} />
-                </section> */}
+                </section>
                 <section className="Details-similar">
                   <h2 className="Details-title">Similar...</h2>
                   <CarouselContainer
@@ -129,9 +134,9 @@ class Details extends Component {
                     <SubDetails type="movie" results={results} />
                   </div>
                 </header>
-                {/* <section className="Details-cast">
+                <section className="Details-cast">
                   <Cast cast={results.credits.cast} />
-                </section> */}
+                </section>
                 <section className="Details-similar">
                   <h2 className="Details-title">Similar...</h2>
                   <CarouselContainer
@@ -159,8 +164,34 @@ class Details extends Component {
           );
 
         case "person":
-          return <div>PERSON</div>;
-
+          return (
+            <div className="Details">
+              <main className="Details-main Details-main-person">
+                <header className="Details-header">
+                  <div className="Details-header-poster">
+                    <Poster
+                      title={results.name}
+                      poster_path={results.profile_path}
+                    />
+                  </div>
+                  <div className="Details-header-main">
+                    <Info type="person" results={results} />
+                  </div>
+                  <div className="Details-header-subdetails">
+                    <SubDetails type="person" results={results} />
+                  </div>
+                </header>
+                <section className="Details-similar">
+                  <h2 className="Details-title">Staring...</h2>
+                  <Carousel results={results.credits.cast} />
+                </section>
+                <Spacer />
+                <section className="Details-reviews">
+                  <Reviews reviews={results.reviews.results} />
+                </section>
+              </main>
+            </div>
+          );
         default:
           return <div>TYPE NOT FOUND</div>;
       }

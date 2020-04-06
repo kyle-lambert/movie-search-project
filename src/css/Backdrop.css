@@ -1,4 +1,5 @@
-.Backdrop {
+.Backdrop,
+.Backdrop-error {
   height: 300px;
   position: relative;
   z-index: 50;
@@ -24,26 +25,45 @@
   height: 100%;
 }
 
+.Backdrop-error {
+  background-color: #212f3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.Backdrop-error-text {
+  opacity: 0.6;
+}
+
 @media screen and (min-width: 768px) {
-  .Backdrop {
+  .Backdrop,
+  .Backdrop-error {
     height: 400px;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .Backdrop {
+  .Backdrop,
+  .Backdrop-error {
     height: 500px;
   }
 }
 
 @media screen and (min-width: 1266px) {
-  .Backdrop {
+  .Backdrop,
+  .Backdrop-error {
     height: 600px;
   }
 }
 
 @media screen and (min-width: 1502px) {
-  .Backdrop {
+  .Backdrop,
+  .Backdrop-error {
     height: 700px;
   }
 }

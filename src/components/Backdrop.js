@@ -15,7 +15,11 @@ class Backdrop extends Component {
         </div>
       );
     } else {
-      return <div className="Backdrop">NO IMAGE FOUND</div>;
+      return (
+        <div className="Backdrop-error">
+          <p className="Backdrop-error-text">No backdrop found</p>
+        </div>
+      );
     }
   }
 }
