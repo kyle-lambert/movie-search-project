@@ -1,0 +1,17 @@
+.Track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow-y: scroll;
+  min-height: 400px;
+}
+
+/* .Track::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  height: 100%;
+  width: 100px;
+  background-color: red;
+  z-index: 200;
+} */

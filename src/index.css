@@ -1,5 +1,8 @@
 /* @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:300,400,500&display=swap"); */
 
+/* dark navy = #1b2631 */
+/* lighter navy = #212f3d*/
+
 *,
 *::before,
 *::after {
@@ -85,19 +88,5 @@ p {
 
   h3 {
     font-size: 2.8rem;
-  }
-}
-
-@media screen and (min-width: 1502px) {
-  h1 {
-    font-size: 4.4rem;
-  }
-
-  h2 {
-    font-size: 3.4rem;
-  }
-
-  h3 {
-    font-size: 3rem;
   }
 }
