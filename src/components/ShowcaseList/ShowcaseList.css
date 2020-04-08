@@ -1,0 +1,39 @@
+.ShowcaseList {
+  position: relative;
+  margin: 1.6rem 0;
+}
+
+.ShowcaseList:first-child {
+  margin-top: 0;
+}
+
+.ShowcaseList:last-child {
+  margin-bottom: 0;
+}
+
+.ShowcaseList-title {
+  position: relative;
+  z-index: 2000;
+}
+
+.ShowcaseList::before {
+  content: "";
+  width: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #1b2631, transparent);
+  z-index: 500;
+}
+
+.ShowcaseList::after {
+  content: "";
+  width: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, #1b2631);
+  z-index: 500;
+}

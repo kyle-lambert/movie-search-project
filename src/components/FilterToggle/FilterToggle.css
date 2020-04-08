@@ -1,0 +1,18 @@
+.FilterToggle {
+  display: flex;
+  justify-content: center;
+}
+
+.FilterToggle-group {
+  display: flex;
+  width: 25rem;
+}
+
+.FilterToggle-btn {
+  flex: 1;
+  font-size: 1.4rem;
+  height: 2.5rem;
+  outline: none;
+  border: 1px solid #1b2631;
+  cursor: pointer;
+}

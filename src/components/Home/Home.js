@@ -1,24 +1,19 @@
 import React from "react";
-import ShowcaseSection from "../ShowcaseSection/ShowcaseSection";
+import Showcase from "../Showcase/Showcase";
+import FilterToggle from "../FilterToggle/FilterToggle";
+
+import Section from "../../layout/Section/Section";
 
 function Home(props) {
-  const { movie, tv, current_filter } = props;
-  const handleClick = (e) => {
-    props.toggleFilter(e.target.value);
-  };
+  const { movie, tv, current_filter, toggleFilter } = props;
 
   return (
-    <div>
-      <div>
-        <button value="tv" onClick={handleClick}>
-          change to tv shows
-        </button>
-        <button value="movie" onClick={handleClick}>
-          change to movies
-        </button>
-      </div>
-      <ShowcaseSection movie={movie} tv={tv} current_filter={current_filter} />
-    </div>
+    <>
+      <Section background="#1b2631">
+        <FilterToggle toggleFilter={toggleFilter} />
+        <Showcase movie={movie} tv={tv} current_filter={current_filter} />
+      </Section>
+    </>
   );
 }
 

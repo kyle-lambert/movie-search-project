@@ -10,6 +10,7 @@ class HomeContainer extends Component {
     this.state = {
       current_filter: "movie",
       movie: {
+        media_type: "movie",
         popular: {
           data: [],
           loading: true,
@@ -27,6 +28,7 @@ class HomeContainer extends Component {
         },
       },
       tv: {
+        media_type: "tv",
         popular: {
           data: [],
           loading: true,
@@ -37,39 +39,47 @@ class HomeContainer extends Component {
           loading: true,
           error: "",
         },
+        on_the_air: {
+          data: [],
+          loading: true,
+          error: "",
+        },
       },
     };
     this.fetchData = this.fetchData.bind(this);
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.fetchData(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
-        "popular",
-        "movie"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
-        "now_playing",
-        "movie"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`,
-        "top_rated",
-        "movie"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`,
-        "popular",
-        "tv"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}`,
-        "top_rated",
-        "tv"
-      );
-    }, 1500);
+    this.fetchData(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      "popular",
+      "movie"
+    );
+    this.fetchData(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
+      "now_playing",
+      "movie"
+    );
+    this.fetchData(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`,
+      "top_rated",
+      "movie"
+    );
+    this.fetchData(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`,
+      "popular",
+      "tv"
+    );
+    this.fetchData(
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}`,
+      "top_rated",
+      "tv"
+    );
+    this.fetchData(
+      `https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}`,
+      "on_the_air",
+      "tv"
+    );
   }
 
   toggleFilter = (media_type) => {
