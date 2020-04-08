@@ -1,0 +1,24 @@
+.Backdrop-inner {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.Backdrop-inner::after {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(transparent, #212f3d);
+  top: 0rem;
+  right: 0rem;
+  left: 0rem;
+  bottom: 0rem;
+  z-index: 50;
+}
+
+.Backdrop-img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}

@@ -93,30 +93,16 @@ class HomeContainer extends Component {
     axios
       .get(url)
       .then((data) => {
-        this.setState((state) => ({
-          ...state,
-          [media_type]: {
-            ...state[media_type],
-            [endpoint]: {
-              data: data.data.results,
-              loading: false,
-              error: "",
-            },
-          },
-        }));
+        const state = this.state;
+        state[media_type][endpoint].data = data.data.results;
+        state[media_type][endpoint].loading = false;
+        this.setState({ ...state });
       })
       .catch((error) => {
-        this.setState((state) => ({
-          ...state,
-          [media_type]: {
-            ...state[media_type],
-            [endpoint]: {
-              data: [],
-              error: error,
-              loading: false,
-            },
-          },
-        }));
+        const state = this.state;
+        state[media_type][endpoint].error = error;
+        state[media_type][endpoint].loading = false;
+        this.setState({ ...state });
       });
   }
 

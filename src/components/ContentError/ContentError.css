@@ -1,14 +1,13 @@
-.NoImage {
+.ContentError {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 350px;
   border-radius: 2px;
   background-color: lightslategrey;
 }
 
-.NoImage-text {
+.ContentError-text {
   position: relative;
   text-transform: uppercase;
   font-size: 1.4rem;

@@ -11,7 +11,7 @@ class App extends Component {
           <Route exact path="/" component={HomeContainer} />
           <Route
             exact
-            path="/details/:media_type/:id"
+            path="/details/:media_type/:content_id"
             component={DetailsContainer}
           />
         </Switch>

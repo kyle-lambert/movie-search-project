@@ -3,7 +3,6 @@ import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
 import Track from "../../layout/Track/Track";
 import ShowcaseItem from "../ShowcaseItem/ShowcaseItem";
-import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import "./ShowcaseList.css";
 
@@ -23,7 +22,7 @@ function ShowcaseList(props) {
             title={current_filter === "movie" ? item.title : item.name}
             path={item.poster_path}
             media_type={media_type}
-            id={item.id}
+            content_id={item.id}
           />
         ))}
       </Track>
