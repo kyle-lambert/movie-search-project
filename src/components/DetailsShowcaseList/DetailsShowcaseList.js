@@ -1,12 +1,13 @@
 import React from "react";
+import ShowcaseItem from "../ShowcaseItem/ShowcaseItem";
 import Error from "../Error/Error";
 import Loading from "../Loading/Loading";
-import Track from "../../layout/Track/Track";
-import ShowcaseItem from "../ShowcaseItem/ShowcaseItem";
 import { v4 as uuidv4 } from "uuid";
-import "./ShowcaseList.css";
+import "./DetailsShowcaseList.css";
 
-function ShowcaseList(props) {
+import Track from "../../layout/Track/Track";
+
+function DetailsShowcaseList(props) {
   const { title, category, media_type } = props;
   let content;
   if (category.error) {
@@ -16,8 +17,9 @@ function ShowcaseList(props) {
   } else {
     content = (
       <Track>
-        {Array.isArray(category.data) && category.data.length > 0 ? (
-          category.data.map((item) => (
+        {Array.isArray(category.data.results) &&
+        category.data.results.length > 0 ? (
+          category.data.results.map((item) => (
             <ShowcaseItem
               key={uuidv4()}
               title={media_type === "movie" ? item.title : item.name}
@@ -27,7 +29,7 @@ function ShowcaseList(props) {
             />
           ))
         ) : (
-          <div>Sorry we don't have any information on this.</div>
+          <div>Sorry we can't find any information on this.</div>
         )}
       </Track>
     );
@@ -40,4 +42,4 @@ function ShowcaseList(props) {
   );
 }
 
-export default ShowcaseList;
+export default DetailsShowcaseList;

@@ -46,7 +46,6 @@ class HomeContainer extends Component {
         },
       },
     };
-    this.fetchData = this.fetchData.bind(this);
   }
 
   componentDidMount() {
@@ -89,7 +88,7 @@ class HomeContainer extends Component {
     }));
   };
 
-  fetchData(url, endpoint, media_type) {
+  fetchData = (url, endpoint, media_type) => {
     axios
       .get(url)
       .then((data) => {
@@ -104,7 +103,7 @@ class HomeContainer extends Component {
         state[media_type][endpoint].loading = false;
         this.setState({ ...state });
       });
-  }
+  };
 
   render() {
     const { movie, tv, current_filter } = this.state;
