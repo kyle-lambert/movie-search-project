@@ -3,14 +3,10 @@ import ContentError from "../ContentError/ContentError";
 import "./Backdrop.css";
 
 function Backdrop(props) {
-  const { title, path, loading, error } = props;
-  let content;
-  if (error) {
-    content = <div>error</div>;
-  } else if (loading) {
-    content = <div>loading...</div>;
-  } else {
-    content = (
+  const { title, path } = props;
+
+  return (
+    <div className="Backdrop">
       <div className="Backdrop-inner">
         {path ? (
           <img
@@ -19,13 +15,11 @@ function Backdrop(props) {
             alt={title}
           />
         ) : (
-          <ContentError text="No backdrop image" height="500px" />
+          <ContentError text="No backdrop image" />
         )}
       </div>
-    );
-  }
-
-  return <div className="Backdrop">{content}</div>;
+    </div>
+  );
 }
 
 export default Backdrop;

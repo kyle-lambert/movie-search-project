@@ -18,7 +18,7 @@ function ShowcaseItem(props) {
               alt={title}
             />
           ) : (
-            <ContentError text="No image" height="350px" />
+            <ContentError text="No image" />
           )}
           <p className="ShowcaseItem-title">{title ? title : "No title"}</p>
         </div>
