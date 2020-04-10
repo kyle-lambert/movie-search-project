@@ -1,0 +1,85 @@
+.PersonShowcaseItem {
+  display: block;
+  flex-shrink: 0;
+  width: 200px;
+  height: 300px;
+  min-width: 200px;
+  min-height: 300px;
+  margin: 0 1rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.PersonShowcaseItem-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.PersonShowcaseItem-inner::after {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(transparent, rgba(27, 38, 49, 0.9));
+  top: 0rem;
+  right: 0rem;
+  left: 0rem;
+  bottom: 0rem;
+  border-radius: 2px;
+  z-index: 50;
+}
+
+.PersonShowcaseItem-inner::before {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(transparent, rgba(100, 180, 246, 0.3));
+  top: 0rem;
+  right: 0rem;
+  left: 0rem;
+  bottom: 0rem;
+  border-radius: 2px;
+  z-index: 60;
+  opacity: 0;
+}
+
+.PersonShowcaseItem:hover .PersonShowcaseItem-inner::before {
+  opacity: 1;
+}
+.PersonShowcaseItem:hover .PersonShowcaseItem-inner::after {
+  opacity: 0.5;
+}
+
+.PersonShowcaseItem:first-child {
+  margin-left: 0;
+}
+
+.PersonShowcaseItem:last-child {
+  margin-right: 0;
+}
+
+.PersonShowcaseItem-img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.PersonShowcaseItem-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 1.5rem 1.5rem;
+  z-index: 100;
+}
+
+.PersonShowcaseItem-title {
+  font-weight: 600;
+}
+
+.PersonShowcaseItem-character {
+  color: lightgray;
+  font-style: italic;
+  font-size: 1.4rem;
+}

@@ -33,31 +33,65 @@ class DetailsContainer extends Component {
         loading: true,
         error: "",
       },
+      movie_credits: {
+        data: [],
+        loading: true,
+        error: "",
+      },
+      tv_credits: {
+        data: [],
+        loading: true,
+        error: "",
+      },
     };
   }
 
   componentDidMount() {
     const { content_id, media_type } = this.props.match.params;
-    this.fetchData(
-      `https://api.themoviedb.org/3/${media_type}/${content_id}?api_key=${API_KEY}`,
-      "details"
-    );
-    this.fetchData(
-      `https://api.themoviedb.org/3/${media_type}/${content_id}/credits?api_key=${API_KEY}`,
-      "credits"
-    );
-    this.fetchData(
-      `https://api.themoviedb.org/3/${media_type}/${content_id}/reviews?api_key=${API_KEY}`,
-      "reviews"
-    );
-    this.fetchData(
-      `https://api.themoviedb.org/3/${media_type}/${content_id}/recommendations?api_key=${API_KEY}`,
-      "recommendations"
-    );
-    this.fetchData(
-      `https://api.themoviedb.org/3/${media_type}/${content_id}/similar?api_key=${API_KEY}`,
-      "similar"
-    );
+    switch (media_type) {
+      case "movie":
+      case "tv":
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}?api_key=${API_KEY}`,
+          "details"
+        );
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}/credits?api_key=${API_KEY}`,
+          "credits"
+        );
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}/reviews?api_key=${API_KEY}`,
+          "reviews"
+        );
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}/recommendations?api_key=${API_KEY}`,
+          "recommendations"
+        );
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}/similar?api_key=${API_KEY}`,
+          "similar"
+        );
+        break;
+
+      case "person":
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}?api_key=${API_KEY}`,
+          "details"
+        );
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}/movie_credits?api_key=${API_KEY}`,
+          "movie_credits"
+        );
+        this.fetchData(
+          `https://api.themoviedb.org/3/${media_type}/${content_id}/tv_credits?api_key=${API_KEY}`,
+          "tv_credits"
+        );
+        break;
+      default:
+        // Redirect to 404 here
+        console.log("404 REDIRECT");
+        break;
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -65,26 +99,50 @@ class DetailsContainer extends Component {
       this.props.match.params.content_id !== nextProps.match.params.content_id
     ) {
       const { media_type, content_id } = nextProps.match.params;
-      this.fetchData(
-        `https://api.themoviedb.org/3/${media_type}/${content_id}?api_key=${API_KEY}`,
-        "details"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/${media_type}/${content_id}/credits?api_key=${API_KEY}`,
-        "credits"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/${media_type}/${content_id}/reviews?api_key=${API_KEY}`,
-        "reviews"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/${media_type}/${content_id}/recommendations?api_key=${API_KEY}`,
-        "recommendations"
-      );
-      this.fetchData(
-        `https://api.themoviedb.org/3/${media_type}/${content_id}/similar?api_key=${API_KEY}`,
-        "similar"
-      );
+      switch (media_type) {
+        case "movie":
+        case "tv":
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}?api_key=${API_KEY}`,
+            "details"
+          );
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}/credits?api_key=${API_KEY}`,
+            "credits"
+          );
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}/reviews?api_key=${API_KEY}`,
+            "reviews"
+          );
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}/recommendations?api_key=${API_KEY}`,
+            "recommendations"
+          );
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}/similar?api_key=${API_KEY}`,
+            "similar"
+          );
+          break;
+
+        case "person":
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}?api_key=${API_KEY}`,
+            "details"
+          );
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}/movie_credits?api_key=${API_KEY}`,
+            "movie_credits"
+          );
+          this.fetchData(
+            `https://api.themoviedb.org/3/${media_type}/${content_id}/tv_credits?api_key=${API_KEY}`,
+            "tv_credits"
+          );
+          break;
+        default:
+          // Redirect to 404 here
+          console.log("404 REDIRECT");
+          break;
+      }
     }
   }
 

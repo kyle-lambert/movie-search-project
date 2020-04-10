@@ -1,5 +1,6 @@
 .Backdrop {
   position: absolute;
+  width: 100%;
 }
 
 .Backdrop-inner {
@@ -13,7 +14,6 @@
   content: "";
   position: absolute;
   background-image: linear-gradient(transparent, #212f3d);
-  /* background-image: linear-gradient(transparent, rgba(100, 180, 246, 0.8)); */
   top: 0rem;
   right: 0rem;
   left: 0rem;

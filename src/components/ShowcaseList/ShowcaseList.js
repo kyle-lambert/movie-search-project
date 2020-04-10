@@ -15,7 +15,7 @@ function ShowcaseList(props) {
     content = <Loading />;
   } else {
     content = (
-      <Track>
+      <Track height="375px" min_height="375px">
         {Array.isArray(category.data) && category.data.length > 0 ? (
           category.data.map((item) => (
             <ShowcaseItem

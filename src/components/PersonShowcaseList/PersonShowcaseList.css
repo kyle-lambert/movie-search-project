@@ -1,0 +1,40 @@
+.PersonShowcaseList {
+  position: relative;
+  margin: 1.6rem 0;
+}
+
+.PersonShowcaseList:first-child {
+  margin-top: 0;
+}
+
+.PersonShowcaseList:last-child {
+  margin-bottom: 0;
+}
+
+.PersonShowcaseList-title {
+  color: #1b2631;
+  position: relative;
+  z-index: 2000;
+}
+
+.PersonShowcaseList::before {
+  content: "";
+  width: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #aeb6bf, transparent);
+  z-index: 500;
+}
+
+.PersonShowcaseList::after {
+  content: "";
+  width: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, #aeb6bf);
+  z-index: 500;
+}

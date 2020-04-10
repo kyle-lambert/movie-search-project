@@ -1,7 +1,7 @@
 .Track {
   position: relative;
   display: flex;
-  /* align-items: center; */
   overflow-y: scroll;
-  min-height: 380px;
+  /* min-height: 380px; */
+  /* height: 380px; */
 }

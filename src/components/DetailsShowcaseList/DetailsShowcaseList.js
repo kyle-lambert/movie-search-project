@@ -8,18 +8,17 @@ import "./DetailsShowcaseList.css";
 import Track from "../../layout/Track/Track";
 
 function DetailsShowcaseList(props) {
-  const { title, category, media_type } = props;
+  const { title, items_array, loading, error, media_type } = props;
   let content;
-  if (category.error) {
+  if (error) {
     content = <Error />;
-  } else if (category.loading) {
+  } else if (loading) {
     content = <Loading />;
   } else {
     content = (
-      <Track>
-        {Array.isArray(category.data.results) &&
-        category.data.results.length > 0 ? (
-          category.data.results.map((item) => (
+      <Track height="375px" min_height="375px">
+        {Array.isArray(items_array) && items_array.length > 0 ? (
+          items_array.map((item) => (
             <ShowcaseItem
               key={uuidv4()}
               title={media_type === "movie" ? item.title : item.name}
