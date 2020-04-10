@@ -2,11 +2,14 @@ import React from "react";
 import Backdrop from "../Backdrop/Backdrop";
 import DetailsShowcaseList from "../DetailsShowcaseList/DetailsShowcaseList";
 import Poster from "../Poster/Poster";
+import ContentInfo from "../ContentInfo/ContentInfo";
 
 import Section from "../../layout/Section/Section";
 import Spacer from "../../layout/Spacer/Spacer";
 import Layout from "../../layout/Layout/Layout";
 import HeaderLayout from "../../layout/HeaderLayout/HeaderLayout";
+
+import "./Details.css";
 
 function Details(props) {
   const { data, media_type } = props;
@@ -25,6 +28,7 @@ function Details(props) {
           }
           path={details.data.backdrop_path}
         />
+
         <Layout>
           <HeaderLayout>
             <Poster
@@ -33,6 +37,7 @@ function Details(props) {
               }
               path={details.data.poster_path}
             />
+            <ContentInfo data={details.data} media_type={media_type} />
           </HeaderLayout>
           <Section background="#1b2631">
             <DetailsShowcaseList

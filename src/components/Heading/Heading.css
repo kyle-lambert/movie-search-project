@@ -1,0 +1,11 @@
+.Heading-span {
+  margin-left: 0.8rem;
+  font-weight: 100;
+  font-size: 2.8rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .Heading {
+    width: 80%;
+  }
+}

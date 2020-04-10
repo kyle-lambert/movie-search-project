@@ -6,9 +6,12 @@
   z-index: 5000;
 }
 
-@media screen and (min-width: 766px) {
+@media screen and (min-width: 768px) {
   .HeaderLayout {
+    display: grid;
+    grid-template-columns: 300px auto;
     padding: 3rem 6rem;
+    column-gap: 3rem;
   }
 }
 

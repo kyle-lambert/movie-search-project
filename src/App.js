@@ -14,7 +14,6 @@ class App extends Component {
             path="/details/:media_type/:content_id"
             component={DetailsContainer}
           />
-          <Route component={<div>404</div>} />
         </Switch>
       </div>
     );
