@@ -9,7 +9,7 @@ function Overview(props) {
         <p className="Overview-tagline">{`"${props.tagline}"`}</p>
       ) : null}
       <p className="Overview-text">
-        {props.text ? props.text : "No overview available"}
+        {props.text ? props.text : "Not available"}
       </p>
     </div>
   );

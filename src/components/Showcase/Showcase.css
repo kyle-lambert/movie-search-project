@@ -1,24 +1,24 @@
-.DetailsShowcaseList {
+.Showcase {
   position: relative;
   margin: 1.6rem 0;
 }
 
-.DetailsShowcaseList:first-child {
+.Showcase:first-child {
   margin-top: 0;
 }
 
-.DetailsShowcaseList:last-child {
+.Showcase:last-child {
   margin-bottom: 0;
 }
 
-.DetailsShowcaseList-title {
+.Showcase-title {
   position: relative;
   z-index: 2000;
 }
 
-.DetailsShowcaseList::before {
+.Showcase::before {
   content: "";
-  width: 50px;
+  width: 25px;
   position: absolute;
   top: 0;
   left: 0;
@@ -27,9 +27,9 @@
   z-index: 500;
 }
 
-.DetailsShowcaseList::after {
+.Showcase::after {
   content: "";
-  width: 50px;
+  width: 25px;
   position: absolute;
   top: 0;
   right: 0;

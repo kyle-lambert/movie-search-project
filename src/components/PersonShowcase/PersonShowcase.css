@@ -1,23 +1,23 @@
-.PersonShowcaseList {
+.PersonShowcase {
   position: relative;
   margin: 1.6rem 0;
 }
 
-.PersonShowcaseList:first-child {
+.PersonShowcase:first-child {
   margin-top: 0;
 }
 
-.PersonShowcaseList:last-child {
+.PersonShowcase:last-child {
   margin-bottom: 0;
 }
 
-.PersonShowcaseList-title {
-  color: #1b2631;
+.PersonShowcase-title {
+  /* color: #1b2631; */
   position: relative;
   z-index: 2000;
 }
 
-.PersonShowcaseList::before {
+/* .PersonShowcase::before {
   content: "";
   width: 25px;
   position: absolute;
@@ -28,7 +28,7 @@
   z-index: 500;
 }
 
-.PersonShowcaseList::after {
+.PersonShowcase::after {
   content: "";
   width: 25px;
   position: absolute;
@@ -37,4 +37,4 @@
   bottom: 0;
   background: linear-gradient(90deg, transparent, #aeb6bf);
   z-index: 500;
-}
+} */

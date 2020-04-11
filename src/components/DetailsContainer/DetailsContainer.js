@@ -7,7 +7,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 class DetailsContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = getInitialState(this.props.match.params.media_type);
+    this.state = getInitialState();
   }
 
   componentDidMount() {
@@ -119,35 +119,12 @@ class DetailsContainer extends Component {
     );
   };
 
-  // componentDidUpdate(nextProps) {
-  //   if (
-  //     this.props.match.params.content_id !== nextProps.match.params.content_id
-  //   ) {
-  //     const { media_type, content_id } = nextProps.match.params;
-  //     this.setState((state) => getInitialState(media_type));
-  //     switch (media_type) {
-  //       case "movie":
-  //         this.fetchMovieData(media_type, content_id);
-  //         break;
-  //       case "tv":
-  //         this.fetchTVData(media_type, content_id);
-  //         break;
-  //       case "person":
-  //         this.fetchPersonData(media_type, content_id);
-  //         break;
-
-  //       default:
-  //         break;
-  //     }
-  //   }
-  // }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       this.props.match.params.content_id !== nextProps.match.params.content_id
     ) {
       const { media_type, content_id } = nextProps.match.params;
-      this.setState((state) => getInitialState(media_type));
+      this.setState(getInitialState());
       switch (media_type) {
         case "movie":
           this.fetchMovieData(media_type, content_id);
@@ -165,29 +142,24 @@ class DetailsContainer extends Component {
     }
   }
 
-  // getDetails = (media_type) => {
-
-  // }
+  renderData = (media_type) => {
+    const { movie, tv, person } = this.state;
+    if (media_type === "movie") return movie;
+    if (media_type === "tv") return tv;
+    if (media_type === "person") return person;
+  };
 
   render() {
     const { media_type } = this.props.match.params;
-    let data;
-    if (media_type === "movie") {
-      data = this.state.movie;
-    } else if (media_type === "tv") {
-      data = this.state.tv;
-    } else {
-      data = this.state.person;
-    }
     return (
-      <Details data={data} media_type={this.props.match.params.media_type} />
+      <Details data={this.renderData(media_type)} media_type={media_type} />
     );
   }
 }
 
 export default DetailsContainer;
 
-const getInitialState = (media_type) => {
+const getInitialState = () => {
   return {
     movie: {
       details: {

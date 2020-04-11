@@ -7,6 +7,7 @@ import "./ContentInfo.css";
 
 function ContentInfo(props) {
   const { data, media_type } = props;
+
   return (
     <div className="ContentInfo">
       <Heading

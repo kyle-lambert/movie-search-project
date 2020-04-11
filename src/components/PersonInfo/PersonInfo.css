@@ -1,0 +1,11 @@
+.PersonInfo {
+  background-color: transparent;
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .PersonInfo {
+    grid-column: 2 / 3;
+    align-self: center;
+  }
+}
