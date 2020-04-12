@@ -12,19 +12,19 @@
 }
 
 .PersonShowcase-title {
-  /* color: #1b2631; */
+  color: #1b2631;
   position: relative;
   z-index: 2000;
 }
 
-/* .PersonShowcase::before {
+.PersonShowcase::before {
   content: "";
   width: 25px;
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  background: linear-gradient(90deg, #aeb6bf, transparent);
+  background: linear-gradient(90deg, #5dade2, transparent);
   z-index: 500;
 }
 
@@ -35,6 +35,6 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, #aeb6bf);
+  background: linear-gradient(90deg, transparent, #5dade2);
   z-index: 500;
-} */
+}

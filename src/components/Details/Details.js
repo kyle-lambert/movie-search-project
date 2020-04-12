@@ -11,7 +11,6 @@ import PersonInfo from "../PersonInfo/PersonInfo";
 import { v4 as uuidv4 } from "uuid";
 
 import Section from "../../layout/Section/Section";
-import ColorSection from "../../layout/ColorSection/ColorSection";
 import Spacer from "../../layout/Spacer/Spacer";
 import Layout from "../../layout/Layout/Layout";
 import HeaderLayout from "../../layout/HeaderLayout/HeaderLayout";
@@ -42,13 +41,21 @@ const guard = {
 
 function Details(props) {
   const { data, media_type } = props;
-  const { details, credits, recommendations, similar, reviews } = data;
+  const {
+    details,
+    credits,
+    recommendations,
+    similar,
+    reviews,
+    movie_credits,
+    tv_credits,
+  } = data;
 
   const renderPersonShowcase = (credits) => {
     if (guard.credits(credits)) {
       return (
         <Track height="300px" min_height="300px">
-          {credits.data.cast.map((person) => (
+          {credits.data.cast.slice(0, 8).map((person) => (
             <PersonCard key={uuidv4()} person={person} />
           ))}
         </Track>
@@ -78,6 +85,42 @@ function Details(props) {
         <Track height="375px" min_height="375px">
           {similar.data.results.map((item) => (
             <ContentCard key={uuidv4()} item={item} media_type={media_type} />
+          ))}
+        </Track>
+      );
+    } else {
+      return <div>Sorry we can't find any similar content.</div>;
+    }
+  };
+
+  const renderMovieCreditsShowcase = (movie_credits) => {
+    if (
+      movie_credits.data.cast &&
+      Array.isArray(movie_credits.data.cast) &&
+      movie_credits.data.cast.length > 0
+    ) {
+      return (
+        <Track height="375px" min_height="375px">
+          {movie_credits.data.cast.map((item) => (
+            <ContentCard key={uuidv4()} item={item} media_type="movie" />
+          ))}
+        </Track>
+      );
+    } else {
+      return <div>Sorry we can't find any similar content.</div>;
+    }
+  };
+
+  const renderTVCreditsShowcase = (tv_credits) => {
+    if (
+      tv_credits.data.cast &&
+      Array.isArray(tv_credits.data.cast) &&
+      tv_credits.data.cast.length > 0
+    ) {
+      return (
+        <Track height="375px" min_height="375px">
+          {tv_credits.data.cast.map((item) => (
+            <ContentCard key={uuidv4()} item={item} media_type="tv" />
           ))}
         </Track>
       );
@@ -136,7 +179,12 @@ function Details(props) {
               title={details.data.name}
               path={details.data.profile_path}
             />
-            <PersonInfo bio={details.data.biography} name={details.data.name} />
+            <PersonInfo
+              bio={details.data.biography}
+              name={details.data.name}
+              birthday={details.data.birthday}
+              deathday={details.data.deathday}
+            />
           </HeaderLayout>
         );
 
@@ -146,29 +194,38 @@ function Details(props) {
   };
 
   const getPageJSX = () => {
-    if (data.details.error) return <div>ERROR</div>;
-    if (data.details.loading) return <div>LOADING</div>;
+    if (details.error) return <div className="Details-error">ERROR</div>;
+    if (details.loading) return <div className="Details-loading">LOADING</div>;
     let page;
     if (media_type === "person") {
-      page = <>{headerJSX()}</>;
+      page = (
+        <>
+          {headerJSX()}
+          <Section background="#1b2631">
+            <Showcase
+              title={`Movies with ${details.data.name}`}
+              render={() => renderMovieCreditsShowcase(movie_credits)}
+            />
+            <Spacer />
+            <Showcase
+              title={`TV Shows with ${details.data.name}`}
+              render={() => renderTVCreditsShowcase(tv_credits)}
+            />
+          </Section>
+        </>
+      );
     } else {
       page = (
         <>
           {backdropJSX()}
           <Layout>
             {headerJSX()}
-            <ColorSection>
+            <Section background="#5DADE2">
               <PersonShowcase
                 title="Top Billed Cast"
                 render={() => renderPersonShowcase(credits)}
               />
-            </ColorSection>
-            {/* <Section background="#AEB6BF">
-              <PersonShowcase
-                title="Top Billed Cast"
-                render={() => renderPersonShowcase(credits)}
-              />
-            </Section> */}
+            </Section>
             <Section background="#1b2631">
               <Showcase
                 title="Recommendations"

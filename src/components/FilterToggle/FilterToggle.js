@@ -11,13 +11,17 @@ function FilterToggle(props) {
       <div className="FilterToggle-group">
         <button
           value="movie"
-          className="FilterToggle-btn FilterToggle-movie active"
+          className={`FilterToggle-btn ${
+            props.current_filter === "movie" ? "active" : ""
+          }`}
           onClick={handleClick}>
           Movies
         </button>
         <button
           value="tv"
-          className="FilterToggle-btn FilterToggle-tv"
+          className={`FilterToggle-btn ${
+            props.current_filter === "tv" ? "active" : ""
+          }`}
           onClick={handleClick}>
           TV Shows
         </button>

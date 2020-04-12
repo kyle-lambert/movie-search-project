@@ -1,5 +1,6 @@
 import React from "react";
 import ShowcaseList from "../ShowcaseList/ShowcaseList";
+import Showcase from "../Showcase/Showcase";
 import FilterToggle from "../FilterToggle/FilterToggle";
 
 import Section from "../../layout/Section/Section";
@@ -11,7 +12,10 @@ function Home(props) {
   return (
     <>
       <Section background="#1b2631">
-        <FilterToggle toggleFilter={toggleFilter} />
+        <FilterToggle
+          toggleFilter={toggleFilter}
+          current_filter={current_filter}
+        />
         <ShowcaseList
           title="Popular"
           media_type={
