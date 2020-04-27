@@ -46,6 +46,7 @@ class DetailsContainer extends Component {
   };
 
   fetchMovieData = (media_type, content_id) => {
+    setTimeout(() => {});
     this.fetchData(
       `https://api.themoviedb.org/3/${media_type}/${content_id}?api_key=${API_KEY}`,
       "details",
