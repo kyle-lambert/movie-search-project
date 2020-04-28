@@ -12,7 +12,7 @@ function Movies({ popular }) {
     <div className="Movies">
       {popular &&
         popular
-          .slice(0, 9)
+          .slice(0, 14)
           .map((movie, index) => (
             <MovieCard key={uuidv4()} movie={movie} index={index} />
           ))}

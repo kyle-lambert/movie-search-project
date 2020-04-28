@@ -16,11 +16,6 @@ function MovieCard({ movie: { poster_path, title, release_date }, index }) {
             <p>No Image</p>
           </div>
         )}
-      </div>
-      <div className="MovieCard-body">
-        <p className="MovieCard-sub">
-          {release_date && release_date.slice(0, 4)}
-        </p>
         <p className="MovieCard-title">{title && title}</p>
       </div>
     </div>

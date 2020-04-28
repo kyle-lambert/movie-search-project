@@ -6,10 +6,30 @@
   animation-fill-mode: forwards;
 }
 
+.MovieCard-inner {
+  cursor: pointer;
+  position: relative;
+  transition: transform 300ms ease;
+}
+
+.MovieCard-inner::before {
+  opacity: 0;
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(transparent, rgba(27, 38, 49, 0.6));
+  top: 0rem;
+  right: 0rem;
+  left: 0rem;
+  bottom: 0rem;
+  border-radius: 2px;
+  z-index: 50;
+  transition: opacity 200ms ease;
+}
+
 .MovieCard-img {
   max-width: 100%;
   display: block;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 .MovieCard-error {
@@ -20,19 +40,31 @@
   align-items: center;
 }
 
-.MovieCard-body {
-  margin-top: 0.6rem;
-}
-
-.MovieCard-sub {
-  color: #85929e;
-  font-size: 1.3rem;
-}
-
 .MovieCard-title {
-  font-weight: 600;
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
   color: inherit;
+  color: #ffffff;
   margin-top: 0.2rem;
+  font-weight: 500;
+  z-index: 100;
+  opacity: 0;
+}
+
+.MovieCard-inner:hover {
+  transform: scale(1.05);
+  transition: transform 300ms ease;
+}
+
+.MovieCard-inner:hover.MovieCard-inner::before {
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
+.MovieCard-inner:hover .MovieCard-title {
+  opacity: 1;
+  transition: opacity 200ms ease;
 }
 
 @keyframes fadeUp {
