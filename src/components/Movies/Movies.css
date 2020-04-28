@@ -1,0 +1,20 @@
+.Movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2rem;
+}
+
+/* @media screen and (min-width: 766px) {
+  .Movies {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+} */
+
+/* @media screen and (min-width: 1024px) {
+  .Movies {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media screen and (min-width: 1266px) {
+} */

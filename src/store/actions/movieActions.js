@@ -3,20 +3,22 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const getPopularMovies = () => {
   return (dispatch, getState) => {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
-      .then((data) => {
-        dispatch({
-          type: "GET_POPULAR_MOVIES",
-          payload: data.data.results,
+    setTimeout(() => {
+      axios
+        .get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
+        .then((data) => {
+          dispatch({
+            type: "GET_POPULAR_MOVIES",
+            payload: data.data.results,
+          });
+        })
+        .catch((error) => {
+          dispatch({
+            type: "GET_POPULAR_MOVIES_ERROR",
+            payload: true,
+          });
         });
-      })
-      .catch((error) => {
-        dispatch({
-          type: "GET_POPULAR_MOVIES_ERROR",
-          payload: true,
-        });
-      });
+    }, 3000);
   };
 };
 

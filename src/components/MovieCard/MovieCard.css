@@ -1,0 +1,47 @@
+.MovieCard {
+  opacity: 0;
+  animation-name: fadeUp;
+  animation-timing-function: ease;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
+}
+
+.MovieCard-img {
+  max-width: 100%;
+  display: block;
+  border-radius: 1px;
+}
+
+.MovieCard-error {
+  width: 100%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MovieCard-body {
+  margin-top: 0.6rem;
+}
+
+.MovieCard-sub {
+  color: #85929e;
+  font-size: 1.3rem;
+}
+
+.MovieCard-title {
+  font-weight: 600;
+  color: inherit;
+  margin-top: 0.2rem;
+}
+
+@keyframes fadeUp {
+  0% {
+    transform: translateY(30px);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
