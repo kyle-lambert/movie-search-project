@@ -1,10 +1,11 @@
-import movieReducer from "./movieReducer";
-import tvReducer from "./tvReducer";
 import { combineReducers } from "redux";
 
+import genreReducer from "./genreReducer";
+import trendReducer from "./trendReducer";
+
 const rootReducer = combineReducers({
-  movies: movieReducer,
-  tv: tvReducer,
+  genres: genreReducer,
+  trending: trendReducer,
 });
 
 export default rootReducer;
