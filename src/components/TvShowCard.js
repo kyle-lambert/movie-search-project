@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   animation-duration: 300ms;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-  animation-delay: ${(props) => `${props.index * 125}ms`};
+  animation-delay: ${(props) => `${props.index * 100}ms`};
   .heading,
   .subheading {
     margin: 0.5rem 0;
@@ -53,6 +53,7 @@ const CardInner = styled.div`
 
   .image {
     max-width: 100%;
+    object-fit: cover;
     display: block;
     border-radius: 2px;
   }
@@ -72,15 +73,15 @@ const NoImage = styled.div`
   background-color: orange;
 `;
 
-function MovieCard({ movie, index, genres }) {
-  const { title, poster_path, genre_ids } = movie;
+function TvShowCard({ show, index, genres }) {
+  const { name, poster_path, genre_ids } = show;
   return (
     <Wrapper index={index}>
       <CardInner>
         {poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={title && title}
+            alt={name && name}
             className="image"
           />
         ) : (
@@ -88,9 +89,9 @@ function MovieCard({ movie, index, genres }) {
         )}
       </CardInner>
       <p className="subheading">{filterGenres(genres, genre_ids)}</p>
-      <p className="heading">{title ? truncateStr(title, 30) : "No title"}</p>
+      <p className="heading">{name ? truncateStr(name, 30) : "No title"}</p>
     </Wrapper>
   );
 }
 
-export default MovieCard;
+export default TvShowCard;

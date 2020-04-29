@@ -8,12 +8,13 @@ import Error from "./Error";
 const Grid = styled.div`
   display: grid;
   gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 `;
 
 function Movies({ genres, movies }) {
   return movies ? (
     <Grid>
-      {movies.map((movie, index) => (
+      {movies.slice(0, 10).map((movie, index) => (
         <MovieCard key={uuidv4()} movie={movie} index={index} genres={genres} />
       ))}
     </Grid>

@@ -17,5 +17,6 @@ export const filterGenres = (genres, ids) => {
   return genres
     .filter((genre) => idSet.has(genre.id))
     .map((genre) => genre.name)
+    .slice(0, 3)
     .join(", ");
 };

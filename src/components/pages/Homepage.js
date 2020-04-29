@@ -1,23 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 
 import { getMovieGenres, getTvGenres } from "../../store/actions/genreActions";
 import {
   getDailyTrendingMovies,
   getDailyTrendingTv,
 } from "../../store/actions/trendActions";
-import colors from "../../styles/colors";
+
 import SectionHeader from "../SectionHeader";
 import Movies from "../Movies";
-
-const Wrapper = styled.div``;
-const Section = styled.section`
-  padding: 4rem 2rem;
-  background-color: ${(props) =>
-    props.light ? colors.pureWhite : colors.royalNavyBlue};
-  color: ${(props) => (props.light ? colors.royalNavyBlue : colors.pureWhite)};
-`;
+import TvShows from "../TvShows";
+import Section from "../../styles/components/Section";
+import Navbar from "../Navbar";
 
 class Homepage extends Component {
   componentDidMount() {
@@ -41,8 +35,9 @@ class Homepage extends Component {
     const { movie_daily, tv_daily } = this.props.trending;
     const { movie, tv } = this.props.genres;
     return (
-      <Wrapper>
-        <Section light>
+      <>
+        <Navbar />
+        <Section>
           <SectionHeader
             heading="Trending Movies to watch now"
             subheading="Most watched movies by the day"
@@ -54,9 +49,9 @@ class Homepage extends Component {
             heading="Trending TV shows currently airing"
             subheading="Most watched TV shows by the day"
           />
-          {/* <Movies genres={movie} movies={movie_daily} /> */}
+          <TvShows genres={tv} shows={tv_daily} />
         </Section>
-      </Wrapper>
+      </>
     );
   }
 }

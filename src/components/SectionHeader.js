@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import colors from "../styles/colors";
+import sizes from "../styles/sizes";
 
 const Wrapper = styled.div`
   position: relative;
@@ -30,7 +31,7 @@ const Wrapper = styled.div`
     transform: translateX(-50%);
   }
 
-  @media screen and (min-width: 766px) {
+  @media screen and (min-width: ${sizes.tablet}) {
     text-align: left;
 
     ::before {
