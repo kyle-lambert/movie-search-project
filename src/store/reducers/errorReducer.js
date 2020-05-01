@@ -11,6 +11,9 @@ import {
   GET_DAILY_TRENDING_TV_ERROR,
   GET_WEEKLY_TRENDING_TV_ERROR,
   GET_TV_GENRES_ERROR,
+  GET_MOVIE_DETAILS_ERROR,
+  GET_TV_DETAILS_ERROR,
+  GET_PERSON_DETAILS_ERROR,
 } from "../types";
 
 const initState = {
@@ -26,6 +29,9 @@ const initState = {
   dailyTrendingTvError: "",
   weeklyTrendingTvError: "",
   tvGenresError: "",
+  movieDetailsError: "",
+  tvDetailsError: "",
+  personDetailsError: "",
 };
 
 const errorReducer = (state = initState, action) => {
@@ -90,6 +96,22 @@ const errorReducer = (state = initState, action) => {
         ...state,
         tvGenresError: action.payload,
       };
+    case GET_MOVIE_DETAILS_ERROR:
+      return {
+        ...state,
+        movieDetailsError: action.payload,
+      };
+    case GET_TV_DETAILS_ERROR:
+      return {
+        ...state,
+        tvDetailsError: action.payload,
+      };
+    case GET_PERSON_DETAILS_ERROR:
+      return {
+        ...state,
+        personDetailsError: action.payload,
+      };
+
     default:
       return state;
   }

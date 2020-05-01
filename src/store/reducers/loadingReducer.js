@@ -11,6 +11,9 @@ import {
   GET_DAILY_TRENDING_TV_LOADING,
   GET_WEEKLY_TRENDING_TV_LOADING,
   GET_TV_GENRES_LOADING,
+  GET_MOVIE_DETAILS_LOADING,
+  GET_TV_DETAILS_LOADING,
+  GET_PERSON_DETAILS_LOADING,
 } from "../types";
 
 const initState = {
@@ -26,6 +29,9 @@ const initState = {
   dailyTrendingTvLoading: false,
   weeklyTrendingTvLoading: false,
   tvGenresLoading: false,
+  movieDetailsLoading: false,
+  tvDetailsLoading: false,
+  personDetailsLoading: false,
 };
 
 const loadingReducer = (state = initState, action) => {
@@ -89,6 +95,21 @@ const loadingReducer = (state = initState, action) => {
       return {
         ...state,
         tvGenresLoading: action.payload,
+      };
+    case GET_MOVIE_DETAILS_LOADING:
+      return {
+        ...state,
+        movieDetailsLoading: action.payload,
+      };
+    case GET_TV_DETAILS_LOADING:
+      return {
+        ...state,
+        tvDetailsLoading: action.payload,
+      };
+    case GET_PERSON_DETAILS_LOADING:
+      return {
+        ...state,
+        personDetailsLoading: action.payload,
       };
     default:
       return state;
