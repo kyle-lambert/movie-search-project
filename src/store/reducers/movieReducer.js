@@ -1,80 +1,53 @@
+import {
+  GET_POPULAR_MOVIES_SUCCESS,
+  GET_TOP_RATED_MOVIES_SUCCESS,
+  GET_NOW_PLAYING_MOVIES_SUCCESS,
+  GET_DAILY_TRENDING_MOVIES_SUCCESS,
+  GET_WEEKLY_TRENDING_MOVIES_SUCCESS,
+  GET_MOVIE_GENRES_SUCCESS,
+} from "../types";
+
 const initState = {
-  popular: {
-    results: [],
-    networkError: null,
-    isLoading: true,
-  },
-  nowPlaying: {
-    results: [],
-    networkError: null,
-    isLoading: true,
-  },
-  topRated: {
-    results: [],
-    networkError: null,
-    isLoading: true,
-  },
+  popular: [],
+  topRated: [],
+  nowPlaying: [],
+  dailyTrending: [],
+  weeklyTrending: [],
+  genres: [],
 };
 
 const movieReducer = (state = initState, action) => {
   switch (action.type) {
-    case "GET_POPULAR_MOVIES":
+    case GET_POPULAR_MOVIES_SUCCESS:
       return {
         ...state,
-        popular: {
-          results: action.payload,
-          networkError: false,
-          isLoading: false,
-        },
+        popular: action.payload,
       };
-    case "GET_POPULAR_MOVIES_ERROR":
+    case GET_TOP_RATED_MOVIES_SUCCESS:
       return {
         ...state,
-        popular: {
-          results: [],
-          networkError: true,
-          isLoading: false,
-        },
+        topRated: action.payload,
       };
-
-    case "GET_NOW_PLAYING_MOVIES":
+    case GET_NOW_PLAYING_MOVIES_SUCCESS:
       return {
         ...state,
-        nowPlaying: {
-          results: action.payload,
-          networkError: false,
-          isLoading: false,
-        },
+        nowPlaying: action.payload,
       };
-    case "GET_NOW_PLAYING_MOVIES_ERROR":
+    case GET_DAILY_TRENDING_MOVIES_SUCCESS:
       return {
         ...state,
-        nowPlaying: {
-          results: [],
-          networkError: true,
-          isLoading: false,
-        },
+        dailyTrending: action.payload,
       };
-
-    case "GET_TOP_RATED_MOVIES":
+    case GET_WEEKLY_TRENDING_MOVIES_SUCCESS:
       return {
         ...state,
-        topRated: {
-          results: action.payload,
-          networkError: false,
-          isLoading: false,
-        },
+        weeklyTrending: action.payload,
       };
-    case "GET_TOP_RATED_MOVIES_ERROR":
+    case GET_MOVIE_GENRES_SUCCESS:
       return {
         ...state,
-        topRated: {
-          results: [],
-          networkError: true,
-          isLoading: false,
-        },
+        genres: action.payload,
       };
-
     default:
       return state;
   }

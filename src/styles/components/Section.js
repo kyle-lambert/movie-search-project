@@ -4,7 +4,6 @@ import colors from "../colors";
 import sizes from "../sizes";
 
 const Section = styled.section`
-  min-height: 100vh;
   padding: 4rem 3rem;
   background-color: ${(props) =>
     props.light ? colors.pureWhite : colors.royalNavyBlue};

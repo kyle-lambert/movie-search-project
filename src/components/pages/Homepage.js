@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getMovieGenres, getTvGenres } from "../../store/actions/genreActions";
 import {
+  getPopularMovies,
+  getTopRatedMovies,
+  getNowPlayingMovies,
   getDailyTrendingMovies,
-  getDailyTrendingTv,
-} from "../../store/actions/trendActions";
+  getWeeklyTrendingMovies,
+  getMovieGenres,
+} from "../../store/actions/movieActions";
 
 import SectionHeader from "../SectionHeader";
 import Movies from "../Movies";
 import TvShows from "../TvShows";
 import Section from "../../styles/components/Section";
-import Navbar from "../Navbar";
+import HeroDisplay from "../HeroDisplay";
 
 class Homepage extends Component {
   componentDidMount() {
@@ -20,24 +23,27 @@ class Homepage extends Component {
 
   init = () => {
     const {
-      getMovieGenres,
-      getTvGenres,
+      getPopularMovies,
+      getTopRatedMovies,
+      getNowPlayingMovies,
       getDailyTrendingMovies,
-      getDailyTrendingTv,
+      getWeeklyTrendingMovies,
+      getMovieGenres,
     } = this.props;
-    getMovieGenres();
-    getTvGenres();
+    getPopularMovies();
+    getTopRatedMovies();
+    getNowPlayingMovies();
     getDailyTrendingMovies();
-    getDailyTrendingTv();
+    getWeeklyTrendingMovies();
+    getMovieGenres();
   };
 
   render() {
-    const { movie_daily, tv_daily } = this.props.trending;
-    const { movie, tv } = this.props.genres;
     return (
       <>
-        <Navbar />
-        <Section>
+        <div>homepage</div>
+        {/* <HeroDisplay items={tv_daily} />
+        <Section light>
           <SectionHeader
             heading="Trending Movies to watch now"
             subheading="Most watched movies by the day"
@@ -50,7 +56,7 @@ class Homepage extends Component {
             subheading="Most watched TV shows by the day"
           />
           <TvShows genres={tv} shows={tv_daily} />
-        </Section>
+        </Section> */}
       </>
     );
   }
@@ -58,17 +64,20 @@ class Homepage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    genres: state.genres,
-    trending: state.trending,
+    movies: state.movies,
+    loading: state.loading,
+    errors: state.errors,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMovieGenres: () => dispatch(getMovieGenres()),
-    getTvGenres: () => dispatch(getTvGenres()),
+    getPopularMovies: () => dispatch(getPopularMovies()),
+    getTopRatedMovies: () => dispatch(getTopRatedMovies()),
+    getNowPlayingMovies: () => dispatch(getNowPlayingMovies()),
     getDailyTrendingMovies: () => dispatch(getDailyTrendingMovies()),
-    getDailyTrendingTv: () => dispatch(getDailyTrendingTv()),
+    getWeeklyTrendingMovies: () => dispatch(getWeeklyTrendingMovies()),
+    getMovieGenres: () => dispatch(getMovieGenres()),
   };
 };
 
