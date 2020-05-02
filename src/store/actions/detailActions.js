@@ -86,31 +86,29 @@ export const getPersonDetails = (personId) => {
       type: GET_PERSON_DETAILS_LOADING,
       payload: true,
     });
-    setTimeout(() => {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY}&language=en-US`
-        )
-        .then((data) => {
-          dispatch({
-            type: GET_PERSON_DETAILS_SUCCESS,
-            payload: data.data,
-          });
-          dispatch({
-            type: GET_PERSON_DETAILS_LOADING,
-            payload: false,
-          });
-        })
-        .catch((error) => {
-          dispatch({
-            type: GET_PERSON_DETAILS_ERROR,
-            payload: error,
-          });
-          dispatch({
-            type: GET_PERSON_DETAILS_LOADING,
-            payload: false,
-          });
+    axios
+      .get(
+        `https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY}&language=en-US`
+      )
+      .then((data) => {
+        dispatch({
+          type: GET_PERSON_DETAILS_SUCCESS,
+          payload: data.data,
         });
-    }, 7000);
+        dispatch({
+          type: GET_PERSON_DETAILS_LOADING,
+          payload: false,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: GET_PERSON_DETAILS_ERROR,
+          payload: error,
+        });
+        dispatch({
+          type: GET_PERSON_DETAILS_LOADING,
+          payload: false,
+        });
+      });
   };
 };

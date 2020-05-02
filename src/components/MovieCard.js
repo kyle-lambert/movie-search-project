@@ -72,8 +72,8 @@ const NoImage = styled.div`
   background-color: orange;
 `;
 
-function MovieCard({ movie, index, genres }) {
-  const { title, poster_path, genre_ids } = movie;
+function MovieCard({ movie, index, movieGenres }) {
+  const { title, poster_path } = movie;
   return (
     <Wrapper index={index}>
       <CardInner>
@@ -87,7 +87,7 @@ function MovieCard({ movie, index, genres }) {
           <NoImage>No Image</NoImage>
         )}
       </CardInner>
-      <p className="subheading">{filterGenres(genres, genre_ids)}</p>
+      {/* <p className="subheading">{filterGenres(genres, genre_ids)}</p> */}
       <p className="heading">{title ? truncateStr(title, 30) : "No title"}</p>
     </Wrapper>
   );

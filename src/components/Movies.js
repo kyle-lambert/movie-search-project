@@ -11,15 +11,20 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 `;
 
-function Movies({ genres, movies }) {
-  return movies ? (
+function Movies({ movieGenres, moviesLoading, movies }) {
+  return moviesLoading ? (
+    <Error message="Sorry, we couldn't find any movies for you..." />
+  ) : (
     <Grid>
       {movies.slice(0, 10).map((movie, index) => (
-        <MovieCard key={uuidv4()} movie={movie} index={index} genres={genres} />
+        <MovieCard
+          key={uuidv4()}
+          movie={movie}
+          index={index}
+          movieGenres={movieGenres}
+        />
       ))}
     </Grid>
-  ) : (
-    <Error message="Sorry, we couldn't find any movies for you..." />
   );
 }
 export default Movies;

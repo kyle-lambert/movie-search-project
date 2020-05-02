@@ -23,7 +23,6 @@ import SectionHeader from "../SectionHeader";
 import Movies from "../Movies";
 import TvShows from "../TvShows";
 import Section from "../../styles/components/Section";
-import HeroDisplay from "../HeroDisplay";
 
 class Homepage extends Component {
   componentDidMount() {
@@ -46,24 +45,20 @@ class Homepage extends Component {
   };
 
   render() {
+    const { movies, loading } = this.props;
     return (
       <>
-        <div>homepage</div>
-        {/* <HeroDisplay items={tv_daily} />
         <Section light>
           <SectionHeader
             heading="Trending Movies to watch now"
             subheading="Most watched movies by the day"
           />
-          <Movies genres={movie} movies={movie_daily} />
-        </Section>
-        <Section>
-          <SectionHeader
-            heading="Trending TV shows currently airing"
-            subheading="Most watched TV shows by the day"
+          <Movies
+            movieGenres={movies.genres}
+            moviesLoading={loading.dailyTrendingMoviesLoading}
+            movies={movies.dailyTrending}
           />
-          <TvShows genres={tv} shows={tv_daily} />
-        </Section> */}
+        </Section>
       </>
     );
   }
