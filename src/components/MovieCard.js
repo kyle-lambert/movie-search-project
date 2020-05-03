@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import { truncateStr, filterGenres } from "../helpers";
 import colors from "../styles/colors";
@@ -55,6 +56,7 @@ const CardInner = styled.div`
     max-width: 100%;
     display: block;
     border-radius: 2px;
+    object-fit: cover;
   }
 
   @keyframes fadeIn {
@@ -72,22 +74,24 @@ const NoImage = styled.div`
   background-color: orange;
 `;
 
-function MovieCard({ movie, index, movieGenres }) {
-  const { title, poster_path } = movie;
+function MovieCard({ movie, index }) {
+  const { title, poster_path, id } = movie;
   return (
     <Wrapper index={index}>
-      <CardInner>
-        {poster_path ? (
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt={title && title}
-            className="image"
-          />
-        ) : (
-          <NoImage>No Image</NoImage>
-        )}
-      </CardInner>
-      {/* <p className="subheading">{filterGenres(genres, genre_ids)}</p> */}
+      <Link to={`/details/movie/${id}`}>
+        <CardInner>
+          {poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt={title && title}
+              className="image"
+            />
+          ) : (
+            <NoImage>No Image</NoImage>
+          )}
+        </CardInner>
+      </Link>
+      <p className="subheading">{filterGenres("movie", movie.genre_ids)}</p>
       <p className="heading">{title ? truncateStr(title, 30) : "No title"}</p>
     </Wrapper>
   );

@@ -11,19 +11,16 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 `;
 
-function Movies({ movieGenres, moviesLoading, movies }) {
-  return moviesLoading ? (
-    <Error message="Sorry, we couldn't find any movies for you..." />
-  ) : (
+function Movies({ moviesLoading, moviesError, movies }) {
+  if (moviesLoading) return <div>loading</div>;
+  if (moviesError) return <div>error</div>;
+  return (
     <Grid>
-      {movies.slice(0, 10).map((movie, index) => (
-        <MovieCard
-          key={uuidv4()}
-          movie={movie}
-          index={index}
-          movieGenres={movieGenres}
-        />
-      ))}
+      {movies
+        .filter((movie) => movie.poster_path)
+        .map((movie, index) => (
+          <MovieCard key={uuidv4()} movie={movie} index={index} />
+        ))}
     </Grid>
   );
 }

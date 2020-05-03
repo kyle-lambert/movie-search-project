@@ -110,28 +110,32 @@ export const getNowPlayingMovies = () => {
 export const getDailyTrendingMovies = () => {
   return (dispatch, getState) => {
     dispatch({ type: GET_DAILY_TRENDING_MOVIES_LOADING, payload: true });
-    axios
-      .get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`)
-      .then((data) => {
-        dispatch({
-          type: GET_DAILY_TRENDING_MOVIES_SUCCESS,
-          payload: data.data.results,
+    setTimeout(() => {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+        )
+        .then((data) => {
+          dispatch({
+            type: GET_DAILY_TRENDING_MOVIES_SUCCESS,
+            payload: data.data.results,
+          });
+          dispatch({
+            type: GET_DAILY_TRENDING_MOVIES_LOADING,
+            payload: false,
+          });
+        })
+        .catch((error) => {
+          dispatch({
+            type: GET_DAILY_TRENDING_MOVIES_ERROR,
+            payload: error,
+          });
+          dispatch({
+            type: GET_DAILY_TRENDING_MOVIES_LOADING,
+            payload: false,
+          });
         });
-        dispatch({
-          type: GET_DAILY_TRENDING_MOVIES_LOADING,
-          payload: false,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: GET_DAILY_TRENDING_MOVIES_ERROR,
-          payload: error,
-        });
-        dispatch({
-          type: GET_DAILY_TRENDING_MOVIES_LOADING,
-          payload: false,
-        });
-      });
+    }, 1500);
   };
 };
 

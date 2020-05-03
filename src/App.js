@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Homepage from "./components/pages/Homepage";
 import Moviepage from "./components/pages/Moviepage";
@@ -35,7 +35,8 @@ const App = () => {
           )
         }
       />
-      <Route component={Errorpage} />
+      <Route exact path="/404" component={Errorpage} />
+      <Route render={() => <Redirect to="/404" />} />
     </Switch>
   );
 };

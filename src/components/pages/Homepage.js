@@ -7,45 +7,21 @@ import {
   getNowPlayingMovies,
   getDailyTrendingMovies,
   getWeeklyTrendingMovies,
-  getMovieGenres,
 } from "../../store/actions/movieActions";
-
-import {
-  getPopularTv,
-  getTopRatedTv,
-  getOnTheAirTv,
-  getDailyTrendingTv,
-  getWeeklyTrendingTv,
-  getTvGenres,
-} from "../../store/actions/tvActions";
 
 import SectionHeader from "../SectionHeader";
 import Movies from "../Movies";
-import TvShows from "../TvShows";
 import Section from "../../styles/components/Section";
 
 class Homepage extends Component {
   componentDidMount() {
-    this.init();
+    if (this.props.movies.dailyTrending.length < 1) {
+      this.props.getDailyTrendingMovies();
+    }
   }
 
-  init = () => {
-    this.props.getPopularMovies();
-    this.props.getTopRatedMovies();
-    this.props.getNowPlayingMovies();
-    this.props.getDailyTrendingMovies();
-    this.props.getWeeklyTrendingMovies();
-    this.props.getMovieGenres();
-    this.props.getPopularTv();
-    this.props.getTopRatedTv();
-    this.props.getOnTheAirTv();
-    this.props.getDailyTrendingTv();
-    this.props.getWeeklyTrendingTv();
-    this.props.getTvGenres();
-  };
-
   render() {
-    const { movies, loading } = this.props;
+    const { movies, loading, errors } = this.props;
     return (
       <>
         <Section light>
@@ -54,8 +30,8 @@ class Homepage extends Component {
             subheading="Most watched movies by the day"
           />
           <Movies
-            movieGenres={movies.genres}
             moviesLoading={loading.dailyTrendingMoviesLoading}
+            moviesError={errors.dailyTrendingMoviesError}
             movies={movies.dailyTrending}
           />
         </Section>
@@ -67,7 +43,6 @@ class Homepage extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies,
-    tv: state.tv,
     loading: state.loading,
     errors: state.errors,
   };
@@ -80,13 +55,6 @@ const mapDispatchToProps = (dispatch) => {
     getNowPlayingMovies: () => dispatch(getNowPlayingMovies()),
     getDailyTrendingMovies: () => dispatch(getDailyTrendingMovies()),
     getWeeklyTrendingMovies: () => dispatch(getWeeklyTrendingMovies()),
-    getMovieGenres: () => dispatch(getMovieGenres()),
-    getPopularTv: () => dispatch(getPopularTv()),
-    getTopRatedTv: () => dispatch(getTopRatedTv()),
-    getOnTheAirTv: () => dispatch(getOnTheAirTv()),
-    getDailyTrendingTv: () => dispatch(getDailyTrendingTv()),
-    getWeeklyTrendingTv: () => dispatch(getWeeklyTrendingTv()),
-    getTvGenres: () => dispatch(getTvGenres()),
   };
 };
 

@@ -4,14 +4,14 @@ import loadingReducer from "../reducers/loadingReducer";
 import errorReducer from "../reducers/errorReducer";
 import movieReducer from "../reducers/movieReducer";
 import tvReducer from "../reducers/tvReducer";
-import detailReducer from "../reducers/detailReducer";
+import movieDetailsReducer from "../reducers/movieDetailsReducer";
 
 const rootReducer = combineReducers({
   movies: movieReducer,
   tv: tvReducer,
   loading: loadingReducer,
   errors: errorReducer,
-  details: detailReducer,
+  movieDetails: movieDetailsReducer,
 });
 
 export default rootReducer;
