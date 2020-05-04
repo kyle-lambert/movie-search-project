@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 
 import {
   getMovieDetails,
   resetMovieDetails,
 } from "../../store/actions/movieDetailsActions";
+import LoadingScreen from "../LoadingScreen";
+import HeroHeader from "../HeroHeader";
 
 class Moviepage extends Component {
   componentDidMount() {
@@ -19,12 +20,15 @@ class Moviepage extends Component {
   render() {
     const { results, loading, error } = this.props.movieDetails;
 
-    if (loading) return <div>loading</div>;
+    if (loading) return <LoadingScreen />;
     return (
-      <>
-        <div>{results.title}</div>
-        <div>id: {results.id}</div>
-      </>
+      <HeroHeader
+        backdropPath={results.backdrop_path ? results.backdrop_path : undefined}
+      />
+      // <>
+      //   <div>{results.title}</div>
+      //   <div>id: {results.id}</div>
+      // </>
     );
   }
 }
