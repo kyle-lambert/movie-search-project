@@ -46,7 +46,7 @@ export const getMovieDetails = (movieId) => {
 
 export const resetMovieDetails = () => {
   return (dispatch, getState) => {
-    console.log("movie details reset");
+    // console.log("movie details reset");
     dispatch({
       type: RESET_MOVIE_DETAILS,
     });

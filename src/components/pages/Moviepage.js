@@ -6,7 +6,7 @@ import {
   resetMovieDetails,
 } from "../../store/actions/movieDetailsActions";
 import LoadingScreen from "../LoadingScreen";
-import HeroHeader from "../HeroHeader";
+import DetailsHero from "../DetailsHero";
 
 class Moviepage extends Component {
   componentDidMount() {
@@ -17,14 +17,26 @@ class Moviepage extends Component {
     this.props.resetMovieDetails();
   }
 
+  getHeroHeaderProps = (results) => {
+    return {
+      backdropPath: results.backdrop_path ? results.backdrop_path : null,
+      title: results.title ? results.title : null,
+      overview: results.overview ? results.overview : null,
+      posterPath: results.poster_path ? results.poster_path : null,
+      genres: results.genres ? results.genres : [],
+      voteAverage: results.vote_average ? results.vote_average : null,
+      voteCount: results.vote_count ? results.vote_count : null,
+      tagline: results.tagline ? results.tagline : null,
+      releaseDate: results.release_date ? results.release_date : null,
+    };
+  };
+
   render() {
     const { results, loading, error } = this.props.movieDetails;
 
     if (loading) return <LoadingScreen />;
     return (
-      <HeroHeader
-        backdropPath={results.backdrop_path ? results.backdrop_path : undefined}
-      />
+      <DetailsHero content={this.getHeroHeaderProps(results)} />
       // <>
       //   <div>{results.title}</div>
       //   <div>id: {results.id}</div>
