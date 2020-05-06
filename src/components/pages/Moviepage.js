@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 import {
   getMovieDetails,
   resetMovieDetails,
 } from "../../store/actions/movieDetailsActions";
 import LoadingScreen from "../LoadingScreen";
-import DetailsHero from "../DetailsHero";
+import Hero from "../Hero";
 
 class Moviepage extends Component {
   componentDidMount() {
@@ -17,17 +18,33 @@ class Moviepage extends Component {
     this.props.resetMovieDetails();
   }
 
-  getHeroHeaderProps = (results) => {
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
+  getHeroProps = (results) => {
     return {
       backdropPath: results.backdrop_path ? results.backdrop_path : null,
       title: results.title ? results.title : null,
-      overview: results.overview ? results.overview : null,
       posterPath: results.poster_path ? results.poster_path : null,
       genres: results.genres ? results.genres : [],
       voteAverage: results.vote_average ? results.vote_average : null,
       voteCount: results.vote_count ? results.vote_count : null,
       tagline: results.tagline ? results.tagline : null,
       releaseDate: results.release_date ? results.release_date : null,
+      overview: results.overview ? results.overview : null,
+    };
+  };
+
+  getSummaryProps = (results) => {
+    return {
+      overview: results.overview ? results.overview : null,
+      releaseDate: results.release_date ? results.release_date : null,
+      runtime: results.runtime ? results.runtime : null,
+      status: results.status ? results.status : null,
+      budget: results.budget ? results.budget : null,
+      revenue: results.revenue ? results.revenue : null,
+      tagline: results.tagline ? results.tagline : null,
     };
   };
 
@@ -36,14 +53,14 @@ class Moviepage extends Component {
 
     if (loading) return <LoadingScreen />;
     return (
-      <DetailsHero content={this.getHeroHeaderProps(results)} />
-      // <>
-      //   <div>{results.title}</div>
-      //   <div>id: {results.id}</div>
-      // </>
+      <Wrapper>
+        <Hero content={this.getHeroProps(results)} goBack={this.goBack} />
+      </Wrapper>
     );
   }
 }
+
+const Wrapper = styled.div``;
 
 const mapStateToProps = (state) => {
   return {

@@ -12,6 +12,25 @@ import {
 import SectionHeader from "../SectionHeader";
 import Movies from "../Movies";
 import Section from "../../styles/components/Section";
+import Slider from "../Slider";
+
+const data = [
+  {
+    id: 0,
+    image:
+      "https://image.tmdb.org/t/p/original/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg",
+  },
+  {
+    id: 1,
+    image:
+      "https://image.tmdb.org/t/p/original/9sXHqZTet3Zg5tgcc0hCDo8Tn35.jpg",
+  },
+  {
+    id: 2,
+    image:
+      "https://image.tmdb.org/t/p/original/ygCVyAfj3xFu1lzma3QUftAttEb.jpg",
+  },
+];
 
 class Homepage extends Component {
   componentDidMount() {
@@ -35,6 +54,7 @@ class Homepage extends Component {
             movies={movies.dailyTrending}
           />
         </Section>
+        {/* <Slider slides={data} /> */}
       </>
     );
   }

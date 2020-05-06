@@ -7,8 +7,17 @@ import Rating from "../components/Rating";
 
 const Wrapper = styled.header`
   flex-grow: 1;
-  padding: 3rem 0;
   color: ${colors.pureWhite};
+  align-self: flex-end;
+
+  .rating-container {
+    margin-bottom: 1.6rem;
+  }
+
+  @media screen and (min-width: ${sizes.tablet}) {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -39,12 +48,7 @@ const Tagline = styled.p`
 
 const Overview = styled.p`
   font-size: 1.8rem;
-  margin-bottom: 1.4rem;
   color: ${colors.pureWhite};
-
-  @media screen and (min-width: ${sizes.tablet}) {
-    width: 90%;
-  }
 
   @media screen and (min-width: ${sizes.laptop}) {
     width: 80%;
@@ -77,9 +81,11 @@ function Header({
         <span className="release-year">{getReleaseYear()}</span>
       </Title>
       <Genres>{getGenres()}</Genres>
-      <Rating voteAverage={voteAverage} voteCount={voteCount} />
+      <div className="rating-container">
+        <Rating voteAverage={voteAverage} voteCount={voteCount} />
+      </div>
       <Tagline>{tagline ? `"${tagline}"` : null}</Tagline>
-      <Overview>{overview ? overview : "No overview"}</Overview>
+      <Overview>{overview ? overview : null}</Overview>
     </Wrapper>
   );
 }

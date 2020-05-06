@@ -4,8 +4,8 @@ import sizes from "../sizes";
 
 const ResponsiveContainer = styled.div`
   padding: 3rem;
-  height: 100%;
   width: 100%;
+  height: 100%;
 
   @media screen and (min-width: ${sizes.tablet}) {
     padding: 4rem 6rem;

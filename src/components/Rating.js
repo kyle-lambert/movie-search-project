@@ -6,11 +6,10 @@ import colors from "../styles/colors";
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1.6rem;
   font-size: inherit;
 
   .average {
-    margin-right: 0.8rem;
+    margin-right: 1rem;
     padding: 0.4rem 0.6rem;
     border: 3px solid ${colors.smurfBlue};
     border-radius: 10px;
@@ -33,7 +32,7 @@ function Rating({ voteAverage, voteCount }) {
         {voteAverage ? `${voteAverage} / 10` : "0 / 10"}
       </div>
       <div className="count">
-        {voteCount ? `${voteCount} votes` : "0 votes"}
+        {voteCount ? `${voteCount} votes` : "No votes"}
       </div>
     </Wrapper>
   );

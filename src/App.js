@@ -7,15 +7,18 @@ import Tvpage from "./components/pages/Tvpage";
 import Personpage from "./components/pages/Personpage";
 import Errorpage from "./components/pages/Errorpage";
 
-const renderMatchedPage = (type, id) => {
-  type = type.trim().toLowerCase();
+const renderMatchedPage = (routeProps) => {
+  const type = routeProps.match.params.type.trim().toLowerCase();
+  const id = routeProps.match.params.id;
+  const history = routeProps.history;
+
   switch (type) {
     case "movie":
-      return <Moviepage movieId={id} />;
+      return <Moviepage movieId={id} history={history} />;
     case "tv":
-      return <Tvpage tvId={id} />;
+      return <Tvpage tvId={id} history={history} />;
     case "person":
-      return <Personpage personId={id} />;
+      return <Personpage personId={id} history={history} />;
     default:
       return <Errorpage />;
   }
@@ -28,12 +31,7 @@ const App = () => {
       <Route
         exact
         path="/details/:type/:id"
-        render={(routeProps) =>
-          renderMatchedPage(
-            routeProps.match.params.type,
-            routeProps.match.params.id
-          )
-        }
+        render={(routeProps) => renderMatchedPage(routeProps)}
       />
       <Route exact path="/404" component={Errorpage} />
       <Route render={() => <Redirect to="/404" />} />
