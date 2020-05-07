@@ -8,8 +8,16 @@ import {
 } from "../../store/actions/movieDetailsActions";
 import LoadingScreen from "../LoadingScreen";
 import Hero from "../Hero";
+import Credits from "../Credits";
 
 class Moviepage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeTab: "cast",
+    };
+  }
+
   componentDidMount() {
     this.props.getMovieDetails(this.props.movieId);
   }
@@ -20,6 +28,10 @@ class Moviepage extends Component {
 
   goBack = () => {
     this.props.history.goBack();
+  };
+
+  changeTab = (name) => {
+    this.setState({ activeTab: name });
   };
 
   getHeroProps = (results) => {
@@ -36,25 +48,20 @@ class Moviepage extends Component {
     };
   };
 
-  getSummaryProps = (results) => {
-    return {
-      overview: results.overview ? results.overview : null,
-      releaseDate: results.release_date ? results.release_date : null,
-      runtime: results.runtime ? results.runtime : null,
-      status: results.status ? results.status : null,
-      budget: results.budget ? results.budget : null,
-      revenue: results.revenue ? results.revenue : null,
-      tagline: results.tagline ? results.tagline : null,
-    };
-  };
-
   render() {
     const { results, loading, error } = this.props.movieDetails;
+    const { activeTab } = this.state;
 
     if (loading) return <LoadingScreen />;
     return (
       <Wrapper>
         <Hero content={this.getHeroProps(results)} goBack={this.goBack} />
+        <Credits
+          activeTab={activeTab}
+          changeTab={this.changeTab}
+          cast={results.credits.cast}
+          crew={results.credits.crew}
+        />
       </Wrapper>
     );
   }

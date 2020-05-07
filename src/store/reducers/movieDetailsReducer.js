@@ -7,7 +7,7 @@ import {
 
 const initState = {
   results: [],
-  loading: false,
+  loading: true,
   error: "",
 };
 

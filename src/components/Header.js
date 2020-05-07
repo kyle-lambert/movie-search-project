@@ -5,9 +5,43 @@ import colors from "../styles/colors";
 import sizes from "../styles/sizes";
 import Rating from "../components/Rating";
 
+function Header({
+  title,
+  overview,
+  genres,
+  voteAverage,
+  voteCount,
+  tagline,
+  releaseDate,
+}) {
+  const getGenres = () => {
+    if (!genres) return "No genres available";
+    return genres.map((genre) => genre.name).join(", ");
+  };
+
+  const getReleaseYear = () => {
+    if (!releaseDate) return null;
+    return `(${releaseDate.slice(0, 4)})`;
+  };
+
+  return (
+    <Wrapper>
+      <Title>
+        {title ? title : "No title"}
+        <span className="release-year">{getReleaseYear()}</span>
+      </Title>
+      <Genres>{getGenres()}</Genres>
+      <div className="rating-container">
+        <Rating voteAverage={voteAverage} voteCount={voteCount} />
+      </div>
+      <Tagline>{tagline ? `"${tagline}"` : null}</Tagline>
+      <Overview>{overview ? overview : null}</Overview>
+    </Wrapper>
+  );
+}
+
 const Wrapper = styled.header`
   flex-grow: 1;
-  color: ${colors.pureWhite};
   align-self: flex-end;
 
   .rating-container {
@@ -48,46 +82,10 @@ const Tagline = styled.p`
 
 const Overview = styled.p`
   font-size: 1.8rem;
-  color: ${colors.pureWhite};
 
   @media screen and (min-width: ${sizes.laptop}) {
     width: 80%;
   }
 `;
-
-function Header({
-  title,
-  overview,
-  genres,
-  voteAverage,
-  voteCount,
-  tagline,
-  releaseDate,
-}) {
-  const getGenres = () => {
-    if (!genres) return "No genres available";
-    return genres.map((genre) => genre.name).join(", ");
-  };
-
-  const getReleaseYear = () => {
-    if (!releaseDate) return null;
-    return `(${releaseDate.slice(0, 4)})`;
-  };
-
-  return (
-    <Wrapper>
-      <Title>
-        {title ? title : "No title"}
-        <span className="release-year">{getReleaseYear()}</span>
-      </Title>
-      <Genres>{getGenres()}</Genres>
-      <div className="rating-container">
-        <Rating voteAverage={voteAverage} voteCount={voteCount} />
-      </div>
-      <Tagline>{tagline ? `"${tagline}"` : null}</Tagline>
-      <Overview>{overview ? overview : null}</Overview>
-    </Wrapper>
-  );
-}
 
 export default Header;

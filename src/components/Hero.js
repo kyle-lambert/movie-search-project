@@ -17,7 +17,10 @@ const Wrapper = styled.div`
 
   ::after {
     content: "";
-    background-color: rgba(27, 38, 49, 0.9);
+    background-image: linear-gradient(
+      rgba(27, 38, 49, 0.5) 0,
+      rgba(27, 38, 49, 1) 95%
+    );
     position: absolute;
     top: 0;
     left: 0;

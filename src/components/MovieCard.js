@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   animation-timing-function: ease;
   animation-fill-mode: forwards;
   animation-delay: ${(props) => `${props.index * 125}ms`};
+
   .heading,
   .subheading {
     margin: 0.5rem 0;
@@ -31,7 +32,6 @@ const CardInner = styled.div`
   position: relative;
   z-index: 10;
   overflow: hidden;
-  display: inline-block;
   cursor: pointer;
 
   ::after {
