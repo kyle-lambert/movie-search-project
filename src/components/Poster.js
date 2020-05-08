@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   ${(props) =>
     props.posterPath
       ? `background-image: url(https://image.tmdb.org/t/p/original/${props.posterPath});`
-      : `background-color: ${colors.lightGrey};`}
+      : `background-color: ${colors.lightMetalGrey};`}
 
   @media screen and (min-width: ${sizes.tablet}) {
     display: flex;

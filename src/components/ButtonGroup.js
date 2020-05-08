@@ -40,7 +40,7 @@ const Wrapper = styled.div`
 
   .slash {
     display: inline-block;
-    width: 2rem;
+    margin: 0 1rem;
     text-align: center;
   }
 
@@ -55,7 +55,7 @@ const Button = styled.button`
   cursor: ${(props) => (props.active ? "auto" : "pointer")};
   font-size: 1.8rem;
   display: inline-block;
-  width: 8rem;
+  padding: 0.5rem;
   font-weight: ${(props) => (props.active ? "500" : "300")};
   color: ${(props) =>
     `${props.active ? `${colors.smurfBlue};` : `${colors.lightMetalGrey}`}`};

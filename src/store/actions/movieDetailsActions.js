@@ -18,7 +18,7 @@ export const getMovieDetails = (movieId) => {
     setTimeout(() => {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar`
+          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar,recommendations`
         )
         .then((data) => {
           dispatch({
@@ -40,7 +40,7 @@ export const getMovieDetails = (movieId) => {
             payload: false,
           });
         });
-    }, 1000);
+    }, 1500);
   };
 };
 

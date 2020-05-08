@@ -8,7 +8,7 @@ function HeadingGroup({ heading, subheading }) {
   return (
     <Wrapper>
       <Heading>{heading}</Heading>
-      <Subheading>{subheading ? subheading : null}</Subheading>
+      {subheading && <Subheading>{subheading}</Subheading>}
     </Wrapper>
   );
 }
