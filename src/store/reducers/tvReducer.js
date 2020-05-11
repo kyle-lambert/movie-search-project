@@ -4,7 +4,6 @@ import {
   GET_ON_THE_AIR_TV_SUCCESS,
   GET_DAILY_TRENDING_TV_SUCCESS,
   GET_WEEKLY_TRENDING_TV_SUCCESS,
-  GET_TV_GENRES_SUCCESS,
 } from "../types";
 
 const initState = {
@@ -42,11 +41,6 @@ const tvReducer = (state = initState, action) => {
       return {
         ...state,
         weeklyTrending: action.payload,
-      };
-    case GET_TV_GENRES_SUCCESS:
-      return {
-        ...state,
-        genres: action.payload,
       };
     default:
       return state;

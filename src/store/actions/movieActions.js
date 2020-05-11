@@ -6,19 +6,16 @@ import {
   GET_NOW_PLAYING_MOVIES_SUCCESS,
   GET_DAILY_TRENDING_MOVIES_SUCCESS,
   GET_WEEKLY_TRENDING_MOVIES_SUCCESS,
-  GET_MOVIE_GENRES_SUCCESS,
   GET_POPULAR_MOVIES_LOADING,
   GET_TOP_RATED_MOVIES_LOADING,
   GET_NOW_PLAYING_MOVIES_LOADING,
   GET_DAILY_TRENDING_MOVIES_LOADING,
   GET_WEEKLY_TRENDING_MOVIES_LOADING,
-  GET_MOVIE_GENRES_LOADING,
   GET_POPULAR_MOVIES_ERROR,
   GET_TOP_RATED_MOVIES_ERROR,
   GET_NOW_PLAYING_MOVIES_ERROR,
   GET_DAILY_TRENDING_MOVIES_ERROR,
   GET_WEEKLY_TRENDING_MOVIES_ERROR,
-  GET_MOVIE_GENRES_ERROR,
 } from "../types";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -163,36 +160,6 @@ export const getWeeklyTrendingMovies = () => {
         });
         dispatch({
           type: GET_WEEKLY_TRENDING_MOVIES_LOADING,
-          payload: false,
-        });
-      });
-  };
-};
-
-export const getMovieGenres = () => {
-  return (dispatch, getState) => {
-    dispatch({ type: GET_MOVIE_GENRES_LOADING, payload: true });
-    axios
-      .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
-      )
-      .then((data) => {
-        dispatch({
-          type: GET_MOVIE_GENRES_SUCCESS,
-          payload: data.data.genres,
-        });
-        dispatch({
-          type: GET_MOVIE_GENRES_LOADING,
-          payload: false,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: GET_MOVIE_GENRES_ERROR,
-          payload: error,
-        });
-        dispatch({
-          type: GET_MOVIE_GENRES_LOADING,
           payload: false,
         });
       });

@@ -5,15 +5,23 @@ import { v4 as uuidv4 } from "uuid";
 import colors from "../styles/colors";
 
 import CarouselCard from "./CarouselCard";
+import ContentError from "./ContentError";
 
 function Carousel({ content, type, accentColor }) {
   return (
     <Wrapper accentColor={accentColor}>
-      <Track>
-        {content.map((item) => (
-          <CarouselCard key={uuidv4()} item={item} type={type} />
-        ))}
-      </Track>
+      {content && content.length > 0 ? (
+        <Track>
+          {content.map((item) => (
+            <CarouselCard key={uuidv4()} item={item} type={type} />
+          ))}
+        </Track>
+      ) : (
+        <ContentError
+          minHeight={300}
+          message={`Bummer, we couldn't find any information about the movies.`}
+        />
+      )}
     </Wrapper>
   );
 }
