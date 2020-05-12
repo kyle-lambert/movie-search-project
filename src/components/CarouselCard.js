@@ -53,7 +53,7 @@ const Wrapper = styled.div`
   ${(props) =>
     props.path
       ? `background-image: url(https://image.tmdb.org/t/p/w500/${props.path});`
-      : `background-color: ${colors.lightMetalGrey};`}
+      : `background-color: ${colors.BACKGROUND_SECONDARY};`}
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -66,21 +66,6 @@ const Wrapper = styled.div`
   overflow: hidden;
   cursor: pointer;
 
-  ::after {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-    border-radius: 2px;
-    z-index: 25;
-    background-image: linear-gradient(
-      transparent 0%,
-      rgba(27, 38, 49, 0.8) 80%
-    );
-  }
-
   ::before {
     content: "";
     position: absolute;
@@ -88,9 +73,8 @@ const Wrapper = styled.div`
     left: -1px;
     right: -1px;
     bottom: -1px;
-    border-radius: 2px;
     z-index: 20;
-    background-color: ${colors.smurfBlueTransparent};
+    background-image: linear-gradient(transparent, ${colors.BRAND_PRIMARY});
     opacity: 0;
     transition: opacity 200ms ease;
   }
@@ -98,6 +82,10 @@ const Wrapper = styled.div`
   :hover::before {
     opacity: 1;
     transition: opacity 200ms ease;
+  }
+
+  :hover .infobox {
+    opacity: 1;
   }
 
   &:first-child {
@@ -111,12 +99,13 @@ const Wrapper = styled.div`
 
 const Heading = styled.p`
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: ${colors.TEXT_PRIMARY_LIGHT};
 `;
 const Sub = styled.p`
   font-size: 1.5rem;
   margin-top: 0.3rem;
-  color: ${colors.lightMetalGrey};
+  color: ${colors.TEXT_PRIMARY_DARK};
 `;
 const Inner = styled.div`
   display: flex;
@@ -131,12 +120,13 @@ const Inner = styled.div`
     bottom: 0;
     right: 0;
     z-index: 35;
-    padding: 1.6rem;
+    padding: 1.4rem;
+    opacity: 0;
+    transition: opacity 200ms ease;
   }
 `;
 
 const ErrorText = styled.p`
-  color: ${colors.royalNavyBlue};
+  color: ${colors.TEXT_SECONDARY};
 `;
-
 export default CarouselCard;

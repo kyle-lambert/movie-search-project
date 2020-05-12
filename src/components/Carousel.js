@@ -28,7 +28,7 @@ function Carousel({ content, type, accentColor }) {
 
 const Wrapper = styled.div`
   position: relative;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   min-height: 300px;
 
   ::before {

@@ -17,19 +17,20 @@ function ContentError({ minHeight, message }) {
 
 const Wrapper = styled.div`
   min-height: ${(props) => `${props.minHeight}px`};
-  margin-top: 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${colors.BACKGROUND_SECONDARY};
+  border-radius: 2px;
 `;
 
 const Sadface = styled.div`
   display: inline-block;
-  margin: 2rem;
+  margin: 1.5rem;
   font-size: 5rem;
-  color: ${colors.smurfBlue};
+  color: ${colors.BRAND_SECONDARY};
 `;
 
 const Message = styled.p`

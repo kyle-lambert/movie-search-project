@@ -58,7 +58,7 @@ const Button = styled.button`
   padding: 0.5rem;
   font-weight: ${(props) => (props.active ? "500" : "300")};
   color: ${(props) =>
-    `${props.active ? `${colors.smurfBlue};` : `${colors.lightMetalGrey}`}`};
+    `${props.active ? "#00BFFF" : `${colors.lightMetalGrey}`}`};
   background-color: transparent;
 
   :hover {

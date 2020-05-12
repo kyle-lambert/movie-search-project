@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import styled, { ThemeConsumer } from "styled-components";
 
 import sizes from "../../styles/sizes";
 import colors from "../../styles/colors";
@@ -13,12 +13,15 @@ import {
   getWeeklyTrendingMovies,
 } from "../../store/actions/movieActions";
 
-import HeadingGroup from "../HeadingGroup";
-import Carousel from "../Carousel";
-import ContentError from "../ContentError";
-import ContentLoading from "../ContentLoading";
-import SectionSpacer from "../../styles/components/SectionSpacer";
-import ButtonGroup from "../ButtonGroup";
+import {
+  getPopularTv,
+  getTopRatedTv,
+  getOnTheAirTv,
+  getDailyTrendingTv,
+  getWeeklyTrendingTv,
+} from "../../store/actions/tvActions";
+
+import ShowcaseContent from "../ShowcaseContent";
 
 class Homepage extends Component {
   constructor(props) {
@@ -33,56 +36,28 @@ class Homepage extends Component {
       this.props.getPopularMovies();
       this.props.getTopRatedMovies();
       this.props.getNowPlayingMovies();
-    }, 2500);
+      this.props.getPopularTv();
+      this.props.getTopRatedTv();
+      this.props.getOnTheAirTv();
+    }, 1000);
   }
 
-  carouselJSX = (type) => {
-    const { movies } = this.props;
-    const { activeTab } = this.state;
-
-    if (activeTab === "movie") {
-      if (movies[type].loading) return <ContentLoading minHeight={300} />;
-      if (movies[type].error) return <ContentError minHeight={300} />;
-      return (
-        <Carousel
-          accentColor={colors.royalNavyBlue}
-          content={movies[type].data}
-          type="movie"
-        />
-      );
-    } else if (activeTab === "tv") {
-    } else {
-    }
+  changeTab = (name) => {
+    this.setState({ activeTab: name });
   };
 
   render() {
-    const { movies } = this.props;
+    const { movies, tv } = this.props;
     const { activeTab } = this.state;
     return (
       <Wrapper>
         <section className="section">
-          <div className="section-head">
-            <HeadingGroup
-              heading="Discover"
-              subheading="Browse a collection of the latest and greatest movies."
-            />
-            <ButtonGroup activeTab={activeTab} tabs={["movies", "tv shows"]} />
-          </div>
-
-          <div className="showcase">
-            <HeadingGroup heading="Popular" />
-            {this.carouselJSX("popular")}
-          </div>
-          <SectionSpacer />
-          <div className="showcase">
-            <HeadingGroup heading="Top Rated" />
-            {this.carouselJSX("topRated")}
-          </div>
-          <SectionSpacer />
-          <div className="showcase">
-            <HeadingGroup heading="Now Playing" />
-            {this.carouselJSX("nowPlaying")}
-          </div>
+          <ShowcaseContent
+            activeTab={activeTab}
+            changeTab={this.changeTab}
+            movies={movies}
+            tv={tv}
+          />
         </section>
       </Wrapper>
     );
@@ -104,13 +79,14 @@ const Wrapper = styled.div`
   }
 
   .showcase {
-    padding: 2rem 0;
+    margin: 2rem 0;
   }
 `;
 
 const mapStateToProps = (state) => {
   return {
     movies: state.movies,
+    tv: state.tv,
   };
 };
 
@@ -121,25 +97,12 @@ const mapDispatchToProps = (dispatch) => {
     getNowPlayingMovies: () => dispatch(getNowPlayingMovies()),
     getDailyTrendingMovies: () => dispatch(getDailyTrendingMovies()),
     getWeeklyTrendingMovies: () => dispatch(getWeeklyTrendingMovies()),
+    getPopularTv: () => dispatch(getPopularTv()),
+    getTopRatedTv: () => dispatch(getTopRatedTv()),
+    getOnTheAirTv: () => dispatch(getOnTheAirTv()),
+    getDailyTrendingTv: () => dispatch(getDailyTrendingTv()),
+    getWeeklyTrendingTv: () => dispatch(getWeeklyTrendingTv()),
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
-
-const data = [
-  {
-    id: 0,
-    image:
-      "https://image.tmdb.org/t/p/original/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg",
-  },
-  {
-    id: 1,
-    image:
-      "https://image.tmdb.org/t/p/original/9sXHqZTet3Zg5tgcc0hCDo8Tn35.jpg",
-  },
-  {
-    id: 2,
-    image:
-      "https://image.tmdb.org/t/p/original/ygCVyAfj3xFu1lzma3QUftAttEb.jpg",
-  },
-];

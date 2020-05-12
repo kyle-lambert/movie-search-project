@@ -19,7 +19,8 @@ const Wrapper = styled.div`
   align-items: center;
   min-height: ${(props) => `${props.minHeight}px`};
   width: 100%;
-  background-color: ${colors.royalNavyBlue};
+  background-color: ${colors.BACKGROUND_SECONDARY};
+  border-radius: 2px;
 
   .dot-1,
   .dot-2,
@@ -27,7 +28,7 @@ const Wrapper = styled.div`
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: ${colors.smurfBlue};
+    background-color: ${colors.BRAND_SECONDARY};
     margin: 1rem;
     border-radius: 50%;
     animation-name: breathe;
