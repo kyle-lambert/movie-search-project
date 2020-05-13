@@ -90,9 +90,9 @@ function MovieCard({ movie, index }) {
             <NoImage>No Image</NoImage>
           )}
         </CardInner>
+        <p className="subheading">{filterGenres("movie", movie.genre_ids)}</p>
+        <p className="heading">{title ? truncateStr(title, 30) : "No title"}</p>
       </Link>
-      <p className="subheading">{filterGenres("movie", movie.genre_ids)}</p>
-      <p className="heading">{title ? truncateStr(title, 30) : "No title"}</p>
     </Wrapper>
   );
 }

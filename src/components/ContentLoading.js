@@ -6,22 +6,16 @@ import colors from "../styles/colors";
 function LoadingScreen({ minHeight }) {
   return (
     <Wrapper minHeight={minHeight}>
-      <div className="dot-1"></div>
-      <div className="dot-2"></div>
-      <div className="dot-3"></div>
+      <Dots>
+        <div className="dot-1"></div>
+        <div className="dot-2"></div>
+        <div className="dot-3"></div>
+      </Dots>
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: ${(props) => `${props.minHeight}px`};
-  width: 100%;
-  background-color: ${colors.BACKGROUND_SECONDARY};
-  border-radius: 2px;
-
+const Dots = styled.div`
   .dot-1,
   .dot-2,
   .dot-3 {
@@ -63,6 +57,16 @@ const Wrapper = styled.div`
       opacity: 0.5;
     }
   }
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: ${(props) => `${props.minHeight}px`};
+  width: 100%;
+  background-color: ${colors.BACKGROUND_SECONDARY};
+  border-radius: 2px;
 `;
 
 export default LoadingScreen;

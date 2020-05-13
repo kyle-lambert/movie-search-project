@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 
 import colors from "../styles/colors";
@@ -8,8 +8,12 @@ import Carousel from "./Carousel";
 import ContentError from "./ContentError";
 import ContentLoading from "./ContentLoading";
 
-function ShowcaseContent({ activeTab, changeTab, movies, tv }) {
-  const carouselMovieJSX = () => {
+class ShowcaseContent extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  carouselMovieJSX = () => {
     return (
       <>
         <Showcase>
@@ -17,7 +21,7 @@ function ShowcaseContent({ activeTab, changeTab, movies, tv }) {
             heading="Popular"
             subheading="Browse an up-to-date collection of the most popular movies."
           />
-          {showMovieCarousel("popular")}
+          {this.showMovieCarousel("popular")}
         </Showcase>
 
         <Showcase>
@@ -25,20 +29,20 @@ function ShowcaseContent({ activeTab, changeTab, movies, tv }) {
             heading="Top Rated"
             subheading="Discover the most highly rated movies of all-time."
           />
-          {showMovieCarousel("topRated")}
+          {this.showMovieCarousel("topRated")}
         </Showcase>
         <Showcase>
           <HeadingGroup
             heading="Now Playing"
             subheading="Find out which movies are currently in cinemas."
           />
-          {showMovieCarousel("nowPlaying")}
+          {this.showMovieCarousel("nowPlaying")}
         </Showcase>
       </>
     );
   };
 
-  const carouselTvJSX = () => {
+  carouselTvJSX = () => {
     return (
       <>
         <Showcase>
@@ -46,33 +50,34 @@ function ShowcaseContent({ activeTab, changeTab, movies, tv }) {
             heading="Popular"
             subheading="Browse an up-to-date collection of the most popular televison shows."
           />
-          {showTvCarousel("popular")}
+          {this.showTvCarousel("popular")}
         </Showcase>
         <Showcase>
           <HeadingGroup
             heading="Top Rated"
             subheading="Discover the most highly rated televison shows of all-time."
           />
-          {showTvCarousel("topRated")}
+          {this.showTvCarousel("topRated")}
         </Showcase>
         <Showcase>
           <HeadingGroup
             heading="On The Air"
             subheading="Find out which televison shows are currently airing."
           />
-          {showTvCarousel("onTheAir")}
+          {this.showTvCarousel("onTheAir")}
         </Showcase>
       </>
     );
   };
 
-  const showMovieCarousel = (type) => {
+  showMovieCarousel = (type) => {
+    const { movies } = this.props;
     if (movies[type].loading) return <ContentLoading minHeight={300} />;
     if (movies[type].error)
       return (
         <ContentError
           minHeight={300}
-          message="Oh no! We were unable to retieve these shows for you, sorry about that!"
+          message="Oh no! There was a network error when processing this request..."
         />
       );
     return (
@@ -84,13 +89,14 @@ function ShowcaseContent({ activeTab, changeTab, movies, tv }) {
     );
   };
 
-  const showTvCarousel = (type) => {
+  showTvCarousel = (type) => {
+    const { tv } = this.props;
     if (tv[type].loading) return <ContentLoading minHeight={300} />;
     if (tv[type].error)
       return (
         <ContentError
           minHeight={300}
-          message="Oh no! We were unable to retieve these shows for you, sorry about that!"
+          message="Oh no! There was a network error when processing this request..."
         />
       );
     return (
@@ -102,30 +108,30 @@ function ShowcaseContent({ activeTab, changeTab, movies, tv }) {
     );
   };
 
-  const handleClick = (e) => {
-    changeTab(e.target.name);
-  };
-  return (
-    <Wrapper>
-      <ContentToggle>
-        <button
-          disabled={activeTab === "movie" ? true : false}
-          onClick={handleClick}
-          name="movie"
-          className={`btn left ${activeTab === "movie" ? "active" : null}`}>
-          Movies
-        </button>
-        <button
-          disabled={activeTab === "tv" ? true : false}
-          onClick={handleClick}
-          name="tv"
-          className={`btn right ${activeTab === "tv" ? "active" : null}`}>
-          TV Shows
-        </button>
-      </ContentToggle>
-      {activeTab === "movie" ? carouselMovieJSX() : carouselTvJSX()}
-    </Wrapper>
-  );
+  render() {
+    const { activeTab, changeTab } = this.props;
+    return (
+      <Wrapper>
+        <ContentToggle>
+          <button
+            disabled={activeTab === "movie" ? true : false}
+            onClick={(e) => changeTab(e.target.name)}
+            name="movie"
+            className={`btn left ${activeTab === "movie" ? "active" : null}`}>
+            Movies
+          </button>
+          <button
+            disabled={activeTab === "tv" ? true : false}
+            onClick={(e) => changeTab(e.target.name)}
+            name="tv"
+            className={`btn right ${activeTab === "tv" ? "active" : null}`}>
+            TV Shows
+          </button>
+        </ContentToggle>
+        {activeTab === "movie" ? this.carouselMovieJSX() : this.carouselTvJSX()}
+      </Wrapper>
+    );
+  }
 }
 
 const Wrapper = styled.div``;

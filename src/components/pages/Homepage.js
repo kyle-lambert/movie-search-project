@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styled, { ThemeConsumer } from "styled-components";
+import styled from "styled-components";
 
 import sizes from "../../styles/sizes";
 import colors from "../../styles/colors";
@@ -31,15 +31,38 @@ class Homepage extends Component {
     };
   }
 
+  shouldFetchMovies = () => {
+    const { movies } = this.props;
+    return (
+      movies.popular.data === null &&
+      movies.topRated.data === null &&
+      movies.nowPlaying.data === null
+    );
+  };
+
+  shouldFetchTv = () => {
+    const { tv } = this.props;
+    return (
+      tv.popular.data === null &&
+      tv.topRated.data === null &&
+      tv.onTheAir.data === null
+    );
+  };
+
   componentDidMount() {
-    setTimeout(() => {
+    if (this.shouldFetchMovies()) {
       this.props.getPopularMovies();
       this.props.getTopRatedMovies();
       this.props.getNowPlayingMovies();
+      console.log("fetched movies");
+    }
+
+    if (this.shouldFetchTv()) {
       this.props.getPopularTv();
       this.props.getTopRatedTv();
       this.props.getOnTheAirTv();
-    }, 1000);
+      console.log("fetched tv");
+    }
   }
 
   changeTab = (name) => {
