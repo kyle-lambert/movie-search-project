@@ -1,0 +1,24 @@
+pages
+  HomeContainer
+  SearchContainer
+  MovieContainer
+  TVContainer
+  PersonContainer
+
+MovieContainer
+  Movie
+    Navbar
+    Hero
+      Poster
+      MovieSummary
+    Cast
+      HeadingBar
+
+    Similar
+    Recommendations
+    Footer
+  LoadingScreen
+    LoadingAnimation
+  ErrorScreen
+
+

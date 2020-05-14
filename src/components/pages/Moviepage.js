@@ -187,7 +187,7 @@ const Wrapper = styled.div`
       @media screen and (min-width: ${sizes.tablet}) {
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
       }
     }
   }
