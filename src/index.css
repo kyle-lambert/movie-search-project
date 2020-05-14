@@ -1,14 +1,28 @@
-/* @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:300,400,500&display=swap"); */
-
-/* dark navy = #1b2631 */
-/* lighter navy = #212f3d*/
-
 *,
 *::before,
 *::after {
   padding: 0;
   margin: 0;
   box-sizing: inherit;
+}
+
+:root {
+  --text-primary-light: #ffffff;
+  --text-primary-dark: #17202a;
+  --text-secondary: #85929e;
+  --background-primary-light: #ffffff;
+  --background-primary-dark: #1b2631;
+  --background-secondary: #212f3c;
+  --brand-primary: #66cdaa;
+  --brand-secondary: #8fbc8b;
+
+  --mobile-small: 320px;
+  --mobile-medium: 375px;
+  --mobile-large: 425px;
+  --tablet: 768px;
+  --laptop: 1024px;
+  --laptop-large: 1440px;
+  --desktop: 2560px;
 }
 
 html {
@@ -21,72 +35,6 @@ body {
     Helvetica Neue, Arial, sans-serif, sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
-  color: #ffffff;
-  background-color: #1b2631;
+  color: var(--text-primary-light);
+  background-color: var(--background-primary-dark);
 }
-/* 
-h1,
-h2,
-h3 {
-  line-height: 1.3;
-  font-weight: 400;
-  margin-bottom: 1.2rem;
-}
-
-h1 {
-  font-size: 3.4rem;
-}
-
-h2 {
-  font-size: 2.4rem;
-}
-
-h3 {
-  font-size: 2rem;
-}
-
-p {
-  margin: 0.3rem 0;
-}
-
-@media screen and (min-width: 768px) {
-  h1 {
-    font-size: 3.8rem;
-  }
-
-  h2 {
-    font-size: 2.8rem;
-  }
-
-  h3 {
-    font-size: 2.4rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  h1 {
-    font-size: 4rem;
-  }
-
-  h2 {
-    font-size: 3rem;
-  }
-
-  h3 {
-    font-size: 2.6rem;
-  }
-}
-
-@media screen and (min-width: 1266px) {
-  h1 {
-    font-size: 4.2rem;
-  }
-
-  h2 {
-    font-size: 3.2rem;
-  }
-
-  h3 {
-    font-size: 2.8rem;
-  }
-} */

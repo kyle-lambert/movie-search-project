@@ -9,16 +9,12 @@ import {
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export const getMovieDetails = (movieId) => {
+export const getMovieDetails = (contentId) => {
   return (dispatch, getState) => {
-    dispatch({
-      type: GET_MOVIE_DETAILS_LOADING,
-      payload: true,
-    });
     setTimeout(() => {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar,recommendations`
+          `https://api.themoviedb.org/3/movie/${contentId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar,recommendations`
         )
         .then((data) => {
           dispatch({
@@ -40,7 +36,7 @@ export const getMovieDetails = (movieId) => {
             payload: false,
           });
         });
-    }, 1500);
+    }, 1000);
   };
 };
 

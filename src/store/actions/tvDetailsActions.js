@@ -9,16 +9,12 @@ import {
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export const getTvDetails = (movieId) => {
+export const getTvDetails = (contentId) => {
   return (dispatch, getState) => {
-    dispatch({
-      type: GET_TV_DETAILS_LOADING,
-      payload: true,
-    });
     setTimeout(() => {
       axios
         .get(
-          `https://api.themoviedb.org/3/tv/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar`
+          `https://api.themoviedb.org/3/tv/${contentId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar`
         )
         .then((data) => {
           dispatch({

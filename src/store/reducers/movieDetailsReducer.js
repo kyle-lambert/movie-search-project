@@ -6,7 +6,7 @@ import {
 } from "../types";
 
 const initState = {
-  results: [],
+  data: null,
   loading: true,
   error: "",
 };
@@ -16,7 +16,7 @@ const movieDetailsReducer = (state = initState, action) => {
     case GET_MOVIE_DETAILS_SUCCESS:
       return {
         ...state,
-        results: action.payload,
+        data: action.payload,
       };
     case GET_MOVIE_DETAILS_LOADING:
       return {

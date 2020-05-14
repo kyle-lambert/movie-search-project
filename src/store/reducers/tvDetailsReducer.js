@@ -6,8 +6,8 @@ import {
 } from "../types";
 
 const initState = {
-  results: [],
-  loading: false,
+  data: null,
+  loading: true,
   error: "",
 };
 
@@ -16,7 +16,7 @@ const tvDetailsReducer = (state = initState, action) => {
     case GET_TV_DETAILS_SUCCESS:
       return {
         ...state,
-        results: action.payload,
+        data: action.payload,
       };
     case GET_TV_DETAILS_LOADING:
       return {
