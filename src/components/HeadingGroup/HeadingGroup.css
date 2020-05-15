@@ -1,0 +1,14 @@
+.HeadingGroup {
+  margin-bottom: 1.6rem;
+}
+
+.HeadingGroup-heading {
+  font-size: 3.8rem;
+  margin-bottom: 0.5rem;
+  color: inherit;
+}
+
+.HeadingGroup-subheading {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+}

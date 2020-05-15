@@ -1,0 +1,11 @@
+.VoteBox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.VoteBox-count {
+  margin-left: 1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
