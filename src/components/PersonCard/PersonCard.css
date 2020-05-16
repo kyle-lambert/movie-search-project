@@ -1,0 +1,45 @@
+.PersonCard-inner {
+  display: inline-block;
+  position: relative;
+  transition: opacity 200ms ease;
+}
+
+.PersonCard-inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(64, 224, 208, 0.7);
+  border-radius: 2px;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.PersonCard-inner:hover.PersonCard-inner::after {
+  opacity: 1;
+}
+
+.PersonCard-img {
+  display: block;
+  max-width: 100%;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.PersonCard-info {
+  margin-top: 1rem;
+}
+
+.PersonCard-name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: inherit;
+  margin-bottom: 0.3rem;
+}
+
+.PersonCard-character {
+  color: var(--text-secondary);
+}

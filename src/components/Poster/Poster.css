@@ -1,15 +1,11 @@
 .Poster {
-  width: 175px;
-  height: 262.5px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   border-radius: 2px;
+  max-width: 250px;
 }
 
-@media screen and (min-width: 768px) {
-  .Poster {
-    width: 250px;
-    height: 375px;
-  }
+.Poster-img {
+  display: block;
+  max-width: 100%;
+  border-radius: 2px;
+  object-fit: cover;
 }

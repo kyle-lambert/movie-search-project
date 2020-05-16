@@ -1,9 +1,14 @@
 import React from "react";
 
-import Hero from "../Hero/Hero";
+import Summary from "../Summary/Summary";
+import Cast from "../Cast/Cast";
 import "./Movie.css";
 
 function Movie({ data, history }) {
+  const goBack = () => {
+    history.goBack();
+  };
+
   const {
     title,
     backdrop_path,
@@ -14,10 +19,11 @@ function Movie({ data, history }) {
     vote_count,
     overview,
     tagline,
+    credits,
   } = data;
   return (
     <div className="Movie">
-      <Hero
+      <Summary
         backdrop={backdrop_path}
         title={title}
         poster={poster_path}
@@ -27,8 +33,9 @@ function Movie({ data, history }) {
         vote_count={vote_count}
         overview={overview}
         tagline={tagline}
-        history={history}
+        goBack={goBack}
       />
+      <Cast cast={credits.cast} count={8} />
     </div>
   );
 }

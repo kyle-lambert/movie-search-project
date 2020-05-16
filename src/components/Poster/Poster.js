@@ -1,13 +1,16 @@
 import React from "react";
 
 import "./Poster.css";
+import imagePlaceholder from "../../images/content-placeholder.svg";
 
-function Poster(props) {
-  const posterPath = `https://image.tmdb.org/t/p/w500/${props.path}`;
-  const placeholderPath = ``;
+function Poster({ path, title }) {
+  path = path ? `https://image.tmdb.org/t/p/w500/${path}` : imagePlaceholder;
 
-  const style = { backgroundImage: `url(${posterPath})` };
-  return <div className="Poster" style={style}></div>;
+  return (
+    <div className="Poster">
+      <img src={path} alt={title} className="Poster-img" />
+    </div>
+  );
 }
 
 export default Poster;

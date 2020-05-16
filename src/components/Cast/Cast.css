@@ -1,0 +1,28 @@
+.Cast {
+  padding: 3rem;
+}
+
+.Cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 3rem;
+}
+
+.Cast-errorbox {
+  background-color: var(--background-secondary);
+  border-radius: 2px;
+  padding: 3rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .Cast {
+    padding: 3rem 6rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .Cast {
+    padding: 3rem 9rem;
+  }
+}
