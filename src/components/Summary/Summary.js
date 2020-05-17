@@ -1,24 +1,22 @@
 import React from "react";
 
-import BackButton from "../BackButton/BackButton";
 import Poster from "../Poster/Poster";
 import HeadingGroup from "../HeadingGroup/HeadingGroup";
 import VoteBox from "../VoteBox/VoteBox";
 import "./Summary.css";
 
-function Summary(props) {
+function Summary({ data }) {
   const {
-    poster,
     title,
     genres,
-    release,
-    vote_average,
-    vote_count,
+    posterPath,
+    releaseDate,
+    voteAverage,
+    voteCount,
     overview,
     tagline,
-    backdrop,
-    goBack,
-  } = props;
+    credits,
+  } = data;
 
   const getGenres = () => {
     return Array.isArray(genres) && genres.length > 0
@@ -27,23 +25,18 @@ function Summary(props) {
   };
 
   const getYear = () => {
-    return release ? release.slice(0, 4) : "No year";
-  };
-
-  const backgroundStyle = backdrop && {
-    backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop})`,
+    return releaseDate ? releaseDate.slice(0, 4) : "No year";
   };
 
   return (
-    <div className="Summary" style={backgroundStyle}>
-      <BackButton goBack={goBack} />
+    <div className="Summary">
       <div className="Summary-grid">
         <div className="Summary-side">
-          <Poster path={poster} title={title} />
+          <Poster posterPath={posterPath} title={title} />
         </div>
         <div className="Summary-main">
           <HeadingGroup heading={title} subheading={getGenres()} />
-          <VoteBox vote_average={vote_average} vote_count={vote_count} />
+          <VoteBox voteAverage={voteAverage} voteCount={voteCount} />
           {tagline && <div className="Summary-tagline">{`"${tagline}"`}</div>}
           <p className="Summary-body">{overview ? overview : "No overview"}</p>
         </div>

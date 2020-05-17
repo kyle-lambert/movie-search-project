@@ -1,8 +1,13 @@
 import React from "react";
 
+import Backdrop from "../Backdrop/Backdrop";
 import Summary from "../Summary/Summary";
 import Cast from "../Cast/Cast";
+import Slider from "../Slider/Slider";
 import "./Movie.css";
+
+// 76338
+// 76170
 
 function Movie({ data, history }) {
   const goBack = () => {
@@ -21,21 +26,31 @@ function Movie({ data, history }) {
     tagline,
     credits,
   } = data;
+
+  const summaryProps = {
+    title: title,
+    genres: genres,
+    posterPath: poster_path,
+    releaseDate: release_date,
+    voteAverage: vote_average,
+    voteCount: vote_count,
+    overview: overview,
+    tagline: tagline,
+    credits: credits,
+  };
+
+  const backdropProps = {
+    backdropPath: backdrop_path,
+    title: title,
+    goBack: goBack,
+  };
+
   return (
     <div className="Movie">
-      <Summary
-        backdrop={backdrop_path}
-        title={title}
-        poster={poster_path}
-        genres={genres}
-        release={release_date}
-        vote_average={vote_average}
-        vote_count={vote_count}
-        overview={overview}
-        tagline={tagline}
-        goBack={goBack}
-      />
+      <Backdrop data={backdropProps} />
+      <Summary data={summaryProps} />
       <Cast cast={credits.cast} count={8} />
+      <Slider />
     </div>
   );
 }

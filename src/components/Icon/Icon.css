@@ -2,5 +2,15 @@
   display: inline-block;
   margin-bottom: 1.5rem;
   font-size: 5rem;
+  color: var(--background-primary-light);
+  transition: color 200ms ease;
+}
+
+.Icon-secondary {
   color: var(--brand-primary);
+}
+
+.Icon-hover:hover {
+  color: var(--brand-primary);
+  transition: color 200ms ease;
 }

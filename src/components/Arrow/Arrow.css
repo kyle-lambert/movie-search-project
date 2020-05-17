@@ -1,0 +1,13 @@
+.Arrow {
+  outline: none;
+  border: none;
+  background-color: lightcoral;
+  color: white;
+  font-size: inherit;
+  border-radius: 2px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1rem;
+}

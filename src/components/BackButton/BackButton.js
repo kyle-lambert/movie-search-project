@@ -9,7 +9,7 @@ function BackButton({ goBack }) {
   };
   return (
     <button type="text" className="BackButton" onClick={handleClick}>
-      <Icon iconClasses="fas fa-chevron-left" />
+      <Icon iconClasses="fas fa-chevron-left" hover />
     </button>
   );
 }

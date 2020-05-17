@@ -1,10 +1,22 @@
 .Backdrop {
-  display: flex;
   position: relative;
-  min-height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 400px;
+}
+
+.Backdrop-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Backdrop-button-wrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 0 3rem;
+  z-index: 10;
 }
 
 .Backdrop::after {
@@ -15,5 +27,29 @@
   bottom: 0;
   left: 0;
   z-index: 5;
-  /* background-color: rgba(102, 205, 171, 0.9); */
+  background-image: linear-gradient(
+    90deg,
+    var(--background-primary-dark),
+    transparent
+  );
+}
+
+@media screen and (min-width: 768px) {
+  .Backdrop {
+    height: 500px;
+  }
+
+  .Backdrop-button-wrap {
+    padding: 0 6rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .Backdrop {
+    height: 600px;
+  }
+
+  .Backdrop-button-wrap {
+    padding: 0 9rem;
+  }
 }

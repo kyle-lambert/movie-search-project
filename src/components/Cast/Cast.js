@@ -22,7 +22,7 @@ function Cast({ cast, count = 4 }) {
         </div>
       ) : (
         <div className="Cast-errorbox">
-          <Icon iconClasses="fas fa-frown" />
+          <Icon iconClasses="fas fa-frown" secondary />
           <Message message="Oh no, we couldn't find any cast members for you, sorry about that!" />
         </div>
       )}

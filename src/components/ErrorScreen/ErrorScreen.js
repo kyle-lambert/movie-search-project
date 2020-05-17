@@ -8,7 +8,7 @@ function ErrorScreen(props) {
   return (
     <div className="ErrorScreen">
       <div className="ErrorScreen-box">
-        <Icon iconClasses="fas fa-frown" />
+        <Icon iconClasses="fas fa-frown" secondary />
         <Message message="Oh bummer, there was a network error while trying to process your request." />
       </div>
     </div>
