@@ -13,16 +13,53 @@ class Slider extends Component {
       activeIndex: 0,
       translation: 0,
       transition: 0.45,
-      slidesPerView: 5,
+      slidesPerView: 0,
+      sliderWidth: 0,
     };
   }
 
+  setSliderWidth = () => {
+    const slider = document.querySelector(".Slider");
+    this.setState({ sliderWidth: slider.clientWidth });
+  };
+
+  setSlidesPerView = () => {
+    const { sliderWidth } = this.state;
+    let num = 0;
+
+    switch (true) {
+      case sliderWidth <= 425:
+        num = 1;
+        break;
+      case sliderWidth > 425 && sliderWidth <= 768:
+        num = 2;
+        break;
+      case sliderWidth > 768 && sliderWidth <= 1024:
+        num = 3;
+        break;
+      case sliderWidth > 1024 && sliderWidth <= 1440:
+        num = 4;
+        break;
+      default:
+        num = 6;
+        break;
+    }
+    this.setState({ slidesPerView: num });
+  };
+
   componentDidMount() {
+    this.setSliderWidth();
+    this.setSlidesPerView();
+
     window.addEventListener("resize", () => {
-      this.setState((prevState) => ({
-        ...prevState,
-        translation: prevState.activeIndex * this.getWidth(),
+      this.setSliderWidth();
+      this.setSlidesPerView();
+
+      this.setState((state) => ({
+        ...state,
+        translation: 0,
         transition: 0,
+        activeIndex: 0,
       }));
 
       // add transition back after window resize
@@ -32,10 +69,16 @@ class Slider extends Component {
     });
   }
 
-  getWidth = () => window.innerWidth / this.state.slidesPerView;
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.sliderWidth !== this.state.sliderWidth) {
+      this.setSlidesPerView();
+    }
+  }
+
+  getWidth = () => this.state.sliderWidth / this.state.slidesPerView;
 
   nextSlide = () => {
-    if (this.state.activeIndex === 6 - 1) {
+    if (this.state.activeIndex === this.props.items.length - 1) {
       return this.setState({
         ...this.state,
         translation: 0,
@@ -54,8 +97,8 @@ class Slider extends Component {
     if (this.state.activeIndex === 0) {
       return this.setState({
         ...this.state,
-        activeIndex: 6 - 1,
-        translation: (6 - 1) * this.getWidth(),
+        activeIndex: this.props.items.length - 1,
+        translation: (this.props.items.length - 1) * this.getWidth(),
       });
     }
 
@@ -72,17 +115,14 @@ class Slider extends Component {
         <SliderContent
           translation={this.state.translation}
           transition={this.state.transition}
-          width={(100 / this.state.slidesPerView) * 6}>
-          <Slide key="1" width={100 / this.state.slidesPerView} color="red" />
-          <Slide key="2" width={100 / this.state.slidesPerView} color="green" />
-          <Slide key="3" width={100 / this.state.slidesPerView} color="blue" />
-          <Slide key="4" width={100 / this.state.slidesPerView} color="coral" />
-          <Slide
-            key="5"
-            width={100 / this.state.slidesPerView}
-            color="orange"
-          />
-          <Slide key="6" width={100 / this.state.slidesPerView} color="teal" />
+          width={(100 / this.state.slidesPerView) * this.props.items.length}>
+          {this.props.items.map((item) => (
+            <Slide
+              key={item.id}
+              item={item}
+              width={100 / this.state.slidesPerView}
+            />
+          ))}
         </SliderContent>
         <Arrow direction="left" handleClick={this.prevSlide} />
         <Arrow direction="right" handleClick={this.nextSlide} />

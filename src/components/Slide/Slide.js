@@ -1,11 +1,15 @@
 import React from "react";
 import "./Slide.css";
 
-function Slide({ color, width }) {
+function Slide({ item, width }) {
   return (
-    <div
-      className="Slide"
-      style={{ backgroundColor: color, width: `${width}%` }}></div>
+    <div className="Slide" style={{ width: `${width}%` }}>
+      <img
+        src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+        alt=""
+        className="Slide-img"
+      />
+    </div>
   );
 }
 

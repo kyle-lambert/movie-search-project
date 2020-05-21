@@ -25,6 +25,7 @@ function Movie({ data, history }) {
     overview,
     tagline,
     credits,
+    similar,
   } = data;
 
   const summaryProps = {
@@ -50,7 +51,7 @@ function Movie({ data, history }) {
       <Backdrop data={backdropProps} />
       <Summary data={summaryProps} />
       <Cast cast={credits.cast} count={8} />
-      <Slider />
+      <Slider items={similar.results} />
     </div>
   );
 }
