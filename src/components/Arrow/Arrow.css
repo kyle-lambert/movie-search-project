@@ -11,3 +11,8 @@
   transform: translateY(-50%);
   padding: 1rem;
 }
+
+.Arrow:disabled {
+  background-color: teal;
+  opacity: 0.6;
+}

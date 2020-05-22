@@ -5,6 +5,7 @@ import "./Slider.css";
 import SliderContent from "../SliderContent/SliderContent";
 import Slide from "../Slide/Slide";
 import Arrow from "../Arrow/Arrow";
+import { ThemeConsumer } from "styled-components";
 
 class Slider extends Component {
   constructor(props) {
@@ -77,36 +78,37 @@ class Slider extends Component {
 
   getWidth = () => this.state.sliderWidth / this.state.slidesPerView;
 
-  nextSlide = () => {
-    if (this.state.activeIndex === this.props.items.length - 1) {
-      return this.setState({
-        ...this.state,
-        translation: 0,
-        activeIndex: 0,
-      });
-    }
+  disableNextButton = () => {
+    const { activeIndex, slidesPerView } = this.state;
+    const { items } = this.props;
+    return activeIndex + slidesPerView > items.length - 1;
+  };
 
-    this.setState((prevState) => ({
-      ...prevState,
-      activeIndex: prevState.activeIndex + 1,
-      translation: (prevState.activeIndex + 1) * this.getWidth(),
-    }));
+  disablePrevButton = () => {
+    const { activeIndex } = this.state;
+    return activeIndex === 0;
+  };
+
+  nextSlide = () => {
+    if (!this.disableNextButton()) {
+      this.setState((prevState) => ({
+        ...prevState,
+        activeIndex: prevState.activeIndex + this.state.slidesPerView,
+        translation:
+          (prevState.activeIndex + this.state.slidesPerView) * this.getWidth(),
+      }));
+    }
   };
 
   prevSlide = () => {
-    if (this.state.activeIndex === 0) {
-      return this.setState({
-        ...this.state,
-        activeIndex: this.props.items.length - 1,
-        translation: (this.props.items.length - 1) * this.getWidth(),
-      });
+    if (!this.disablePrevButton()) {
+      this.setState((prevState) => ({
+        ...prevState,
+        activeIndex: prevState.activeIndex - this.state.slidesPerView,
+        translation:
+          (prevState.activeIndex - this.state.slidesPerView) * this.getWidth(),
+      }));
     }
-
-    this.setState((prevState) => ({
-      ...prevState,
-      activeIndex: prevState.activeIndex - 1,
-      translation: (prevState.activeIndex - 1) * this.getWidth(),
-    }));
   };
 
   render() {
@@ -120,12 +122,20 @@ class Slider extends Component {
             <Slide
               key={item.id}
               item={item}
-              width={100 / this.state.slidesPerView}
+              width={100 / this.props.items.length}
             />
           ))}
         </SliderContent>
-        <Arrow direction="left" handleClick={this.prevSlide} />
-        <Arrow direction="right" handleClick={this.nextSlide} />
+        <Arrow
+          direction="left"
+          disabled={this.disablePrevButton()}
+          handleClick={this.prevSlide}
+        />
+        <Arrow
+          direction="right"
+          disabled={this.disableNextButton()}
+          handleClick={this.nextSlide}
+        />
       </div>
     );
   }
