@@ -114,6 +114,18 @@ class Slider extends Component {
   render() {
     return (
       <div className="Slider">
+        <div className="Slider-arrows">
+          <Arrow
+            direction="left"
+            disabled={this.disablePrevButton()}
+            handleClick={this.prevSlide}
+          />
+          <Arrow
+            direction="right"
+            disabled={this.disableNextButton()}
+            handleClick={this.nextSlide}
+          />
+        </div>
         <SliderContent
           translation={this.state.translation}
           transition={this.state.transition}
@@ -123,19 +135,10 @@ class Slider extends Component {
               key={item.id}
               item={item}
               width={100 / this.props.items.length}
+              isTypeMovie={this.props.isTypeMovie}
             />
           ))}
         </SliderContent>
-        <Arrow
-          direction="left"
-          disabled={this.disablePrevButton()}
-          handleClick={this.prevSlide}
-        />
-        <Arrow
-          direction="right"
-          disabled={this.disableNextButton()}
-          handleClick={this.nextSlide}
-        />
       </div>
     );
   }

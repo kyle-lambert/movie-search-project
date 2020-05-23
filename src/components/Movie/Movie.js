@@ -3,11 +3,13 @@ import React from "react";
 import Backdrop from "../Backdrop/Backdrop";
 import Summary from "../Summary/Summary";
 import Cast from "../Cast/Cast";
-import Slider from "../Slider/Slider";
+import MovieShowcase from "../MovieShowcase/MovieShowcase";
+import {
+  guardCredits,
+  guardRecommendations,
+  guardSimilar,
+} from "../../utils/guards";
 import "./Movie.css";
-
-// 76338
-// 76170
 
 function Movie({ data, history }) {
   const goBack = () => {
@@ -26,6 +28,7 @@ function Movie({ data, history }) {
     tagline,
     credits,
     similar,
+    recommendations,
   } = data;
 
   const summaryProps = {
@@ -50,8 +53,17 @@ function Movie({ data, history }) {
     <div className="Movie">
       <Backdrop data={backdropProps} />
       <Summary data={summaryProps} />
-      <Cast cast={credits.cast} count={8} />
-      <Slider items={similar.results} />
+      <Cast cast={guardCredits(data, "cast") && credits.cast} count={8} />
+      <MovieShowcase
+        heading="Similar"
+        subheading="Browse a collection of similar movies..."
+        data={guardSimilar(data) && similar.results}
+      />
+      <MovieShowcase
+        heading="Recommendated"
+        subheading="Recommended movies based on your current selection"
+        data={guardRecommendations(data) && recommendations.results}
+      />
     </div>
   );
 }

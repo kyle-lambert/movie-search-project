@@ -4,16 +4,20 @@ import "./Arrow.css";
 
 function Arrow({ disabled, direction, handleClick }) {
   const style = {
-    left: `${direction === "left" ? "10px" : "unset"}`,
-    right: `${direction === "right" ? "10px" : "unset"}`,
+    left: `${direction === "left" ? "0" : "unset"}`,
+    right: `${direction === "right" ? "0" : "unset"}`,
   };
   return (
     <button
       className="Arrow"
       disabled={disabled}
-      style={style}
-      onClick={handleClick}>
-      {direction === "left" ? "left" : "right"}
+      onClick={handleClick}
+      style={style}>
+      {direction === "left" ? (
+        <i className="fas fa-arrow-circle-left"></i>
+      ) : (
+        <i className="fas fa-arrow-circle-right"></i>
+      )}
     </button>
   );
 }

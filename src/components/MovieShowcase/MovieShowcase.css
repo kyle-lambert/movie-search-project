@@ -1,0 +1,22 @@
+.MovieShowcase {
+  padding: 3rem;
+}
+
+.MovieShowcase-errorbox {
+  background-color: var(--background-secondary);
+  border-radius: 2px;
+  padding: 3rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .MovieShowcase {
+    padding: 3rem 6rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .MovieShowcase {
+    padding: 3rem 9rem;
+  }
+}
