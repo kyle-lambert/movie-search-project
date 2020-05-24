@@ -7,8 +7,8 @@ import "./Slide.css";
 function Slide({ item, width, isTypeMovie }) {
   const getTitle = () => {
     if (isTypeMovie)
-      return item.title ? truncateStr(item.title, 25) : "No title";
-    return item.name ? truncateStr(item.name, 25) : "No title";
+      return item.title ? truncateStr(item.title, 30) : "No title";
+    return item.name ? truncateStr(item.name, 30) : "No title";
   };
 
   const getGenres = () => {
@@ -22,7 +22,7 @@ function Slide({ item, width, isTypeMovie }) {
       <Link to={`/details/movie/${item.id}`}>
         <div className="Slide-inner">
           <img
-            src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
             alt=""
             className="Slide-img"
           />

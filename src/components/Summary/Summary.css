@@ -4,9 +4,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: var(--background-secondary);
 }
 
-.Summary::after {
+/* .Summary::after {
   content: "";
   position: absolute;
   top: 0;
@@ -14,7 +15,7 @@
   bottom: 0;
   left: 0;
   background-color: var(--background-secondary);
-}
+} */
 
 .Summary-side,
 .Summary-main {
