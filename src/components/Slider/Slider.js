@@ -135,7 +135,7 @@ class Slider extends Component {
               key={item.id}
               item={item}
               width={100 / this.props.items.length}
-              isTypeMovie={this.props.isTypeMovie}
+              type={this.props.type}
             />
           ))}
         </SliderContent>

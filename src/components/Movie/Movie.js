@@ -3,7 +3,8 @@ import React from "react";
 import Backdrop from "../Backdrop/Backdrop";
 import Summary from "../Summary/Summary";
 import Cast from "../Cast/Cast";
-import MovieShowcase from "../MovieShowcase/MovieShowcase";
+import Showcase from "../Showcase/Showcase";
+import Spacer from "../Spacer/Spacer";
 import {
   guardCredits,
   guardRecommendations,
@@ -16,53 +17,26 @@ function Movie({ data, history }) {
     history.goBack();
   };
 
-  const {
-    title,
-    backdrop_path,
-    poster_path,
-    genres,
-    release_date,
-    vote_average,
-    vote_count,
-    overview,
-    tagline,
-    credits,
-    similar,
-    recommendations,
-  } = data;
-
-  const summaryProps = {
-    title: title,
-    genres: genres,
-    posterPath: poster_path,
-    releaseDate: release_date,
-    voteAverage: vote_average,
-    voteCount: vote_count,
-    overview: overview,
-    tagline: tagline,
-    credits: credits,
-  };
-
-  const backdropProps = {
-    backdropPath: backdrop_path,
-    title: title,
-    goBack: goBack,
-  };
-
   return (
     <div className="Movie">
-      <Backdrop data={backdropProps} />
-      <Summary data={summaryProps} />
-      <Cast cast={guardCredits(data, "cast") && credits.cast} count={8} />
-      <MovieShowcase
+      <Backdrop
+        backdropPath={data.backdrop_path}
+        alt={data.name}
+        goBack={goBack}
+      />
+      <Summary data={data} type="movie" />
+      <Cast cast={guardCredits(data, "cast") && data.credits.cast} count={5} />
+      <Showcase
+        type="movie"
         heading="Similar"
         subheading="Browse a collection of similar movies..."
-        data={guardSimilar(data) && similar.results}
+        data={guardSimilar(data) && data.similar.results}
       />
-      <MovieShowcase
+      <Showcase
+        type="movie"
         heading="Recommendated"
         subheading="Recommended movies based on your current selection"
-        data={guardRecommendations(data) && recommendations.results}
+        data={guardRecommendations(data) && data.recommendations.results}
       />
     </div>
   );

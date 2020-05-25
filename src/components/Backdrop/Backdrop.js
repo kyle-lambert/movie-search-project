@@ -4,9 +4,7 @@ import BackButton from "../BackButton/BackButton";
 import imagePlaceholder from "../../images/content-placeholder.svg";
 import "./Backdrop.css";
 
-function Backdrop({ data }) {
-  const { backdropPath, title, goBack } = data;
-
+function Backdrop({ backdropPath, alt, goBack }) {
   const imagePath = backdropPath
     ? `https://image.tmdb.org/t/p/original/${backdropPath}`
     : imagePlaceholder;
@@ -16,7 +14,7 @@ function Backdrop({ data }) {
       <div className="Backdrop-button-wrap">
         <BackButton goBack={goBack} />
       </div>
-      <img src={imagePath} alt={title} className="Backdrop-img" />
+      <img src={imagePath} alt={alt} className="Backdrop-img" />
     </div>
   );
 }

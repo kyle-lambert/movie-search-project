@@ -14,7 +14,7 @@ export const getTvDetails = (contentId) => {
     setTimeout(() => {
       axios
         .get(
-          `https://api.themoviedb.org/3/tv/${contentId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar`
+          `https://api.themoviedb.org/3/tv/${contentId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,reviews,similar,recommendations`
         )
         .then((data) => {
           dispatch({

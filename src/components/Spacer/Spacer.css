@@ -1,0 +1,11 @@
+.Spacer {
+  outline: none;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    var(--background-secondary) 10%,
+    var(--brand-primary) 50%,
+    var(--background-secondary) 90%
+  );
+  height: 2px;
+}
