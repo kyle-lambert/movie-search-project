@@ -39,12 +39,30 @@ function Showcase({ heading, subheading, data, type }) {
     );
   };
 
+  const getPersonShowcaseJSX = () => {
+    return (
+      <div className="Showcase-inner">
+        <HeadingGroup heading={heading} subheading={subheading} />
+        {Array.isArray(data) && data.length > 0 ? (
+          <Slider items={data.slice(0, 10)} type="person" />
+        ) : (
+          <div className="Showcase-errorbox">
+            <Icon iconClasses="fas fa-frown" secondary />
+            <Message message="Oh bummer, we were unable to find the cast members, sorry!" />
+          </div>
+        )}
+      </div>
+    );
+  };
+
   const renderShowcase = () => {
     switch (type) {
       case "movie":
         return getMovieShowcaseJSX();
       case "tv":
         return getTVShowcaseJSX();
+      case "person":
+        return getPersonShowcaseJSX();
       default:
         console.log("renderShowcase type not found!");
     }

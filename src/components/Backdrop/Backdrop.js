@@ -1,7 +1,7 @@
 import React from "react";
 
 import BackButton from "../BackButton/BackButton";
-import imagePlaceholder from "../../images/content-placeholder.svg";
+import imagePlaceholder from "../../images/backdrop-placeholder.jpg";
 import "./Backdrop.css";
 
 function Backdrop({ backdropPath, alt, goBack }) {

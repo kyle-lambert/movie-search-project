@@ -1,16 +1,5 @@
 .ResponsiveContainer {
-  padding: 3rem;
-  flex: 1;
-}
-
-@media screen and (min-width: 768px) {
-  .ResponsiveContainer {
-    padding: 3rem 6rem;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .ResponsiveContainer {
-    padding: 3rem 9rem;
-  }
+  margin: 0 auto;
+  padding: 2rem 0;
+  max-width: 144rem;
 }

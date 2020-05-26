@@ -3,9 +3,10 @@
   border: none;
   background: linear-gradient(
     90deg,
-    var(--background-secondary) 10%,
+    var(--background-primary-dark) 30%,
     var(--brand-primary) 50%,
-    var(--background-secondary) 90%
+    var(--background-primary-dark) 70%
   );
   height: 2px;
+  margin: 4rem 0 3rem;
 }

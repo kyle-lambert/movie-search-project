@@ -11,9 +11,12 @@
 }
 
 .Backdrop-button-wrap {
+  margin: 0 auto;
+  max-width: 144rem;
   position: absolute;
-  top: 50%;
   left: 0;
+  right: 0;
+  top: 50%;
   transform: translateY(-50%);
   padding: 0 3rem;
   z-index: 10;
@@ -27,8 +30,8 @@
   bottom: 0;
   left: 0;
   z-index: 5;
-  background-color: var(--background-primary-dark);
-  opacity: 0.5;
+  background-image: linear-gradient(transparent, var(--background-secondary));
+  opacity: 1;
 }
 
 @media screen and (min-width: 768px) {
@@ -36,9 +39,9 @@
     height: 500px;
   }
 
-  .Backdrop-button-wrap {
+  /* .Backdrop-button-wrap {
     padding: 0 6rem;
-  }
+  } */
 }
 
 @media screen and (min-width: 1440px) {
@@ -46,7 +49,7 @@
     height: 600px;
   }
 
-  .Backdrop-button-wrap {
+  /* .Backdrop-button-wrap {
     padding: 0 9rem;
-  }
+  } */
 }

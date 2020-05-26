@@ -1,9 +1,24 @@
 .HeadingGroup {
-  margin-bottom: 1.6rem;
+  position: relative;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.HeadingGroup::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 30%;
+  background-color: var(--text-secondary);
+  opacity: 0.2;
 }
 
 .HeadingGroup-heading {
-  font-size: 3.8rem;
+  font-size: 3.6rem;
   margin-bottom: 0.5rem;
   color: inherit;
   word-wrap: break-word;
@@ -12,4 +27,17 @@
 .HeadingGroup-subheading {
   font-size: 1.8rem;
   color: var(--text-secondary);
+}
+
+@media screen and (min-width: 768px) {
+  .HeadingGroup {
+    padding-bottom: 0;
+    text-align: left;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .HeadingGroup::after {
+    display: none;
+  }
 }

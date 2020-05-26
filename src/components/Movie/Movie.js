@@ -2,8 +2,8 @@ import React from "react";
 
 import Backdrop from "../Backdrop/Backdrop";
 import Summary from "../Summary/Summary";
-import Cast from "../Cast/Cast";
 import Showcase from "../Showcase/Showcase";
+import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
 import Spacer from "../Spacer/Spacer";
 import {
   guardCredits,
@@ -19,25 +19,36 @@ function Movie({ data, history }) {
 
   return (
     <div className="Movie">
-      <Backdrop
-        backdropPath={data.backdrop_path}
-        alt={data.name}
-        goBack={goBack}
-      />
-      <Summary data={data} type="movie" />
-      <Cast cast={guardCredits(data, "cast") && data.credits.cast} count={5} />
-      <Showcase
-        type="movie"
-        heading="Similar"
-        subheading="Browse a collection of similar movies..."
-        data={guardSimilar(data) && data.similar.results}
-      />
-      <Showcase
-        type="movie"
-        heading="Recommendated"
-        subheading="Recommended movies based on your current selection"
-        data={guardRecommendations(data) && data.recommendations.results}
-      />
+      <div className="Movie-hero">
+        <Backdrop
+          backdropPath={data.backdrop_path}
+          alt={data.name}
+          goBack={goBack}
+        />
+        <Summary data={data} type="movie" />
+      </div>
+      <ResponsiveContainer>
+        <Showcase
+          type="person"
+          heading="Cast"
+          subheading="A collection of the top-billed actors..."
+          data={guardCredits(data, "cast") && data.credits.cast}
+        />
+        <Spacer />
+        <Showcase
+          type="movie"
+          heading="Similar"
+          subheading="Browse a collection of similar movies..."
+          data={guardSimilar(data) && data.similar.results}
+        />
+        <Spacer />
+        <Showcase
+          type="movie"
+          heading="Recommendations"
+          subheading="Recommended movies based on your current selection..."
+          data={guardRecommendations(data) && data.recommendations.results}
+        />
+      </ResponsiveContainer>
     </div>
   );
 }

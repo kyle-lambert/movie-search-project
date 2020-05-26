@@ -1,7 +1,6 @@
 import React from "react";
 
 import Poster from "../Poster/Poster";
-import HeadingGroup from "../HeadingGroup/HeadingGroup";
 import VoteBox from "../VoteBox/VoteBox";
 import "./Summary.css";
 
@@ -25,7 +24,10 @@ function Summary({ data, type }) {
           <Poster posterPath={data.poster_path} title={data.title} />
         </div>
         <div className="Summary-main">
-          <HeadingGroup heading={data.title} subheading={getGenres()} />
+          <h1 className="Summary-heading">
+            {data.title ? data.title : "No title"}
+          </h1>
+          <p className="Summary-sub">{getGenres()}</p>
           <VoteBox
             voteAverage={data.vote_average}
             voteCount={data.vote_count}
@@ -48,7 +50,10 @@ function Summary({ data, type }) {
           <Poster posterPath={data.poster_path} title={data.name} />
         </div>
         <div className="Summary-main">
-          <HeadingGroup heading={data.name} subheading={getGenres()} />
+          <h1 className="Summary-heading">
+            {data.name ? data.name : "No title"}
+          </h1>
+          <p className="Summary-sub">{getGenres()}</p>
           <VoteBox
             voteAverage={data.vote_average}
             voteCount={data.vote_count}
@@ -68,7 +73,10 @@ function Summary({ data, type }) {
           <Poster posterPath={data.profile_path} alt={data.name} />
         </div>
         <div className="Summary-main">
-          <HeadingGroup heading={data.name} subheading={getGenres()} />
+          <h1 className="Summary-heading">
+            {data.name ? data.name : "No name"}
+          </h1>
+          {/* <p className="Summary-sub">{getGenres()}</p> */}
           <p className="Summary-body">{data.bio ? data.bio : "No biography"}</p>
         </div>
       </div>
