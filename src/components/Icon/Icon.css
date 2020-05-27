@@ -7,10 +7,10 @@
 }
 
 .Icon-secondary {
-  color: var(--brand-primary);
+  color: var(--brand-secondary);
 }
 
 .Icon-hover:hover {
-  color: var(--brand-primary);
+  color: var(--brand-secondary);
   transition: color 200ms ease;
 }

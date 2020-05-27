@@ -1,0 +1,20 @@
+.Navbar {
+  background-color: var(--background-primary-dark);
+}
+
+.Navbar-inner {
+  margin: 1rem auto;
+  padding: 0 3rem;
+  max-width: 138rem;
+  height: 100%;
+}
+
+.Navbar-logo {
+  width: 15rem;
+  margin-right: 2rem;
+}
+
+.Navbar-img {
+  display: block;
+  max-width: 100%;
+}

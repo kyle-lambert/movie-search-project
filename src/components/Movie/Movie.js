@@ -3,8 +3,7 @@ import React from "react";
 import Backdrop from "../Backdrop/Backdrop";
 import Summary from "../Summary/Summary";
 import Showcase from "../Showcase/Showcase";
-import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
-import Spacer from "../Spacer/Spacer";
+import Navbar from "../Navbar/Navbar";
 import {
   guardCredits,
   guardRecommendations,
@@ -19,6 +18,7 @@ function Movie({ data, history }) {
 
   return (
     <div className="Movie">
+      <Navbar />
       <div className="Movie-hero">
         <Backdrop
           backdropPath={data.backdrop_path}
@@ -27,28 +27,24 @@ function Movie({ data, history }) {
         />
         <Summary data={data} type="movie" />
       </div>
-      <ResponsiveContainer>
-        <Showcase
-          type="person"
-          heading="Cast"
-          subheading="A collection of the top-billed actors..."
-          data={guardCredits(data, "cast") && data.credits.cast}
-        />
-        <Spacer />
-        <Showcase
-          type="movie"
-          heading="Similar"
-          subheading="Browse a collection of similar movies..."
-          data={guardSimilar(data) && data.similar.results}
-        />
-        <Spacer />
-        <Showcase
-          type="movie"
-          heading="Recommendations"
-          subheading="Recommended movies based on your current selection..."
-          data={guardRecommendations(data) && data.recommendations.results}
-        />
-      </ResponsiveContainer>
+      <Showcase
+        type="person"
+        heading="Cast"
+        subheading="A collection of the top-billed actors..."
+        data={guardCredits(data, "cast") && data.credits.cast}
+      />
+      <Showcase
+        type="movie"
+        heading="Similar"
+        subheading="Browse a collection of similar movies..."
+        data={guardSimilar(data) && data.similar.results}
+      />
+      <Showcase
+        type="movie"
+        heading="Recommendations"
+        subheading="Recommended movies based on your current selection..."
+        data={guardRecommendations(data) && data.recommendations.results}
+      />
     </div>
   );
 }

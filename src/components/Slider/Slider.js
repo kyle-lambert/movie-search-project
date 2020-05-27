@@ -38,7 +38,10 @@ class Slider extends Component {
       case sliderWidth > 768 && sliderWidth <= 1024:
         num = 3;
         break;
-      case sliderWidth > 1024 && sliderWidth <= 1440:
+      case sliderWidth > 1024 && sliderWidth <= 1226:
+        num = 4;
+        break;
+      case sliderWidth > 1226 && sliderWidth <= 1440:
         num = 5;
         break;
       default:

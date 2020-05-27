@@ -1,12 +1,12 @@
 import React from "react";
 
 import "./Poster.css";
-import imagePlaceholder from "../../images/content-placeholder-light.svg";
+import imageContentPlaceholder from "../../images/content-placeholder-dark.svg";
 
 function Poster({ posterPath, alt }) {
   posterPath = posterPath
     ? `https://image.tmdb.org/t/p/w500/${posterPath}`
-    : imagePlaceholder;
+    : imageContentPlaceholder;
 
   return (
     <div className="Poster">

@@ -4,12 +4,13 @@ import HeadingGroup from "../HeadingGroup/HeadingGroup";
 import Slider from "../Slider/Slider";
 import Icon from "../Icon/Icon";
 import Message from "../Message/Message";
+import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
 import "./Showcase.css";
 
 function Showcase({ heading, subheading, data, type }) {
   const getMovieShowcaseJSX = () => {
     return (
-      <div className="Showcase-inner">
+      <div className="Showcase">
         <HeadingGroup heading={heading} subheading={subheading} />
         {Array.isArray(data) && data.length > 0 ? (
           <Slider items={data} type="movie" />
@@ -25,7 +26,7 @@ function Showcase({ heading, subheading, data, type }) {
 
   const getTVShowcaseJSX = () => {
     return (
-      <div className="Showcase-inner">
+      <div className="Showcase">
         <HeadingGroup heading={heading} subheading={subheading} />
         {Array.isArray(data) && data.length > 0 ? (
           <Slider items={data} type="tv" />
@@ -41,7 +42,7 @@ function Showcase({ heading, subheading, data, type }) {
 
   const getPersonShowcaseJSX = () => {
     return (
-      <div className="Showcase-inner">
+      <div className="Showcase">
         <HeadingGroup heading={heading} subheading={subheading} />
         {Array.isArray(data) && data.length > 0 ? (
           <Slider items={data.slice(0, 10)} type="person" />
@@ -68,7 +69,7 @@ function Showcase({ heading, subheading, data, type }) {
     }
   };
 
-  return <div className="Showcase">{renderShowcase()}</div>;
+  return <ResponsiveContainer>{renderShowcase()}</ResponsiveContainer>;
 }
 
 export default Showcase;

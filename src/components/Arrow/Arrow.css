@@ -1,7 +1,10 @@
 .Arrow {
   outline: none;
   border: none;
-  background-color: var(--brand-primary);
+  background-image: linear-gradient(
+    var(--brand-primary),
+    var(--brand-secondary)
+  );
   color: var(--text-primary-dark);
   border-radius: 50%;
   width: 50px;
@@ -15,8 +18,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color 200ms ease;
+}
+
+.Arrow:not(:disabled):hover {
+  color: #ffffff;
+  transition: color 200ms ease;
 }
 
 .Arrow:disabled {
-  opacity: 0.5;
+  opacity: 0.3;
 }

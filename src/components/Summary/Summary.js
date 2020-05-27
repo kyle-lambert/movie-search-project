@@ -2,6 +2,7 @@ import React from "react";
 
 import Poster from "../Poster/Poster";
 import VoteBox from "../VoteBox/VoteBox";
+import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
 import "./Summary.css";
 
 function Summary({ data, type }) {
@@ -96,7 +97,11 @@ function Summary({ data, type }) {
     }
   };
 
-  return <div className="Summary">{renderSummary()}</div>;
+  return (
+    <div className="Summary">
+      <ResponsiveContainer>{renderSummary()}</ResponsiveContainer>
+    </div>
+  );
 }
 
 export default Summary;

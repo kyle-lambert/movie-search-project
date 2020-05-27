@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import imageContentPlaceholder from "../../images/content-placeholder.svg";
-import imagePersonPlaceholder from "../../images/person-placeholder.svg";
+import imageContentPlaceholder from "../../images/content-placeholder-light.svg";
 import { truncateStr, filterGenres } from "../../helpers";
 import Rating from "../Rating/Rating";
 import "./Slide.css";
@@ -24,7 +23,7 @@ function Slide({ item, width, type }) {
     if (type === "person") {
       return item.profile_path
         ? `https://image.tmdb.org/t/p/w500/${item.profile_path}`
-        : imagePersonPlaceholder;
+        : imageContentPlaceholder;
     }
     return item.poster_path
       ? `https://image.tmdb.org/t/p/w500/${item.poster_path}`

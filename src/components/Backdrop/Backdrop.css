@@ -10,15 +10,12 @@
   object-fit: cover;
 }
 
-.Backdrop-button-wrap {
-  margin: 0 auto;
-  max-width: 144rem;
+.Backdrop-wrapper {
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0 3rem;
+  bottom: 0;
   z-index: 10;
 }
 
@@ -38,18 +35,10 @@
   .Backdrop {
     height: 500px;
   }
-
-  /* .Backdrop-button-wrap {
-    padding: 0 6rem;
-  } */
 }
 
 @media screen and (min-width: 1440px) {
   .Backdrop {
     height: 600px;
   }
-
-  /* .Backdrop-button-wrap {
-    padding: 0 9rem;
-  } */
 }
