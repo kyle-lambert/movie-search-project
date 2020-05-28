@@ -1,85 +1,45 @@
-.PersonCard {
-  display: block;
-  flex-shrink: 0;
-  width: 200px;
-  height: 300px;
-  min-width: 200px;
-  min-height: 300px;
-  margin: 0 1rem;
-  overflow: hidden;
-  cursor: pointer;
-}
-
 .PersonCard-inner {
-  width: 100%;
-  height: 100%;
+  display: inline-block;
   position: relative;
+  transition: opacity 200ms ease;
 }
 
 .PersonCard-inner::after {
   content: "";
   position: absolute;
-  background-image: linear-gradient(transparent, rgba(27, 38, 49, 0.9));
-  top: 0rem;
-  right: 0rem;
-  left: 0rem;
-  bottom: 0rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(64, 224, 208, 0.7);
   border-radius: 2px;
-  z-index: 50;
-}
-
-.PersonCard-inner::before {
-  content: "";
-  position: absolute;
-  background-image: linear-gradient(transparent, rgba(255, 255, 255, 0.2));
-  top: 0rem;
-  right: 0rem;
-  left: 0rem;
-  bottom: 0rem;
-  border-radius: 2px;
-  z-index: 60;
+  z-index: 5;
   opacity: 0;
+  transition: opacity 200ms ease;
 }
 
-.PersonCard:hover .PersonCard-inner::before {
+.PersonCard-inner:hover.PersonCard-inner::after {
   opacity: 1;
-}
-.PersonCard:hover .PersonCard-inner::after {
-  opacity: 0.5;
-}
-
-.PersonCard:first-child {
-  margin-left: 0;
-}
-
-.PersonCard:last-child {
-  margin-right: 0;
 }
 
 .PersonCard-img {
   display: block;
   max-width: 100%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   border-radius: 2px;
+  object-fit: cover;
 }
 
 .PersonCard-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 1.5rem 1.5rem;
-  z-index: 100;
+  margin-top: 1rem;
 }
 
-.PersonCard-title {
-  font-weight: 600;
+.PersonCard-name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: inherit;
+  margin-bottom: 0.3rem;
 }
 
 .PersonCard-character {
-  color: lightgray;
-  font-style: italic;
-  font-size: 1.4rem;
+  color: var(--text-secondary);
 }

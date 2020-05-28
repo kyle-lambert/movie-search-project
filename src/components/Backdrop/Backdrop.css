@@ -1,30 +1,53 @@
 .Backdrop {
-  position: absolute;
-  width: 100%;
-}
-
-.Backdrop-inner {
-  height: 700px;
-  min-height: 700px;
-  width: 100%;
   position: relative;
-}
-
-.Backdrop-inner::after {
-  content: "";
-  position: absolute;
-  background-image: linear-gradient(transparent, #212f3d);
-  top: 0rem;
-  right: 0rem;
-  left: 0rem;
-  bottom: 0rem;
-  z-index: 50;
+  height: 400px;
 }
 
 .Backdrop-img {
   display: block;
-  max-width: 100%;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.Backdrop-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.Backdrop-inner {
+  flex: 1;
+  margin: 0 auto;
+  padding: 0 3rem;
+  max-width: 138rem;
+}
+
+.Backdrop::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background-color: var(--background-primary-superdark);
+  opacity: 0.3;
+}
+
+@media screen and (min-width: 768px) {
+  .Backdrop {
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .Backdrop {
+    height: 600px;
+  }
 }

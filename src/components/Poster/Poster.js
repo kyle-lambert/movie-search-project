@@ -1,20 +1,16 @@
 import React from "react";
-import ContentError from "../ContentError/ContentError";
-import "./Poster.css";
 
-function Poster(props) {
-  const { title, path } = props;
+import "./Poster.css";
+import imageContentPlaceholder from "../../images/content-placeholder-dark.svg";
+
+function Poster({ posterPath, alt }) {
+  posterPath = posterPath
+    ? `https://image.tmdb.org/t/p/w500/${posterPath}`
+    : imageContentPlaceholder;
+
   return (
     <div className="Poster">
-      {path ? (
-        <img
-          className="Poster-img"
-          src={`https://image.tmdb.org/t/p/w500/${path}`}
-          alt={title}
-        />
-      ) : (
-        <ContentError text="No image" />
-      )}
+      <img src={posterPath} alt={alt} className="Poster-img" />
     </div>
   );
 }

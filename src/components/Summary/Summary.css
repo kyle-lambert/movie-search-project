@@ -1,0 +1,56 @@
+.Summary {
+  background-color: var(--background-secondary);
+}
+
+.Summary-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 3rem;
+  max-width: 138rem;
+}
+
+.Summary-heading {
+  font-size: 3.6rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: inherit;
+  word-wrap: break-word;
+}
+
+.Summary-sub {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.4rem;
+}
+
+.Summary-stats {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.Summary-stat {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+}
+
+.Summary-span {
+  margin: 0 1.5rem;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background-color: var(--text-secondary);
+}
+
+.Summary-tagline {
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  margin-bottom: 1.6rem;
+  font-style: italic;
+  margin-left: 1rem;
+}
+
+.Summary-body {
+  font-size: 1.8rem;
+}

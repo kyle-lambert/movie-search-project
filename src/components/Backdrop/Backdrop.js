@@ -1,23 +1,22 @@
 import React from "react";
-import ContentError from "../ContentError/ContentError";
+
+import BackButton from "../BackButton/BackButton";
+import imagePlaceholder from "../../images/brand-color-gradient.jpg";
 import "./Backdrop.css";
 
-function Backdrop(props) {
-  const { title, path } = props;
+function Backdrop({ backdropPath, alt, goBack }) {
+  const imagePath = backdropPath
+    ? `https://image.tmdb.org/t/p/original/${backdropPath}`
+    : imagePlaceholder;
 
   return (
     <div className="Backdrop">
-      <div className="Backdrop-inner">
-        {path ? (
-          <img
-            className="Backdrop-img"
-            src={`https://image.tmdb.org/t/p/original/${path}`}
-            alt={title}
-          />
-        ) : (
-          <ContentError text="No backdrop image" />
-        )}
+      <div className="Backdrop-wrapper">
+        <div className="Backdrop-inner">
+          <BackButton goBack={goBack} />
+        </div>
       </div>
+      <img src={imagePath} alt={alt} className="Backdrop-img" />
     </div>
   );
 }
