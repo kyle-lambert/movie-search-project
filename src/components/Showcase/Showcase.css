@@ -1,3 +1,10 @@
+.Showcase {
+  margin: 0 auto;
+  padding: 2rem 3rem;
+  max-width: 138rem;
+  background-color: var(--background-primary-dark);
+}
+
 .Showcase-errorbox {
   background-color: var(--background-secondary);
   border-radius: 2px;

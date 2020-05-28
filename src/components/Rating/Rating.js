@@ -3,8 +3,12 @@ import React from "react";
 import "./Rating.css";
 
 function Rating({ voteAverage }) {
-  voteAverage = `${voteAverage} / 10`;
-  return <div className="Rating">{voteAverage}</div>;
+  const getAverage = () => {
+    return Number.isInteger(voteAverage)
+      ? `${voteAverage}.0 / 10`
+      : `${voteAverage} / 10`;
+  };
+  return <div className="Rating">{getAverage()}</div>;
 }
 
 export default Rating;

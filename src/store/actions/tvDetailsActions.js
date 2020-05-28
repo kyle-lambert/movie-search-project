@@ -36,15 +36,13 @@ export const getTvDetails = (contentId) => {
             payload: false,
           });
         });
-    }, 1000);
+    }, 750);
   };
 };
 
 export const resetTvDetails = () => {
-  return (dispatch, getState) => {
-    console.log("tv details reset");
-    dispatch({
-      type: RESET_TV_DETAILS,
-    });
+  console.log("tv details reset");
+  return {
+    type: RESET_TV_DETAILS,
   };
 };

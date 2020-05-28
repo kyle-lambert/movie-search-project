@@ -1,9 +1,11 @@
 .Poster {
   display: none;
+  width: 275px;
+  flex-shrink: 0;
+  margin-right: 3rem;
 }
 
 .Poster-img {
-  display: block;
   max-width: 100%;
   border-radius: 2px;
   object-fit: cover;

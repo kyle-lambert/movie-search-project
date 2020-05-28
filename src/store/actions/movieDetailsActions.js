@@ -36,15 +36,13 @@ export const getMovieDetails = (contentId) => {
             payload: false,
           });
         });
-    }, 1000);
+    }, 750);
   };
 };
 
 export const resetMovieDetails = () => {
-  return (dispatch, getState) => {
-    // console.log("movie details reset");
-    dispatch({
-      type: RESET_MOVIE_DETAILS,
-    });
+  console.log("movie details reset");
+  return {
+    type: RESET_MOVIE_DETAILS,
   };
 };

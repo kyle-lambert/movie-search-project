@@ -1,7 +1,7 @@
 .HeadingGroup {
   position: relative;
-  padding-bottom: 3rem;
-  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -19,6 +19,7 @@
 
 .HeadingGroup-heading {
   font-size: 3.6rem;
+  font-weight: 400;
   margin-bottom: 0.5rem;
   color: inherit;
   word-wrap: break-word;
@@ -33,7 +34,7 @@
   .HeadingGroup {
     padding-bottom: 0;
     text-align: left;
-    margin-bottom: 2rem;
+    margin-bottom: 1.6rem;
   }
 
   .HeadingGroup::after {

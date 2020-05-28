@@ -1,6 +1,5 @@
 .Slide {
-  min-height: 300px;
-  margin: 0 1.3rem;
+  margin: 0 0.7rem;
 }
 
 .Slide-inner {
@@ -19,23 +18,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(transparent, var(--background-secondary));
+  background-image: linear-gradient(
+    transparent,
+    var(--background-primary-superdark)
+  );
   opacity: 0;
   z-index: 5;
   transition: opacity 200ms ease;
 }
-/* .Slide-inner--person::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(transparent, var(--background-secondary));
-  opacity: 1;
-  z-index: 5;
-  transition: opacity 200ms ease;
-} */
 
 .Slide-img {
   display: block;

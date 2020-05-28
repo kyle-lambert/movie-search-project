@@ -1,6 +1,5 @@
 import React from "react";
 
-import Icon from "../Icon/Icon";
 import "./BackButton.css";
 
 function BackButton({ goBack }) {
@@ -9,7 +8,7 @@ function BackButton({ goBack }) {
   };
   return (
     <button type="text" className="BackButton" onClick={handleClick}>
-      <Icon iconClasses="fas fa-chevron-left" hover />
+      <i className="fas fa-arrow-circle-left"></i>
     </button>
   );
 }

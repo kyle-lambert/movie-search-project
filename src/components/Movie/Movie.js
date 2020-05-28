@@ -19,14 +19,12 @@ function Movie({ data, history }) {
   return (
     <div className="Movie">
       <Navbar />
-      <div className="Movie-hero">
-        <Backdrop
-          backdropPath={data.backdrop_path}
-          alt={data.name}
-          goBack={goBack}
-        />
-        <Summary data={data} type="movie" />
-      </div>
+      <Backdrop
+        backdropPath={data.backdrop_path}
+        alt={data.name}
+        goBack={goBack}
+      />
+      <Summary data={data} type="movie" />
       <Showcase
         type="person"
         heading="Cast"

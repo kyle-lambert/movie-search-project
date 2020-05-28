@@ -1,8 +1,24 @@
 .BackButton {
-  position: relative;
-  z-index: 10;
   outline: none;
   border: none;
-  background-color: transparent;
+  background-image: linear-gradient(
+    var(--brand-primary),
+    var(--brand-secondary)
+  );
+  color: var(--text-primary-dark);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
+  z-index: 20;
+  font-size: 2.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 200ms ease;
+}
+
+.BackButton:hover {
+  color: #ffffff;
+  transition: color 200ms ease;
 }

@@ -27,3 +27,22 @@ export const guardRecommendations = (data) => {
     data.recommendations.results.length > 0
   );
 };
+
+export const guardPersonMovieCredits = (data) => {
+  return (
+    data &&
+    data.movie_credits &&
+    data.movie_credits.cast &&
+    Array.isArray(data.movie_credits.cast) &&
+    data.movie_credits.cast.length > 0
+  );
+};
+export const guardPersonTvCredits = (data) => {
+  return (
+    data &&
+    data.tv_credits &&
+    data.tv_credits.cast &&
+    Array.isArray(data.tv_credits.cast) &&
+    data.tv_credits.cast.length > 0
+  );
+};

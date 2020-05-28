@@ -1,8 +1,7 @@
 import React from "react";
 
 import BackButton from "../BackButton/BackButton";
-import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
-import imagePlaceholder from "../../images/backdrop-placeholder.jpg";
+import imagePlaceholder from "../../images/brand-color-gradient.jpg";
 import "./Backdrop.css";
 
 function Backdrop({ backdropPath, alt, goBack }) {
@@ -13,9 +12,9 @@ function Backdrop({ backdropPath, alt, goBack }) {
   return (
     <div className="Backdrop">
       <div className="Backdrop-wrapper">
-        <ResponsiveContainer>
+        <div className="Backdrop-inner">
           <BackButton goBack={goBack} />
-        </ResponsiveContainer>
+        </div>
       </div>
       <img src={imagePath} alt={alt} className="Backdrop-img" />
     </div>

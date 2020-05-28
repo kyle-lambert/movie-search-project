@@ -2,7 +2,6 @@ import React from "react";
 
 import Poster from "../Poster/Poster";
 import VoteBox from "../VoteBox/VoteBox";
-import ResponsiveContainer from "../ResponsiveContainer/ResponsiveContainer";
 import "./Summary.css";
 
 function Summary({ data, type }) {
@@ -18,17 +17,54 @@ function Summary({ data, type }) {
     return release_date ? release_date.slice(0, 4) : "No year";
   };
 
+  const getFirstAirYear = () => {
+    const { first_air_date } = data;
+    return first_air_date ? first_air_date.slice(0, 4) : "No year";
+  };
+
+  const getRuntime = () => {
+    const { runtime } = data;
+    return runtime ? `${runtime} mins` : "No runtime";
+  };
+
+  const getSeasons = () => {
+    const { number_of_seasons } = data;
+    return number_of_seasons ? `${number_of_seasons} seasons` : "No seasons";
+  };
+
+  const getEpisodes = () => {
+    const { number_of_episodes } = data;
+    return number_of_episodes
+      ? `${number_of_episodes} episodes`
+      : "No episodes";
+  };
+
+  const getDOB = () => {
+    const { birthday, deathday } = data;
+    if (!deathday) return birthday;
+    return `${birthday} - ${deathday}`;
+  };
+
+  const getGender = () => {
+    const { gender } = data;
+    if (!gender) return "No gender";
+    return gender === 1 ? "Female" : "Male";
+  };
+
   const getMovieJSX = () => {
     return (
-      <div className="Summary-grid">
-        <div className="Summary-side">
-          <Poster posterPath={data.poster_path} title={data.title} />
-        </div>
+      <div className="Summary-wrapper">
+        <Poster posterPath={data.poster_path} title={data.title} />
         <div className="Summary-main">
           <h1 className="Summary-heading">
             {data.title ? data.title : "No title"}
           </h1>
           <p className="Summary-sub">{getGenres()}</p>
+          <div className="Summary-stats">
+            <p className="Summary-stat">{getYear()}</p>
+            <span className="Summary-span"></span>
+            <p className="Summary-stat">{getRuntime()}</p>
+          </div>
           <VoteBox
             voteAverage={data.vote_average}
             voteCount={data.vote_count}
@@ -46,15 +82,20 @@ function Summary({ data, type }) {
 
   const getTVJSX = () => {
     return (
-      <div className="Summary-grid">
-        <div className="Summary-side">
-          <Poster posterPath={data.poster_path} title={data.name} />
-        </div>
+      <div className="Summary-wrapper">
+        <Poster posterPath={data.poster_path} title={data.name} />
         <div className="Summary-main">
           <h1 className="Summary-heading">
             {data.name ? data.name : "No title"}
           </h1>
           <p className="Summary-sub">{getGenres()}</p>
+          <div className="Summary-stats">
+            <p className="Summary-stat">{getFirstAirYear()}</p>
+            <span className="Summary-span"></span>
+            <p className="Summary-stat">{getSeasons()}</p>
+            <span className="Summary-span"></span>
+            <p className="Summary-stat">{getEpisodes()}</p>
+          </div>
           <VoteBox
             voteAverage={data.vote_average}
             voteCount={data.vote_count}
@@ -69,16 +110,23 @@ function Summary({ data, type }) {
 
   const getPersonJSX = () => {
     return (
-      <div className="Summary-grid">
-        <div className="Summary-side">
-          <Poster posterPath={data.profile_path} alt={data.name} />
-        </div>
+      <div className="Summary-wrapper">
+        <Poster posterPath={data.profile_path} title={data.name} />
         <div className="Summary-main">
           <h1 className="Summary-heading">
-            {data.name ? data.name : "No name"}
+            {data.name ? data.name : "No title"}
           </h1>
-          {/* <p className="Summary-sub">{getGenres()}</p> */}
-          <p className="Summary-body">{data.bio ? data.bio : "No biography"}</p>
+          <p className="Summary-sub">
+            {data.place_of_birth ? data.place_of_birth : "No birthplace"}
+          </p>
+          <div className="Summary-stats">
+            <p className="Summary-stat">{getDOB()}</p>
+            <span className="Summary-span"></span>
+            <p className="Summary-stat">{getGender()}</p>
+          </div>
+          <p className="Summary-body">
+            {data.biography ? data.biography : "No biography"}
+          </p>
         </div>
       </div>
     );
@@ -97,11 +145,7 @@ function Summary({ data, type }) {
     }
   };
 
-  return (
-    <div className="Summary">
-      <ResponsiveContainer>{renderSummary()}</ResponsiveContainer>
-    </div>
-  );
+  return <div className="Summary">{renderSummary()}</div>;
 }
 
 export default Summary;

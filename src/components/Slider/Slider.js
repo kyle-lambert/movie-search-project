@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import "./Slider.css";
 
 import SliderContent from "../SliderContent/SliderContent";
 import Slide from "../Slide/Slide";
 import Arrow from "../Arrow/Arrow";
-import { ThemeConsumer } from "styled-components";
 
 class Slider extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class Slider extends Component {
       transition: 0.45,
       slidesPerView: 0,
       sliderWidth: 0,
+      timeoutEvent: null,
     };
   }
 
@@ -29,23 +30,26 @@ class Slider extends Component {
     let num = 0;
 
     switch (true) {
-      case sliderWidth <= 375:
+      case sliderWidth <= 320:
         num = 1;
         break;
-      case sliderWidth > 375 && sliderWidth <= 768:
+      case sliderWidth > 320 && sliderWidth <= 520:
         num = 2;
         break;
-      case sliderWidth > 768 && sliderWidth <= 1024:
+      case sliderWidth > 520 && sliderWidth <= 768:
         num = 3;
         break;
-      case sliderWidth > 1024 && sliderWidth <= 1226:
+      case sliderWidth > 768 && sliderWidth <= 1024:
         num = 4;
         break;
-      case sliderWidth > 1226 && sliderWidth <= 1440:
+      case sliderWidth > 1024 && sliderWidth <= 1226:
         num = 5;
         break;
-      default:
+      case sliderWidth > 1226 && sliderWidth <= 1440:
         num = 6;
+        break;
+      default:
+        num = 7;
         break;
     }
     this.setState({ slidesPerView: num });
@@ -54,29 +58,42 @@ class Slider extends Component {
   componentDidMount() {
     this.setSliderWidth();
     this.setSlidesPerView();
-
-    window.addEventListener("resize", () => {
-      this.setSliderWidth();
-      this.setSlidesPerView();
-
-      this.setState((state) => ({
-        ...state,
-        translation: 0,
-        transition: 0,
-        activeIndex: 0,
-      }));
-
-      // add transition back after window resize
-      setTimeout(() => {
-        this.setState({ ...this.state, transition: 0.45 });
-      }, 250);
-    });
+    window.addEventListener("resize", this.handleResize);
   }
+
+  handleResize = () => {
+    this.setSliderWidth();
+    this.setSlidesPerView();
+
+    const timeoutEvent = setTimeout(() => {
+      this.setState({ ...this.state, transition: 0.45 });
+    }, 250);
+
+    this.setState((state) => ({
+      ...state,
+      translation: 0,
+      transition: 0,
+      activeIndex: 0,
+      timeoutEvent: timeoutEvent,
+    }));
+  };
+
+  clearTimeoutEvent = () => {
+    const { timeoutEvent } = this.state;
+    if (!timeoutEvent) return false;
+    clearTimeout(timeoutEvent);
+    this.setState({ timeoutEvent: null });
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.sliderWidth !== this.state.sliderWidth) {
       this.setSlidesPerView();
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+    this.clearTimeoutEvent();
   }
 
   getWidth = () => this.state.sliderWidth / this.state.slidesPerView;
@@ -135,7 +152,7 @@ class Slider extends Component {
           width={(100 / this.state.slidesPerView) * this.props.items.length}>
           {this.props.items.map((item) => (
             <Slide
-              key={item.id}
+              key={uuidv4()}
               item={item}
               width={100 / this.props.items.length}
               type={this.props.type}

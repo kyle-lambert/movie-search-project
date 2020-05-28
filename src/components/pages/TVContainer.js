@@ -11,16 +11,19 @@ import ErrorScreen from "../ErrorScreen/ErrorScreen";
 import TV from "../TV/TV";
 
 class TVContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
+    this.props.resetTvDetails();
     this.props.getTvDetails(this.props.contentId);
   }
 
-  componentWillUnmount() {
-    this.props.resetTvDetails();
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.routeProps.match.params.id !==
+      nextProps.routeProps.match.params.id
+    ) {
+      this.props.resetTvDetails();
+      this.props.getTvDetails(nextProps.routeProps.match.params.id);
+    }
   }
 
   render() {

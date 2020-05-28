@@ -14,11 +14,25 @@ const renderMatchedPage = (routeProps) => {
 
   switch (type) {
     case "movie":
-      return <MovieContainer contentId={id} history={history} />;
+      return (
+        <MovieContainer
+          contentId={id}
+          history={history}
+          routeProps={routeProps}
+        />
+      );
     case "tv":
-      return <TVContainer contentId={id} history={history} />;
+      return (
+        <TVContainer contentId={id} history={history} routeProps={routeProps} />
+      );
     case "person":
-      return <PersonContainer contentId={id} history={history} />;
+      return (
+        <PersonContainer
+          contentId={id}
+          history={history}
+          routeProps={routeProps}
+        />
+      );
     default:
       return <Error />;
   }

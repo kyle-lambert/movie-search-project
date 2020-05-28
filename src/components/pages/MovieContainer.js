@@ -11,16 +11,19 @@ import ErrorScreen from "../ErrorScreen/ErrorScreen";
 import Movie from "../Movie/Movie";
 
 class MovieContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
+    this.props.resetMovieDetails();
     this.props.getMovieDetails(this.props.contentId);
   }
 
-  componentWillUnmount() {
-    this.props.resetMovieDetails();
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (
+      this.props.routeProps.match.params.id !==
+      nextProps.routeProps.match.params.id
+    ) {
+      this.props.resetMovieDetails();
+      this.props.getMovieDetails(nextProps.routeProps.match.params.id);
+    }
   }
 
   render() {
