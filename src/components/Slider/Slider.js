@@ -30,13 +30,13 @@ class Slider extends Component {
     let num = 0;
 
     switch (true) {
-      case sliderWidth <= 320:
+      case sliderWidth <= 375:
         num = 1;
         break;
-      case sliderWidth > 320 && sliderWidth <= 520:
+      case sliderWidth > 375 && sliderWidth <= 565:
         num = 2;
         break;
-      case sliderWidth > 520 && sliderWidth <= 768:
+      case sliderWidth > 565 && sliderWidth <= 768:
         num = 3;
         break;
       case sliderWidth > 768 && sliderWidth <= 1024:
@@ -46,6 +46,9 @@ class Slider extends Component {
         num = 5;
         break;
       case sliderWidth > 1226 && sliderWidth <= 1440:
+        num = 5;
+        break;
+      case sliderWidth > 1440:
         num = 6;
         break;
       default:

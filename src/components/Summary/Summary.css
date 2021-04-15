@@ -26,21 +26,18 @@
 
 .Summary-stats {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 1.4rem;
 }
 
 .Summary-stat {
   font-size: 1.8rem;
+  margin-bottom: 0.3rem;
   color: var(--text-secondary);
 }
 
 .Summary-span {
-  margin: 0 1.5rem;
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
-  background-color: var(--text-secondary);
+  display: none;
 }
 
 .Summary-tagline {
@@ -53,4 +50,24 @@
 
 .Summary-body {
   font-size: 1.8rem;
+}
+
+@media screen and (min-width: 375px) {
+  .Summary-stats {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .Summary-span {
+    display: inline-block;
+    margin: 0 1.5rem;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--text-secondary);
+  }
+
+  .Summary-stat {
+    margin-bottom: 0;
+  }
 }

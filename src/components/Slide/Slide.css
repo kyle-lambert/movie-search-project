@@ -1,5 +1,9 @@
 .Slide {
-  margin: 0 0.7rem;
+  margin: 0 1rem;
+  /* height: 300px; */
+  height: 100%;
+  /* min-height: 100%; */
+  max-height: 400px;
 }
 
 .Slide-inner {
@@ -7,7 +11,7 @@
   position: relative;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 2px;
 }
 
@@ -47,17 +51,6 @@
   transition: opacity 100ms ease;
 }
 
-/* .Slide-info--person {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1.5rem;
-  z-index: 10;
-  opacity: 1;
-  transition: opacity 100ms ease;
-} */
-
 .Slide-rating {
   position: absolute;
   top: 0;
@@ -94,12 +87,8 @@
   transition: opacity 100ms ease;
 }
 
-/* .Slide:hover .Slide-inner--person::after {
-  opacity: 0;
-  transition: opacity 200ms ease;
+@media screen and (min-width: 1024px) {
+  .Slide {
+    /* height: 350px; */
+  }
 }
-
-.Slide:hover .Slide-info--person {
-  opacity: 0;
-  transition: opacity 100ms ease;
-} */
